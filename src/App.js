@@ -1,17 +1,21 @@
 import "./App.css";
+import { useState } from "react";
 import MyButtons from "./components/myButtons";
 //import dropDown from "./components/dropDown";
 import Modal from "./components/Modal";
 
 function App() {
+  const [showModal, setshowModal] = useState(false);
   const onclick = () => {
-    <Modal trigger={true}></Modal>;
+    setshowModal(!showModal);
   };
+
   return (
     <div className="block">
       hello
       <MyButtons Clicked={onclick} />
-      <Modal trigger={true}></Modal>
+      {showModal && <Modal />}
+      {/*       <Modal trigger={true}></Modal> */}
     </div>
   );
 }
