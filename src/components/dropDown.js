@@ -1,22 +1,19 @@
-//import React from "react";
+import React from "react";
 
-/* function DropDown() {
+const DropDown = () => {
   return (
-    <div>
-      <DropDown>
-        <DropDown.Toggle variant="success" id="dropdown-basic">
-          Role?
-        </DropDown.Toggle>
-        <DropDown.Menu>
-          <DropDown.Item href="#/action-1">Admin</DropDown.Item>
-          <DropDown.Item href="#/action-2">Member</DropDown.Item>
-        </DropDown.Menu>
-      </DropDown>
+    <div className='flex justify-end'>
+      <div class='pt-1 pr-11 font medium md:whitespace-pre flex justify-end'>
+        {" "}
+        Account:
+        <select name='Login' class='mx-2 ring-2 ring-gray-400 ring-offset'>
+          <option value='login'></option>
+          <option value='member'>Member</option>
+          <option value='admin'>Admin</option>
+        </select>
+      </div>
     </div>
   );
-}
+};
 
-export default dropDown;
- */
-
-//https://react-bootstrap.github.io/components/dropdowns/
+export default DropDown;
