@@ -8,9 +8,7 @@ function MyButtons() {
     setshowModal(!showModal);
   };
 
-  {showModal && <Modal/>}
   
-
   return (
     <div className='grid justify-center'>
       <button

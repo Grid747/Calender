@@ -6,14 +6,14 @@ const DropDown = () => {
   const newDropValue = () => setdropValue(!dropValue);
 
   return (
-    <div class="flex justify-end">
+    <div className="flex justify-end">
       {" "}
       Login:
       <select
         name="Login"
         value={dropValue}
         onChange={newDropValue}
-        class="mx-2 ring-2 ring-gray-400 ring-offset flex"
+        className="mx-2 ring-2 ring-gray-400 ring-offset flex"
       >
         <option value={false}>Member</option>
         <option value={true}>Admin</option>

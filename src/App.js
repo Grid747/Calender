@@ -1,17 +1,9 @@
 import "./App.css";
-import { useState } from "react";
 /* import MyButtons from "./components/myButtons"; */
 import DropDown from "./components/dropDown";
 /* import Modal from "./components/Modal"; */
 
 function App() {
-  const [showModal, setshowModal] = useState(false);
-  const onclick = () => {
-    setshowModal(!showModal);
-  };
-  
-
-
 
   return (
     <div className='grid'>

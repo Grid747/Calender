@@ -1,9 +1,14 @@
 import React from "react";
 
 function Modal() {
-  const input = document.createElement("input");
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+  }
+
+/*   const input = document.createElement("input");
   input.setAttribute("type", "text");
-  document.body.appendChild(input);
+  document.body.appendChild(input); */
   return (
     <div className='grid justify-center'>
       <div className='bg-blue-400 w-92 h-92 content-center grid justify-center'>
@@ -15,8 +20,13 @@ function Modal() {
         <h1># of seats</h1>
         <input type="number"/>
         <h1>Recurring</h1>
+        <input type="text"/>
       </div>
+      <form onSubmit={handleSubmit}>
+        <button>Submit</button>
+      </form>
     </div>
+
   );
 }
 
