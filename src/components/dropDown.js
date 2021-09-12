@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MyButtons from "./myButtons";
+import ModelOpener from "./ModelOpener";
 
 const DropDown = () => {
   const [dropValue, setdropValue] = useState(false);
@@ -18,7 +18,7 @@ const DropDown = () => {
         <option value={false}>Member</option>
         <option value={true}>Admin</option>
       </select>
-      {dropValue ? <MyButtons /> : null}
+      {dropValue ? <ModelOpener label="Add Event" /> : null}
     </div>
   );
 };
