@@ -13,20 +13,21 @@ function Modal() {
       time: "15:30",
       seats: 20,
       recurring: true
+      people: [aaron, caden, amanda, ]
     }
   ]
  */
   const [name, setName] = useState("");
-  const changeName = (e) => setName(e.value.target);
+  const changeName = (e) => setName(e.target.value);
 
   const [eventDate, setEventDate] = useState("");
-  const changeEventDate = (e) => setEventDate(e.value.target);
+  const changeEventDate = (e) => setEventDate(e.target.value);
 
   const [startTime, setStartTime] = useState("");
-  const changeStartTime = (e) => setStartTime(e.value.target);
+  const changeStartTime = (e) => setStartTime(e.target.value);
 
   const [eventEndTime, setEndTime] = useState("");
-  const changeEndTime = (e) => setEndTime(e.value.target);
+  const changeEndTime = (e) => setEndTime(e.target.value);
 
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
@@ -36,7 +37,20 @@ function Modal() {
 
   function formSubmit(e) {
     e.preventDefault();
-    console.log(seats);
+    console.log(
+      "name" +
+        name +
+        "\nEvent Date:" +
+        eventDate +
+        "\nstart time: " +
+        startTime +
+        "\nend time " +
+        eventEndTime +
+        "\nseats" +
+        seats +
+        "\nrecure" +
+        recur
+    );
   }
 
   return (
@@ -44,17 +58,17 @@ function Modal() {
       <form onSubmit={formSubmit}>
         <div className="bg-blue-400 w-92 h-92 content-center grid justify-center">
           <h1>Event Name</h1>
-          <input type="text" />
+          <input type="text" onChange={changeName} />
           <h1>Event Date</h1>
-          <input type="date" />
+          <input type="date" onChange={changeEventDate} />
           <label>Start Time</label>
-          <input type="time" />
+          <input type="time" onChange={changeStartTime} />
           <label>End Time</label>
-          <input type="time" />
+          <input type="time" onChange={changeEndTime} />
           <h1># of seats</h1>
           <input type="number" onChange={changeSeats} />
           <h1>Recurring</h1>
-          <input type="text" />
+          <input type="text" onChange={changeRecur} />
           <button className="ring-red-900 bg-green-500">Submit</button>
         </div>
       </form>
