@@ -77,48 +77,48 @@ function Modal({ onAdd }) {
   };
 
   return (
-    <div className="flex justify-center border">
+    <div className='flex justify-center border'>
       <form onSubmit={formSubmit}>
-        <div className="bg-blue-400 px-3 py-1 w-100 h-100 content-center flex">
-          <h1 className="px-1">Event Name</h1>
+        <div className='bg-blue-400 px-3 py-1 w-100 h-100 content-center flex'>
+          <h1 className='px-1'>Event Name</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1 w-10"
-            type="text"
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='text'
             onChange={changeName}
           />
-          <h1 className="px-1">Event Date</h1>
+          <h1 className='px-1'>Event Date</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1 w-15"
-            type="date"
+            className='border-2 border-gray-900 rounded px-1 w-15'
+            type='date'
             onChange={changeEventDate}
           />
-          <h1 className="px-1">Start Time</h1>
+          <h1 className='px-1'>Start Time</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1 w-10"
-            type="time"
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='time'
             onChange={changeStartTime}
           />
-          <h1 className="px-1">End Time</h1>
+          <h1 className='px-1'>End Time</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1 w-10"
-            type="time"
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='time'
             onChange={changeEndTime}
           />
-          <h1 className="px-1"># of seats</h1>
+          <h1 className='px-1'># of seats</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1 w-10"
-            type="number"
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='number'
             onChange={changeSeats}
           />
-          <h1 className="px-1">Recurring</h1>
+          <h1 className='px-1'>Reoccuring</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1 w-10"
-            type="text"
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='text'
             onChange={changeRecur}
           />
           <br />
-          <div className="px-1">
-            <button className="border-2 rounded-full border-red-900 px-3 bg-green-500">
+          <div className='px-1'>
+            <button className='border-2 rounded-full border-red-900 px-3 bg-green-500'>
               Submit
             </button>
           </div>

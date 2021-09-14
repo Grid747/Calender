@@ -11,17 +11,23 @@ function ModelOpener({ onAdd }) {
   };
 
   return (
-    <div className="flex flex-col justify-center px-2">
-      <div className="flex justify-center">
-        <button
-          className="flex justify-center hover:bg-gray-900 text-black font-bold hover:text-white py-2 px-1 
-        border hover:border-transparent rounded-lg text-l"
-          onClick={onclick}
+    <div className='flex flex-col justify-center px-2'>
+      <div className='flex justify-center'>
+        <div
+          className={`${
+            showModal ? "flex justify-center pb-0" : "flex justify-center pb-10"
+          }`}
         >
-          {label}
-        </button>
+          <button
+            className='flex justify-center hover:bg-gray-900 text-black font-bold hover:text-white py-2 px-1 
+        border hover:border-transparent rounded-lg text-l'
+            onClick={onclick}
+          >
+            {label}
+          </button>
+        </div>
       </div>
-      <div className="flex flex-col justify-center px-2">
+      <div className='flex justify-center px-2'>
         {showModal && <Modal onAdd={onAdd} />}
       </div>
     </div>
@@ -29,3 +35,5 @@ function ModelOpener({ onAdd }) {
 }
 
 export default ModelOpener;
+
+// {`${var?true:false}`}

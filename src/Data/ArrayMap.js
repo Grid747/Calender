@@ -5,8 +5,8 @@ import Event from "../components/Event";
 
 const ArrayMap = ({ mydata, editMe }) => {
   return (
-    <div>
-      {mydata.map((myEvents) => {
+    <div className='flex flex-col px-2'>
+      {myEvents.map((myEvents) => {
         return (
           <Event
             key={myEvents.id}

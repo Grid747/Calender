@@ -21,10 +21,16 @@ const DropDown = ({ onAdd }) => {
             <option value={true}>Admin</option>
           </select>
         </label>
-        <div className="flex justify-center">
+        <div
+          className={`${
+            dropValue ? "flex justify-center pt-0" : "flex justify-center pt-1"
+          }`}
+        >
           {dropValue ? (
             <ModelOpener /* label="Add Event" */ onAdd={onAdd} />
-          ) : null}
+          ) : (
+            <div className='pb-20'></div>
+          )}
         </div>
       </div>
     </div>

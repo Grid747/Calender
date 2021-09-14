@@ -22,13 +22,13 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className='flex flex-col justify-center'>
       <br />
       <div className="flex justify-center text-3xl">Registration Site</div>
       <div className="flex justify-end w-full">
         <DropDown onAdd={addEvent} />
       </div>
-      <div className="flex">
+      <div className='flex w-auto justify-start'>
         {/*         <DummyBox /> */}
         <ArrayMap mydata={allEvents} editMe={changeEditModal} />
       </div>
