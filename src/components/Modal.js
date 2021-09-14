@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DataBox from "./DataBox";
 
 function Modal() {
   /*   function handleSubmit(e) {
@@ -35,8 +36,12 @@ function Modal() {
   const [recur, setRecur] = useState(0);
   const changeRecur = (e) => setRecur(e.target.value);
 
-  function formSubmit(e) {
+  const [showBox, setShowBox] = useState(false);
+  const newShowBox = () => setShowBox(!showBox);
+
+  const formSubmit = (e)=> {
     e.preventDefault();
+    newShowBox(true);
     console.log(
       "name" +
         name +
@@ -67,11 +72,12 @@ function Modal() {
           <input type="time" onChange={changeEndTime} />
           <h1># of seats</h1>
           <input type="number" onChange={changeSeats} />
-          <h1>Recurring</h1>
+          <h1>Reoccurring</h1>
           <input type="text" onChange={changeRecur} />
           <button className="ring-red-900 bg-green-500">Submit</button>
         </div>
       </form>
+      {showBox && <DataBox name={name} eventDate={eventDate} startTime={startTime} endTime={eventEndTime} seatNum={seats} reoccuring={recur} />}
       {/*       <form onSubmit={handleSubmit}> */}
       {/*       </form> */}
     </div>

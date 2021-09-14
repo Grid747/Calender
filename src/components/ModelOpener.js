@@ -17,7 +17,7 @@ function ModelOpener({ label }) {
       >
         {label}
       </button>
-      {showModal && <Modal formSubmit={onclick} />}
+      {showModal && <Modal />}
     </div>
   );
 }
