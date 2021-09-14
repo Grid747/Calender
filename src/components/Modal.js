@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+/* import Data from "../Data/Data"; */
 
-function Modal() {
+function Modal({ onAdd }) {
   /*   function handleSubmit(e) {
     e.preventDefault();
     console.log("You clicked submit.");
@@ -35,13 +36,31 @@ function Modal() {
   const [recur, setRecur] = useState(0);
   const changeRecur = (e) => setRecur(e.target.value);
 
-  /*   const [showBox, setShowBox] = useState(false);
-  const newShowBox = () => setShowBox(!showBox); */
+  /*   const newEvent = {
+    id: 0,
+    Name: name,
+    theDate: eventDate,
+    start: startTime,
+    end: eventEndTime,
+    seats: seats,
+    recurring: recur,
+    people: [],
+  };
+  const [allEvents, setallEvents] = useState(Data);
+
+  const addEvent = (myData, myNewEvent) => {
+    const id = Math.floor(Math.random() * 100000000) + 1;
+    newEvent.id = id;
+    setallEvents([...myData, myNewEvent]);
+  }; */
 
   const formSubmit = (e) => {
     e.preventDefault();
-    /*     newShowBox(true); */
-    console.log(
+
+    onAdd({ name, eventDate, startTime, eventEndTime, seats, recur });
+    /*     addEvent(allEvents, newEvent); */
+
+    /* console.log(
       "Event Name: " +
         name +
         "\nEvent Date: " +
@@ -54,7 +73,7 @@ function Modal() {
         seats +
         "\nRecure: " +
         recur
-    );
+    ); */
   };
 
   return (

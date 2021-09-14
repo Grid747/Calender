@@ -1,5 +1,6 @@
 const myEvents = [
   {
+    id: 1,
     Name: "Event1",
     theDate: "12/22/1997",
     start: "15:30",
@@ -9,6 +10,7 @@ const myEvents = [
     people: ["aaron", "caden", "amanda"],
   },
   {
+    id: 2,
     Name: "Event2",
     theDate: "10/7/1999",
     start: "15:30",
@@ -18,6 +20,7 @@ const myEvents = [
     people: ["aaron", "caden", "amanda", "george"],
   },
   {
+    id: 3,
     Name: "Event2",
     theDate: "10/7/1999",
     start: "15:30",
