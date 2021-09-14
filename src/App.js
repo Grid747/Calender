@@ -4,12 +4,13 @@ import DropDown from "./components/dropDown";
 /* import Modal from "./components/Modal"; */
 
 function App() {
-
   return (
-    <div className='grid'>
+    <div className='flex flex-col justify-center'>
       <br />
-      <h1 className='grid justify-center text-3xl'>Registration Site</h1>
-      <DropDown/>
+      <div className='flex justify-center text-3xl'>Registration Site</div>
+      <div className='flex'>
+        <DropDown />
+      </div>
       {/* <MyButtons Clicked={onclick} /> */}
       <br />
       {/*showModal && <Modal />*/}

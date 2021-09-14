@@ -38,38 +38,67 @@ function Modal() {
   function formSubmit(e) {
     e.preventDefault();
     console.log(
-      "name" +
+      "Event Name: " +
         name +
-        "\nEvent Date:" +
+        "\nEvent Date: " +
         eventDate +
-        "\nstart time: " +
+        "\nStart Time: " +
         startTime +
-        "\nend time " +
+        "\nEnd Time: " +
         eventEndTime +
-        "\nseats" +
+        "\nSeats: " +
         seats +
-        "\nrecure" +
+        "\nRecure: " +
         recur
     );
   }
 
   return (
-    <div className="grid justify-center">
+    <div className='flex justify-center border'>
       <form onSubmit={formSubmit}>
-        <div className="bg-blue-400 w-92 h-92 content-center grid justify-center">
-          <h1>Event Name</h1>
-          <input type="text" onChange={changeName} />
-          <h1>Event Date</h1>
-          <input type="date" onChange={changeEventDate} />
-          <label>Start Time</label>
-          <input type="time" onChange={changeStartTime} />
-          <label>End Time</label>
-          <input type="time" onChange={changeEndTime} />
-          <h1># of seats</h1>
-          <input type="number" onChange={changeSeats} />
-          <h1>Recurring</h1>
-          <input type="text" onChange={changeRecur} />
-          <button className="ring-red-900 bg-green-500">Submit</button>
+        <div className='bg-blue-400 px-3 py-3 w-100 h-100 content-center flex'>
+          <h1 className='px-1'>Event Name</h1>
+          <input
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='text'
+            onChange={changeName}
+          />
+          <h1 className='px-1'>Event Date</h1>
+          <input
+            className='border-2 border-gray-900 rounded px-1 w-15'
+            type='date'
+            onChange={changeEventDate}
+          />
+          <h1 className='px-1'>Start Time</h1>
+          <input
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='time'
+            onChange={changeStartTime}
+          />
+          <h1 className='px-1'>End Time</h1>
+          <input
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='time'
+            onChange={changeEndTime}
+          />
+          <h1 className='px-1'># of seats</h1>
+          <input
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='number'
+            onChange={changeSeats}
+          />
+          <h1 className='px-1'>Recurring</h1>
+          <input
+            className='border-2 border-gray-900 rounded px-1 w-10'
+            type='text'
+            onChange={changeRecur}
+          />
+          <br />
+          <div className='px-1'>
+            <button className='border-2 rounded-full border-red-900 px-3 bg-green-500'>
+              Submit
+            </button>
+          </div>
         </div>
       </form>
       {/*       <form onSubmit={handleSubmit}> */}

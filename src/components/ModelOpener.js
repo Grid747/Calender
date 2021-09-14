@@ -9,15 +9,15 @@ function ModelOpener({ label }) {
   };
 
   return (
-    <div className="grid justify-center">
+    <div className='flex justify-center px-2'>
       <button
-        className="hover:bg-gray-900 text-black font-bold hover:text-white py-1 px-2 
-        border hover:border-transparent rounded-full text-2xl"
+        className='hover:bg-gray-900 text-black font-bold hover:text-white py-2 px-1 
+        border hover:border-transparent rounded-lg text-l flex-3 justify-center'
         onClick={onclick}
       >
         {label}
       </button>
-      {showModal && <Modal formSubmit={onclick} />}
+      <div className='px-2'>{showModal && <Modal formSubmit={onclick} />}</div>
     </div>
   );
 }

@@ -1,17 +1,16 @@
-import React from 'react'
+import React from "react";
 
 function Submitbtn() {
-    function handleSubmit(e) {
-      e.preventDefault();
-      console.log('You clicked submit.');
-    }
-
-  
-    return (
-      <form onSubmit={handleSubmit}>
-        <button >Submit</button>
-      </form>
-    );
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("You clicked submit.");
   }
 
-  export default Submitbtn
+  return (
+    <form onSubmit={handleSubmit}>
+      <button>Submit</button>
+    </form>
+  );
+}
+
+export default Submitbtn;
