@@ -60,8 +60,8 @@ function Modal() {
   return (
     <div className="flex justify-center border">
       <form onSubmit={formSubmit}>
-        <div className="bg-blue-400 px-3 py-3 w-100 h-100 content-center flex">
-          <h1 className="px-1">Event Name</h1>
+        <div className='bg-blue-400 px-3 py-1 w-100 h-100 content-center flex'>
+          <h1 className='px-1'>Event Name</h1>
           <input
             className="border-2 border-gray-900 rounded px-1 w-10"
             type="text"
