@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DataBox from "./DataBox";
 
 function Modal() {
   /*   function handleSubmit(e) {
@@ -35,8 +36,12 @@ function Modal() {
   const [recur, setRecur] = useState(0);
   const changeRecur = (e) => setRecur(e.target.value);
 
-  function formSubmit(e) {
+  const [showBox, setShowBox] = useState(false);
+  const newShowBox = () => setShowBox(!showBox);
+
+  const formSubmit = (e)=> {
     e.preventDefault();
+    newShowBox(true);
     console.log(
       "Event Name: " +
         name +
@@ -101,6 +106,7 @@ function Modal() {
           </div>
         </div>
       </form>
+      {showBox && <DataBox name={name} eventDate={eventDate} startTime={startTime} endTime={eventEndTime} seatNum={seats} reoccuring={recur} />}
       {/*       <form onSubmit={handleSubmit}> */}
       {/*       </form> */}
     </div>
