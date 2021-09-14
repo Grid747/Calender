@@ -6,11 +6,12 @@ import DummyBox from "./components/DummyBox";
 
 function App() {
   return (
-    <div className='flex flex-col justify-center'>
+    <div className="flex flex-col justify-center">
       <br />
-      <div className='flex justify-center text-3xl'>Registration Site</div>
-      <div className='flex'>
+      <div className="flex justify-center text-3xl">Registration Site</div>
+      <div className="flex">
         <DropDown />
+      </div>
       <DummyBox />
     </div>
   );
