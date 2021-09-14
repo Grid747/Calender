@@ -13,9 +13,15 @@ function App() {
       <div className='flex justify-end w-full'>
         <DropDown />
       </div>
+<<<<<<< HEAD
       <div className="flex">
         {/*         <DummyBox /> */}
         <ArrayMap />
+=======
+
+      <div>
+        <DummyBox />
+>>>>>>> css
       </div>
     </div>
   );

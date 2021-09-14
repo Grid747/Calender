@@ -105,7 +105,11 @@ function Modal() {
           </div>
         </div>
       </form>
+<<<<<<< HEAD
       {/*       {showBox && (
+=======
+      {showBox && (
+>>>>>>> css
         <DataBox
           name={name}
           eventDate={eventDate}
@@ -114,7 +118,13 @@ function Modal() {
           seatNum={seats}
           reoccuring={recur}
         />
+<<<<<<< HEAD
       )} */}
+=======
+      )}
+      {/*       <form onSubmit={handleSubmit}> */}
+      {/*       </form> */}
+>>>>>>> css
     </div>
   );
 }
