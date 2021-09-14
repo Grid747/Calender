@@ -10,8 +10,8 @@ const ArrayMap = ({ mydata }) => {
         return (
           <Event
             key={myEvents.id}
-            name={myEvents.Name}
-            eventDate={myEvents.theDate}
+            name={myEvents.name}
+            eventDate={myEvents.date}
             startTime={myEvents.start}
             endTime={myEvents.end}
             seatNum={myEvents.seats}

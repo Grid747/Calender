@@ -21,20 +21,20 @@ function Modal({ onAdd }) {
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
-  const [eventDate, setEventDate] = useState("");
+  const [date, setEventDate] = useState("");
   const changeEventDate = (e) => setEventDate(e.target.value);
 
-  const [startTime, setStartTime] = useState("");
+  const [start, setStartTime] = useState("");
   const changeStartTime = (e) => setStartTime(e.target.value);
 
-  const [eventEndTime, setEndTime] = useState("");
+  const [end, setEndTime] = useState("");
   const changeEndTime = (e) => setEndTime(e.target.value);
 
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
-  const [recur, setRecur] = useState(0);
-  const changeRecur = (e) => setRecur(e.target.value);
+  const [recurring, setRecurring] = useState(0);
+  const changeRecur = (e) => setRecurring(e.target.value);
 
   /*   const newEvent = {
     id: 0,
@@ -57,7 +57,7 @@ function Modal({ onAdd }) {
   const formSubmit = (e) => {
     e.preventDefault();
 
-    onAdd({ name, eventDate, startTime, eventEndTime, seats, recur });
+    onAdd({ name, date, start, end, seats, recurring });
     /*     addEvent(allEvents, newEvent); */
 
     /* console.log(
