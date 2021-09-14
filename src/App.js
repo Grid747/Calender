@@ -7,21 +7,15 @@ import ArrayMap from "./Data/ArrayMap";
 
 function App() {
   return (
-    <div className='flex flex-col justify-center'>
+    <div className="flex flex-col justify-center">
       <br />
-      <div className='flex justify-center text-3xl'>Registration Site</div>
-      <div className='flex justify-end w-full'>
+      <div className="flex justify-center text-3xl">Registration Site</div>
+      <div className="flex justify-end w-full">
         <DropDown />
       </div>
-<<<<<<< HEAD
       <div className="flex">
         {/*         <DummyBox /> */}
         <ArrayMap />
-=======
-
-      <div>
-        <DummyBox />
->>>>>>> css
       </div>
     </div>
   );
