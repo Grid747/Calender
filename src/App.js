@@ -2,6 +2,7 @@ import "./App.css";
 /* import MyButtons from "./components/myButtons"; */
 import DropDown from "./components/dropDown";
 import DummyBox from "./components/DummyBox";
+import ArrayMap from "./Data/ArrayMap";
 /* import Modal from "./components/Modal"; */
 
 function App() {
@@ -11,7 +12,10 @@ function App() {
       <div className="flex justify-center text-3xl">Registration Site</div>
       <div className="flex">
         <DropDown />
-        <DummyBox />
+      </div>
+      <div className="flex">
+        {/*         <DummyBox /> */}
+        <ArrayMap />
       </div>
     </div>
   );
