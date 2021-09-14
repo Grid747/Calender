@@ -1,22 +1,30 @@
-//import React from "react";
+import React, { useState } from "react";
+import ModelOpener from "./ModelOpener";
 
-/* function DropDown() {
+const DropDown = () => {
+  const [dropValue, setdropValue] = useState(false);
+  const newDropValue = () => setdropValue(!dropValue);
+
   return (
-    <div>
-      <DropDown>
-        <DropDown.Toggle variant="success" id="dropdown-basic">
-          Role?
-        </DropDown.Toggle>
-        <DropDown.Menu>
-          <DropDown.Item href="#/action-1">Admin</DropDown.Item>
-          <DropDown.Item href="#/action-2">Member</DropDown.Item>
-        </DropDown.Menu>
-      </DropDown>
+    <div className='flex flex-col justify-end'>
+      <div className='justify-end'>
+        {" "}
+        <h1 className='justify-end px-6'>Login:</h1>
+        <label>
+          <select
+            name='Login'
+            value={dropValue}
+            onChange={newDropValue}
+            className='mx-2 border-2 border-gray-400 border-offset'
+          >
+            <option value={false}>Member</option>
+            <option value={true}>Admin</option>
+          </select>
+        </label>
+        {dropValue ? <ModelOpener label='Add Event' /> : null}
+      </div>
     </div>
   );
-}
+};
 
-export default dropDown;
- */
-
-//https://react-bootstrap.github.io/components/dropdowns/
+export default DropDown;
