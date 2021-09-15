@@ -6,6 +6,8 @@ import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
 /* import Modal from "./components/Modal"; */
+import PackageButton from "./components/PcsPackageBtn";
+import InstrucButton from "./components/InstrucBtn";
 
 function App() {
   const [allEvents, setallEvents] = useState(Data);
@@ -24,13 +26,18 @@ function App() {
   return (
     <div className='flex flex-col justify-center'>
       <br />
-      <div className="flex justify-center text-3xl">Registration Site</div>
-      <div className="flex justify-end w-full">
+      <div className='flex justify-center text-3xl'>Registration Site</div>
+      <div className='flex justify-end w-full'>
         <DropDown onAdd={addEvent} />
       </div>
-      <div className='flex flex-wrap justify-start w-100 h-full'>
+      <div className='flex flex-wrap justify-start w-full h-full'>
         {/*         <DummyBox /> */}
+        {/*File buttons go in this div */}
         <ArrayMap mydata={allEvents} editMe={changeEditModal} />
+        <div className='flex flex-col'>
+          <PackageButton label='PCS Package' />
+          <InstrucButton label='Instructions' />
+        </div>
       </div>
       <div>{editModal && <EditModal />}</div>
     </div>

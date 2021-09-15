@@ -33,7 +33,9 @@ function Event({
           <div className='inline-flex px-2'>
             <button className='bg-gray-400 rounded-sm px-2'>View</button>
             <div className='inline-flex px-2'>
-              <button className='bg-gray-400 rounded-sm px-2'>Edit</button>
+              <button className='bg-gray-400 rounded-sm px-2' onClick={editMe}>
+                Edit
+              </button>
             </div>
           </div>
         </div>

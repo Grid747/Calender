@@ -5,7 +5,7 @@ import Event from "../components/Event";
 
 const ArrayMap = ({ mydata, editMe }) => {
   return (
-    <div className='flex flex-wrap h-full w-8/12 px-2'>
+    <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
       {mydata.map((myEvents) => {
         return (
           <Event
