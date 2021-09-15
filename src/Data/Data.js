@@ -11,7 +11,7 @@ const myEvents = [
   },
   {
     id: 2,
-    Name: "Event2",
+    name: "Event2",
     date: "10/7/1999",
     start: "15:30",
     end: "22:30",
@@ -21,7 +21,7 @@ const myEvents = [
   },
   {
     id: 3,
-    Name: "Event2",
+    name: "Event2",
     date: "10/7/1999",
     start: "15:30",
     end: "22:30",

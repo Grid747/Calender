@@ -2,10 +2,12 @@ import React from "react";
 import Modal from "./Modal";
 import { useState } from "react";
 
-function ModelOpener({ label, onAdd }) {
+function ModelOpener({ onAdd }) {
   const [showModal, setshowModal] = useState(false);
+  const [label, setLabel] = useState("Add event");
   const onclick = () => {
     setshowModal(!showModal);
+    setLabel("close");
   };
 
   return (

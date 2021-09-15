@@ -22,7 +22,9 @@ const DropDown = ({ onAdd }) => {
           </select>
         </label>
         <div className="flex justify-center">
-          {dropValue ? <ModelOpener label="Add Event" onAdd={onAdd} /> : null}
+          {dropValue ? (
+            <ModelOpener /* label="Add Event" */ onAdd={onAdd} />
+          ) : null}
         </div>
       </div>
     </div>

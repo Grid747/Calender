@@ -4,6 +4,7 @@ import { useState } from "react";
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
+import EditModal from "./components/EditModal";
 /* import Modal from "./components/Modal"; */
 
 function App() {
@@ -12,6 +13,12 @@ function App() {
     const id = Math.floor(Math.random() * 100000000) + 1;
     const newEvent = { id, ...myNewEvent };
     setallEvents([...allEvents, newEvent]);
+  };
+
+  const [editModal, setEditModal] = useState(false);
+  const changeEditModal = () => {
+    setEditModal(!editModal);
+    console.log(ArrayMap.mydata);
   };
 
   return (
@@ -23,8 +30,9 @@ function App() {
       </div>
       <div className="flex">
         {/*         <DummyBox /> */}
-        <ArrayMap mydata={allEvents} />
+        <ArrayMap mydata={allEvents} editMe={changeEditModal} />
       </div>
+      <div>{editModal && <EditModal />}</div>
     </div>
   );
 }
