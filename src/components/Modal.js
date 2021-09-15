@@ -77,42 +77,42 @@ function Modal({ onAdd }) {
   };
 
   return (
-    <div className='flex justify-center border'>
+    <div className='flex justify-center border w-full'>
       <form onSubmit={formSubmit}>
-        <div className='bg-blue-400 px-3 py-1 w-100 h-100 content-center flex'>
+        <div className='bg-gray-400 px-3 py-1 w-full h-full flex'>
           <h1 className='px-1'>Event Name</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1 w-10'
+            className='border-2 border-gray-900 rounded px-1'
             type='text'
             onChange={changeName}
           />
           <h1 className='px-1'>Event Date</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1 w-15'
+            className='border-2 border-gray-900 rounded px-1'
             type='date'
             onChange={changeEventDate}
           />
           <h1 className='px-1'>Start Time</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1 w-10'
+            className='border-2 border-gray-900 rounded px-1'
             type='time'
             onChange={changeStartTime}
           />
           <h1 className='px-1'>End Time</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1 w-10'
+            className='border-2 border-gray-900 rounded px-1'
             type='time'
             onChange={changeEndTime}
           />
           <h1 className='px-1'># of seats</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1 w-10'
+            className='border-2 border-gray-900 rounded px-1'
             type='number'
             onChange={changeSeats}
           />
           <h1 className='px-1'>Reoccuring</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1 w-10'
+            className='border-2 border-gray-900 rounded px-1'
             type='text'
             onChange={changeRecur}
           />

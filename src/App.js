@@ -28,7 +28,7 @@ function App() {
       <div className="flex justify-end w-full">
         <DropDown onAdd={addEvent} />
       </div>
-      <div className='flex w-auto justify-start'>
+      <div className='flex flex-wrap justify-start w-100 h-full'>
         {/*         <DummyBox /> */}
         <ArrayMap mydata={allEvents} editMe={changeEditModal} />
       </div>

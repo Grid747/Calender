@@ -4,10 +4,14 @@ import { useState } from "react";
 
 function ModelOpener({ onAdd }) {
   const [showModal, setshowModal] = useState(false);
-  const [label, setLabel] = useState("Add event");
-  const onclick = () => {
+  const [label, setLabel] = useState("Add Event");
+  let onclick = () => {
     setshowModal(!showModal);
-    setLabel("close");
+    if (showModal === true) {
+      setLabel("Add Event");
+    } else {
+      setLabel("Close");
+    }
   };
 
   return (
@@ -19,8 +23,11 @@ function ModelOpener({ onAdd }) {
           }`}
         >
           <button
-            className='flex justify-center hover:bg-gray-900 text-black font-bold hover:text-white py-2 px-1 
-        border hover:border-transparent rounded-lg text-l'
+            className={`${
+              showModal
+                ? "flex justify-center hover:bg-red-900 text-black font-bold hover:text-white py-2 px-1 border hover:border rounded-lg text-l"
+                : "flex justify-center hover:bg-gray-900 text-black font-bold hover:text-white py-2 px-1 border hover:border-transparent rounded-lg text-l"
+            }`}
             onClick={onclick}
           >
             {label}
@@ -35,5 +42,3 @@ function ModelOpener({ onAdd }) {
 }
 
 export default ModelOpener;
-
-// {`${var?true:false}`}
