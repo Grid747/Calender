@@ -1,39 +1,41 @@
 import "./App.css";
 import { useState } from "react";
-/* import MyButtons from "./components/myButtons"; */
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
-/* import Modal from "./components/Modal"; */
 import PackageButton from "./components/PcsPackageBtn";
 import InstrucButton from "./components/InstrucBtn";
 
+/* https://www.code-boost.com/video/ultimate-react-todo-list/ <-- how I got Update and delete */
+
 function App() {
   const [allEvents, setallEvents] = useState(Data);
-  /*   const [myID, setMyID] = useState(""); */
 
   const addEvent = (myNewEvent) => {
-    /* const id = Math.floor(Math.random() * 100000000) + 1; */
-    /*     setMyID(id); */
-    /*     const newEvent = { id, ...myNewEvent }; */
     setallEvents([...allEvents, myNewEvent]);
   };
 
-  const [editModal, setEditModal] = useState(false);
-  const changeEditModal = (mykey) => {
-    setEditModal(!editModal);
-    console.log("mykey" + mykey);
-    /*    setMyID(null); */
-  };
-
-  /*    const [uid, setUid] = useState(""); */
   const deleteIDEvent = (id) => {
     const updatedEvents = [...allEvents].filter(
       (oneEvent) => oneEvent.id !== id
     );
     setallEvents(updatedEvents);
     console.log(updatedEvents);
+  };
+
+  const [editModal, setEditModal] = useState(false);
+  const editIDEvent = (id) => {
+    setEditModal(!editModal);
+    const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+
+    console.log(editingEvent[0].name);
+    console.log(editingEvent[0].date);
+    console.log(editingEvent[0].start);
+    console.log(editingEvent[0].end);
+    console.log(editingEvent[0].seats);
+    console.log(editingEvent[0].reoccuring);
+    console.log(editingEvent[0].people);
   };
 
   return (
@@ -44,11 +46,10 @@ function App() {
         <DropDown onAdd={addEvent} />
       </div>
       <div className="flex flex-wrap justify-start w-full h-full">
-        {/*         <DummyBox /> */}
         <ArrayMap
           mydata={allEvents}
-          editMe={changeEditModal}
           deleteEvent={deleteIDEvent}
+          editEvent={editIDEvent}
         />
         <div className="flex flex-col">
           <PackageButton label="PCS Package" />
@@ -61,7 +62,3 @@ function App() {
 }
 
 export default App;
-
-//compare(id === ArrayMap(data.id){
-/* do something */
-//})
