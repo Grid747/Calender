@@ -117,10 +117,8 @@ function Modal({ onAdd }) {
             onChange={changeRecur}
           />
           <br />
-          <div className='px-1'>
-            <button className='border-2 rounded-full border-red-900 px-3 bg-green-500'>
-              Submit
-            </button>
+          <div className='px-2'>
+            <button className='rounded-full px-2 bg-white py-1'>Submit</button>
           </div>
         </div>
       </form>
