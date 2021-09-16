@@ -28,6 +28,11 @@ function App() {
   const editIDEvent = (id) => {
     setEditModal(!editModal);
     const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
+
+    console.log(indexOfEvent + "\n\n\n\n");
+    /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
+    I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
 
     console.log(editingEvent[0].name);
     console.log(editingEvent[0].date);
@@ -36,6 +41,8 @@ function App() {
     console.log(editingEvent[0].seats);
     console.log(editingEvent[0].reoccuring);
     console.log(editingEvent[0].people);
+
+    /* can update by removing then readding but then need to do the filter feature */
   };
 
   return (
