@@ -3,7 +3,7 @@ import Event from "../components/Event";
 /* you do array map on the dummy data you already have and from there you "Task" should be able to
     the template that is going to be filled everytime look at dataBox for the 'Task' */
 
-const ArrayMap = ({ mydata, editMe }) => {
+const ArrayMap = ({ mydata, editMe, myKey }) => {
   return (
     <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
       {mydata.map((myEvents) => {
@@ -17,6 +17,7 @@ const ArrayMap = ({ mydata, editMe }) => {
             seatNum={myEvents.seats}
             reoccuring={myEvents.recurring}
             editMe={editMe}
+            myKey={myKey}
           />
         );
       })}

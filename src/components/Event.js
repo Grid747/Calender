@@ -8,6 +8,7 @@ function Event({
   seatNum,
   reoccuring,
   editMe,
+  myKey,
 }) {
   return (
     <div className='flex p-4'>
@@ -33,7 +34,11 @@ function Event({
           <div className='inline-flex px-2'>
             <button className='bg-gray-400 rounded-sm px-2'>View</button>
             <div className='inline-flex px-2'>
-              <button className='bg-gray-400 rounded-sm px-2' onClick={editMe}>
+              <button
+                className='bg-gray-400 rounded-sm px-2'
+                id={myKey}
+                onClick={editMe}
+              >
                 Edit
               </button>
             </div>

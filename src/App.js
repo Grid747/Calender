@@ -11,8 +11,10 @@ import InstrucButton from "./components/InstrucBtn";
 
 function App() {
   const [allEvents, setallEvents] = useState(Data);
+  const [myID, setMyID] = useState("");
   const addEvent = (myNewEvent) => {
     const id = Math.floor(Math.random() * 100000000) + 1;
+    setMyID(id);
     const newEvent = { id, ...myNewEvent };
     setallEvents([...allEvents, newEvent]);
   };
@@ -20,7 +22,8 @@ function App() {
   const [editModal, setEditModal] = useState(false);
   const changeEditModal = () => {
     setEditModal(!editModal);
-    console.log(ArrayMap.mydata);
+    console.log("ID: " + myID);
+    setMyID(null);
   };
 
   return (
@@ -32,8 +35,7 @@ function App() {
       </div>
       <div className='flex flex-wrap justify-start w-full h-full'>
         {/*         <DummyBox /> */}
-        {/*File buttons go in this div */}
-        <ArrayMap mydata={allEvents} editMe={changeEditModal} />
+        <ArrayMap mydata={allEvents} editMe={changeEditModal} myKey={myID} />
         <div className='flex flex-col'>
           <PackageButton label='PCS Package' />
           <InstrucButton label='Instructions' />
@@ -45,3 +47,7 @@ function App() {
 }
 
 export default App;
+
+//compare(id === ArrayMap(data.id){
+/* do something */
+//})
