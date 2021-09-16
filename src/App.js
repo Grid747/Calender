@@ -11,34 +11,48 @@ import InstrucButton from "./components/InstrucBtn";
 
 function App() {
   const [allEvents, setallEvents] = useState(Data);
-  const [myID, setMyID] = useState("");
+  /*   const [myID, setMyID] = useState(""); */
+
   const addEvent = (myNewEvent) => {
-    const id = Math.floor(Math.random() * 100000000) + 1;
-    setMyID(id);
-    const newEvent = { id, ...myNewEvent };
-    setallEvents([...allEvents, newEvent]);
+    /* const id = Math.floor(Math.random() * 100000000) + 1; */
+    /*     setMyID(id); */
+    /*     const newEvent = { id, ...myNewEvent }; */
+    setallEvents([...allEvents, myNewEvent]);
   };
 
   const [editModal, setEditModal] = useState(false);
-  const changeEditModal = () => {
+  const changeEditModal = (mykey) => {
     setEditModal(!editModal);
-    console.log("ID: " + myID);
-    setMyID(null);
+    console.log("mykey" + mykey);
+    /*    setMyID(null); */
+  };
+
+  /*    const [uid, setUid] = useState(""); */
+  const deleteIDEvent = (id) => {
+    const updatedEvents = [...allEvents].filter(
+      (oneEvent) => oneEvent.id !== id
+    );
+    setallEvents(updatedEvents);
+    console.log(updatedEvents);
   };
 
   return (
-    <div className='flex flex-col justify-center'>
+    <div className="flex flex-col justify-center">
       <br />
-      <div className='flex justify-center text-3xl'>Registration Site</div>
-      <div className='flex justify-end w-full'>
+      <div className="flex justify-center text-3xl">Registration Site</div>
+      <div className="flex justify-end w-full">
         <DropDown onAdd={addEvent} />
       </div>
-      <div className='flex flex-wrap justify-start w-full h-full'>
+      <div className="flex flex-wrap justify-start w-full h-full">
         {/*         <DummyBox /> */}
-        <ArrayMap mydata={allEvents} editMe={changeEditModal} myKey={myID} />
-        <div className='flex flex-col'>
-          <PackageButton label='PCS Package' />
-          <InstrucButton label='Instructions' />
+        <ArrayMap
+          mydata={allEvents}
+          editMe={changeEditModal}
+          deleteEvent={deleteIDEvent}
+        />
+        <div className="flex flex-col">
+          <PackageButton label="PCS Package" />
+          <InstrucButton label="Instructions" />
         </div>
       </div>
       <div>{editModal && <EditModal />}</div>
