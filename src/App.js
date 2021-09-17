@@ -13,9 +13,13 @@ import RegisterModal from "./components/RegisterModal";
 
 function App() {
   const [allEvents, setallEvents] = useState(Data);
-
   const addEvent = (myNewEvent) => {
     setallEvents([...allEvents, myNewEvent]);
+  };
+
+  const [loginValue, setloginValue] = useState(false);
+  const loginChange = () => {
+    setloginValue(!loginValue);
   };
 
   const deleteIDEvent = (id) => {
@@ -26,26 +30,41 @@ function App() {
     console.log(updatedEvents);
   };
 
+  const [editModalData, setEditModalData] = useState();
+  const editEvent = (editedEvent) => {
+    const id = filterID;
+    const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    const people = editingEvent[0].people;
+    setEditModalData({
+      id,
+      ...editedEvent,
+      people,
+    }); /* sets all the data  */ /* get the index of where it is at */ /* <- should work but doesn't */
+    /* console.log(
+      allEvents[filterIndex]
+    ); */
+    /*     setallEvents((allEvents[filterIndex] = editModalData)); */
+
+    /* The last way to be able to do this would be to pop off the data for specific id 
+    then add this one at the end */
+
+    /* below is the method for testing if you deleted the data then readded the data */
+    /*     const updatedEvents = [...allEvents].filter(
+      (oneEvent) => oneEvent.id !== id
+    );
+    setallEvents([updatedEvents, editModalData]); */
+  };
+
   const [editModal, setEditModal] = useState(false);
+  const [filterID, setFilterID] = useState(0);
+  const [filterIndex, setFilterIndex] = useState(0);
   const editIDEvent = (id) => {
     setEditModal(!editModal);
-    const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
-
-    console.log(indexOfEvent + "\n\n\n\n");
-    /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
-    I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
-
-    console.log(editingEvent[0].name);
-    console.log(editingEvent[0].date);
-    console.log(editingEvent[0].start);
-    console.log(editingEvent[0].end);
-    console.log(editingEvent[0].seats);
-    console.log(editingEvent[0].reoccuring);
-    console.log(editingEvent[0].people);
-
-    /* can update by removing then readding but then need to do the filter feature */
+    setFilterIndex(indexOfEvent);
   };
+
   const [viewModal, setViewModal] = useState(false);
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
@@ -65,6 +84,7 @@ function App() {
 
     /* can update by removing then readding but then need to do the filter feature */
   };
+
   const [registerModal, setRegisterModal] = useState(false);
   const registerIDEvent = (id) => {
     setRegisterModal(!registerModal);
@@ -84,23 +104,19 @@ function App() {
 
     /* can update by removing then readding but then need to do the filter feature */
   };
-  const [loginValue, setloginValue] = useState(false);
-  const loginChange = () => {
-    setloginValue(!loginValue);
-  };
 
   return (
-    <div className='flex flex-col justify-center'>
+    <div className="flex flex-col justify-center">
       <br />
-      <div className='flex justify-center text-3xl'>Registration Site</div>
-      <div className='flex justify-end w-full'>
+      <div className="flex justify-center text-3xl">Registration Site</div>
+      <div className="flex justify-end w-full">
         <DropDown
           onAdd={addEvent}
           dropValue={loginValue}
           newDropValue={loginChange}
         />
       </div>
-      <div className='flex flex-wrap justify-start w-full h-full'>
+      <div className="flex flex-wrap justify-start w-full h-full">
         <ArrayMap
           mydata={allEvents}
           deleteEvent={deleteIDEvent}
@@ -109,10 +125,10 @@ function App() {
           registerEvent={registerIDEvent}
           dropValue={loginValue}
         />
-        <div className='flex flex-col'>
-          <PackageButton label='PCS Package' />
-          <InstrucButton label='Instructions' />
-          <div>{editModal && <EditModal />}</div>
+        <div className="flex flex-col">
+          <PackageButton label="PCS Package" />
+          <InstrucButton label="Instructions" />
+          <div>{editModal && <EditModal onAdd={editEvent} />}</div>
           <div>{viewModal && <ViewModal />}</div>
           <div>{registerModal && <RegisterModal />}</div>
         </div>
