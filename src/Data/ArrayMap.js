@@ -1,37 +1,64 @@
 import Event from "../components/Event";
 /* import { useState } from "react"; */
 
-const ArrayMap = ({ mydata, editEvent, deleteEvent }) => {
+const ArrayMap = ({
+  mydata,
+  registerEvent,
+  editEvent,
+  viewEvent,
+  deleteEvent,
+  dropValue,
+}) => {
   return (
-    <div className="flex flex-wrap h-full w-9/12 lg:w-8/12  px-2">
+    <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
       {mydata.map((myEvents) => {
         return (
-          <div key={myEvents.id}>
-            <Event
-              key={myEvents.id}
-              name={myEvents.name}
-              eventDate={myEvents.date}
-              startTime={myEvents.start}
-              endTime={myEvents.end}
-              seatNum={myEvents.seats}
-              reoccuring={myEvents.recurring}
-            />
-            <button
-              className="bg-gray-400 rounded-sm px-2"
-              onClick={() => deleteEvent(myEvents.id)}
-            >
-              Delete
-            </button>
-            <button
-              className="bg-gray-400 rounded-sm px-2"
-              onClick={() => editEvent(myEvents.id)}
-            >
-              Edit
-            </button>
+          <div key={myEvents.id} className='p-4'>
+            <div className='box-content border-8 border-gray-400 p-2 w-60 overflow-x-auto h-52'>
+              <Event
+                key={myEvents.id}
+                name={myEvents.name}
+                eventDate={myEvents.date}
+                startTime={myEvents.start}
+                endTime={myEvents.end}
+                seatNum={myEvents.seats}
+                reoccuring={myEvents.recurring}
+              />
+              {!dropValue ? (
+                <div className='flex justify-evenly'>
+                  <button
+                    className='bg-gray-400 rounded-sm px-2'
+                    onClick={() => registerEvent(myEvents.id)}
+                  >
+                    Register
+                  </button>
+                </div>
+              ) : (
+                <div className='flex justify-evenly'>
+                  <button
+                    className='bg-gray-400 rounded-sm px-2'
+                    onClick={() => editEvent(myEvents.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className='bg-gray-400 rounded-sm px-2'
+                    onClick={() => viewEvent(myEvents.id)}
+                  >
+                    View
+                  </button>
+                  <button
+                    className='bg-gray-400 rounded-sm px-2'
+                    onClick={() => deleteEvent(myEvents.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         );
       })}
-      <br />
     </div>
   );
 };
