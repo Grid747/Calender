@@ -57,6 +57,7 @@ function Modal({ onAdd }) {
   const formSubmit = (e) => {
     e.preventDefault();
 
+<<<<<<< Updated upstream
     onAdd({ name, date, start, end, seats, recurring });
     /*     addEvent(allEvents, newEvent); */
 
@@ -74,44 +75,48 @@ function Modal({ onAdd }) {
         "\nRecure: " +
         recur
     ); */
+=======
+    onAdd({ id, name, date, start, end, seats, recurring });
+>>>>>>> Stashed changes
   };
 
   return (
-    <div className='flex justify-center border w-full'>
+    <div className="flex justify-center border w-full">
       <form onSubmit={formSubmit}>
-        <div className='bg-gray-400 px-3 py-1 w-full h-full flex'>
-          <h1 className='px-1'>Event Name</h1>
+        <div className="bg-gray-400 px-3 py-1 w-full h-full flex">
+          <h1 className="px-1">Event Name</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1'
-            type='text'
+            className="border-2 border-gray-900 rounded px-1"
+            type="text"
             onChange={changeName}
           />
-          <h1 className='px-1'>Event Date</h1>
+          <h1 className="px-1">Event Date</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1'
-            type='date'
+            className="border-2 border-gray-900 rounded px-1"
+            type="date"
             onChange={changeEventDate}
           />
-          <h1 className='px-1'>Start Time</h1>
+          <h1 className="px-1">Start Time</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1'
-            type='time'
+            className="border-2 border-gray-900 rounded px-1"
+            type="time"
             onChange={changeStartTime}
           />
-          <h1 className='px-1'>End Time</h1>
+          <h1 className="px-1">End Time</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1'
-            type='time'
+            className="border-2 border-gray-900 rounded px-1"
+            type="time"
             onChange={changeEndTime}
           />
-          <h1 className='px-1'># of seats</h1>
+          <h1 className="px-1"># of seats</h1>
           <input
-            className='border-2 border-gray-900 rounded px-1'
-            type='number'
+            className="border-2 border-gray-900 rounded px-1"
+            type="number"
             onChange={changeSeats}
           />
-          <h1 className='px-1'>Reoccuring</h1>
+          <h1 className="px-1">Reoccuring</h1>
           <input
+<<<<<<< Updated upstream
             className='border-2 border-gray-900 rounded px-1'
             type='text'
             onChange={changeRecur}
@@ -119,6 +124,33 @@ function Modal({ onAdd }) {
           <br />
           <div className='px-2'>
             <button className='rounded-full px-2 bg-white py-1'>Submit</button>
+=======
+            type="radio"
+            id="no"
+            name="repeating"
+            value="Off"
+            onChange={changeRecur}
+          />
+           <label for="no">No</label>
+          <input
+            type="radio"
+            id="Daily"
+            name="repeating"
+            value="Daily"
+            onChange={changeRecur}
+          />
+          <label for="css">Daily</label>
+          <input
+            type="radio"
+            id="Weekly"
+            name="repeating"
+            value="Weekly"
+            onChange={changeRecur}
+          />
+          <label for="Weekly">Weekly</label>
+          <div className="px-1 content-center flex">
+            <button className="rounded-full px-3 bg-white">Submit</button>
+>>>>>>> Stashed changes
           </div>
         </div>
       </form>
