@@ -40,6 +40,14 @@ function App() {
       ...editedEvent,
       people,
     }); /* sets all the data  */ /* get the index of where it is at */ /* <- should work but doesn't */
+
+    console.log("editModalData");
+    console.log(editModalData);
+
+    console.log("allEvents[filterIndex]");
+    console.log(allEvents[filterIndex]);
+    /* setallEvents((allEvent[filterIndex] = editModalData)); */
+
     /* console.log(
       allEvents[filterIndex]
     ); */
@@ -58,7 +66,7 @@ function App() {
   const [editModal, setEditModal] = useState(false);
   const [filterID, setFilterID] = useState(0);
   const [filterIndex, setFilterIndex] = useState(0);
-  const editIDEvent = (id) => {
+  const editIDEvent = (id, name) => {
     setEditModal(!editModal);
     setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
@@ -66,21 +74,65 @@ function App() {
   };
 
   const [viewModal, setViewModal] = useState(false);
+  const changeViewModel = (e) => {
+    e.preventDefault();
+    setViewModal(!viewModal);
+  };
+  const [viewObject, setViewObject] = useState();
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
-    const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
-    console.log(indexOfEvent + "\n\n\n\n");
     /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
     I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
 
-    console.log(viewingEvent[0].name);
-    console.log(viewingEvent[0].date);
-    console.log(viewingEvent[0].start);
-    console.log(viewingEvent[0].end);
-    console.log(viewingEvent[0].seats);
-    console.log(viewingEvent[0].reoccuring);
-    console.log(viewingEvent[0].people);
+    let peopleArr = viewingEvent[0].people;
+
+    /* const showPeopleArr =  */
+
+    function peopleArrFor() {
+      let myArr = [];
+      for (let i = 0; i < peopleArr.length; i++) {
+        console.log(peopleArr[i]);
+        myArr +=
+          peopleArr[i].name +
+          " " +
+          peopleArr[i].rank +
+          " " +
+          peopleArr[i].email +
+          " " +
+          peopleArr[i].phoneNumber +
+          "; \r\n";
+      }
+      return myArr;
+    }
+
+    /* peopleArr.forEach((arrayItem) => {
+      console.log(arrayItem);
+      return arrayItem;
+    }); */
+
+    const myViewObject = {
+      name: viewingEvent[0].name,
+      date: viewingEvent[0].date,
+      start: viewingEvent[0].start,
+      end: viewingEvent[0].end,
+      seats: viewingEvent[0].seats,
+      reocurring: viewingEvent[0].reoccuring,
+      people: peopleArrFor(),
+
+      /* viewingEvent[0].people[0].name +
+        ", " +
+        viewingEvent[0].people[0].rank +
+        ", " +
+        viewingEvent[0].people[0].email +
+        ", " +
+        viewingEvent[0].people[0].phoneNumber, */
+    };
+
+    setViewObject(myViewObject);
+
+    /* console.log("ViewObject ");
+    console.log(viewObject); */
 
     /* can update by removing then readding but then need to do the filter feature */
   };
@@ -94,13 +146,13 @@ function App() {
     /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
     I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
 
-    console.log(registeringEvent[0].name);
+    /* console.log(registeringEvent[0].name);
     console.log(registeringEvent[0].date);
     console.log(registeringEvent[0].start);
     console.log(registeringEvent[0].end);
     console.log(registeringEvent[0].seats);
     console.log(registeringEvent[0].reoccuring);
-    console.log(registeringEvent[0].people);
+    console.log(registeringEvent[0].people) */
 
     /* can update by removing then readding but then need to do the filter feature */
   };
@@ -129,7 +181,20 @@ function App() {
           <PackageButton label="PCS Package" />
           <InstrucButton label="Instructions" />
           <div>{editModal && <EditModal onAdd={editEvent} />}</div>
-          <div>{viewModal && <ViewModal />}</div>
+          <div>
+            {viewModal && (
+              <ViewModal
+                name={viewObject.name}
+                date={viewObject.date}
+                start={viewObject.start}
+                end={viewObject.end}
+                seats={viewObject.seats}
+                reoccuring={viewObject.reocurring}
+                people={viewObject.people}
+                closeBtn={changeViewModel}
+              />
+            )}
+          </div>
           <div>{registerModal && <RegisterModal />}</div>
         </div>
       </div>

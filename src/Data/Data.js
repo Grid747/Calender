@@ -7,7 +7,20 @@ const myEvents = [
     end: "16:30",
     seats: 20,
     reoccuring: "Yes",
-    people: ["aaron", "caden", "amanda"],
+    people: [
+      {
+        name: "aaron",
+        rank: "2Lt",
+        email: "hotmail@hotmail.com",
+        phoneNumber: 9119119911,
+      },
+      {
+        name: "caden Wood",
+        rank: "SrA",
+        email: "hotmail@gmail.com",
+        phoneNumber: 9987654321,
+      },
+    ],
   },
   {
     id: 2,
@@ -17,7 +30,20 @@ const myEvents = [
     end: "22:30",
     seats: 20,
     reoccuring: "true",
-    people: ["aaron", "caden", "amanda", "george"],
+    people: [
+      {
+        name: "aaron",
+        rank: "2Lt",
+        email: "hotmail@hotmail.com",
+        phoneNumber: 9119119911,
+      },
+      {
+        name: "caden Wood",
+        rank: "SrA",
+        email: "hotmail@gmail.com",
+        phoneNumber: 9987654321,
+      },
+    ],
   },
   {
     id: 3,
@@ -26,8 +52,21 @@ const myEvents = [
     start: "15:30",
     end: "22:30",
     seats: 20,
-    recurring: true,
-    people: ["aaron", "caden", "amanda", "george"],
+    reoccuring: true,
+    people: [
+      {
+        name: "aaron",
+        rank: "2Lt",
+        email: "hotmail@hotmail.com",
+        phoneNumber: 9119119911,
+      },
+      {
+        name: "caden Wood",
+        rank: "SrA",
+        email: "hotmail@gmail.com",
+        phoneNumber: 9987654321,
+      },
+    ],
   },
 ];
 
