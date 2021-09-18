@@ -21,6 +21,8 @@ function App() {
   const loginChange = () => {
     setloginValue(!loginValue);
   };
+  const [filterID, setFilterID] = useState(0);
+  const [filterIndex, setFilterIndex] = useState(0);
 
   const deleteIDEvent = (id) => {
     const updatedEvents = [...allEvents].filter(
@@ -64,8 +66,6 @@ function App() {
   };
 
   const [editModal, setEditModal] = useState(false);
-  const [filterID, setFilterID] = useState(0);
-  const [filterIndex, setFilterIndex] = useState(0);
   const editIDEvent = (id, name) => {
     setEditModal(!editModal);
     setFilterID(id);
@@ -82,8 +82,6 @@ function App() {
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
-    /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
-    I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
 
     let peopleArr = viewingEvent[0].people;
 
@@ -138,11 +136,20 @@ function App() {
   };
 
   const [registerModal, setRegisterModal] = useState(false);
+  const changeRegisterModel = (e) => {
+    e.preventDefault();
+    setRegisterModal(!registerModal);
+  };
+
   const registerIDEvent = (id) => {
     setRegisterModal(!registerModal);
-    const registeringEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    /*     const registeringEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id); */
+
+    setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
-    console.log(indexOfEvent + "\n\n\n\n");
+    setFilterIndex(indexOfEvent);
+
     /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
     I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
 
@@ -155,6 +162,11 @@ function App() {
     console.log(registeringEvent[0].people) */
 
     /* can update by removing then readding but then need to do the filter feature */
+  };
+
+  const [registerData, setRegisterData] = useState("");
+  const registerEvent = (myregisterEvent) => {
+    console.log(myregisterEvent);
   };
 
   return (
@@ -195,7 +207,14 @@ function App() {
               />
             )}
           </div>
-          <div>{registerModal && <RegisterModal />}</div>
+          <div>
+            {registerModal && (
+              <RegisterModal
+                closebtn={changeRegisterModel}
+                subOn={registerEvent}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
