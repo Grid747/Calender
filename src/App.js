@@ -167,6 +167,10 @@ function App() {
   const [registerData, setRegisterData] = useState("");
   const registerEvent = (myregisterEvent) => {
     console.log(myregisterEvent);
+    console.log(filterID);
+    console.log(filterIndex);
+    console.log(allEvents[filterIndex]);
+    console.log((allEvents[filterIndex].people.name = myregisterEvent.name));
   };
 
   return (
