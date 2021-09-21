@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditModal({ visualState, onAdd, closeBtn }) {
+function EditModal({ onAdd, closeBtn }) {
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 

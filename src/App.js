@@ -9,8 +9,6 @@ import InstrucButton from "./components/InstrucBtn";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
 
-/* https://www.code-boost.com/video/ultimate-react-todo-list/ <-- how I got Update and delete */
-
 function App() {
   const [allEvents, setallEvents] = useState(Data);
 
@@ -22,6 +20,7 @@ function App() {
   const loginChange = () => {
     setloginValue(!loginValue);
   };
+
   const [filterID, setFilterID] = useState(0);
   const [filterIndex, setFilterIndex] = useState(0);
 
@@ -33,7 +32,6 @@ function App() {
     console.log(updatedEvents);
   };
 
-  /* const [editModalData, setEditModalData] = useState(""); */
   const editEvent = (editedEvent) => {
     const id = filterID;
     const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
@@ -46,6 +44,7 @@ function App() {
     setallEvents(
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
     );
+    setFilterID("");
   };
 
   const [editModal, setEditModal] = useState(false);
@@ -61,6 +60,7 @@ function App() {
     e.preventDefault();
     setViewModal(!viewModal);
   };
+
   const [viewObject, setViewObject] = useState();
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
@@ -98,7 +98,6 @@ function App() {
     setViewObject(myViewObject);
   };
 
-  /*   const [editModal, setEditModel] = useState(false); */
   const changeEditModel = (e) => {
     e.preventDefault();
     setEditModal(!editModal);
@@ -112,25 +111,10 @@ function App() {
 
   const registerIDEvent = (id) => {
     setRegisterModal(!registerModal);
-    /*     const registeringEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
-    const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id); */
 
     setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
-
-    /* to change anything setallEvents(AllEvents[indexOfEvent].name = editingEvent[0].name)
-    I rather just create an object and do: setallEvent(AllEvents[indexOfEvent] = myobject) */
-
-    /* console.log(registeringEvent[0].name);
-    console.log(registeringEvent[0].date);
-    console.log(registeringEvent[0].start);
-    console.log(registeringEvent[0].end);
-    console.log(registeringEvent[0].seats);
-    console.log(registeringEvent[0].reoccuring);
-    console.log(registeringEvent[0].people) */
-
-    /* can update by removing then readding but then need to do the filter feature */
   };
 
   const registerEvent = (myregisterEvent) => {
@@ -139,50 +123,12 @@ function App() {
     console.log(filterIndex);
     console.log(allEvents[filterIndex]);
 
-    /* setallEvents(allEvents);
-    console.log(allEvents); */
-
-    /* console.log("all events filter Index");
-    console.log(allEvents[filterIndex].people);
-
-    console.log("all events people");
-    console.log(allEvents[filterIndex].people); */
-
     let giraffe = allEvents[filterIndex].people;
-    /* console.log(giraffe); */
 
-    /* let hipp0 = giraffe.push(myregisterEvent); */
     giraffe.push(myregisterEvent);
-    /* console.log("hipp0");
-    console.log(hipp0); */
 
     setFilterID("");
     setFilterIndex("");
-
-    /* setallEvents(allEvents[filterIndex].people.push(myregisterEvent)); */
-
-    /*     console.log("messing with dummy data")
-    setallEvents([allEvents[filterIndex].people, newregisterEvent]); */
-
-    /*     console.log("dummyData after")
-    console.log(allEvents[filterIndex].people); */
-
-    /* array1.push(...array2)
-    [].concat(array1, array2)
-    [...array1, ...array2] */
-
-    /* console.log("before")
-    console.log(allEvents[filterIndex].people)
-    console.log("during")
-    console.log(setallEvents(allEvents[filterIndex].people)) */
-
-    /* [...allEvents, myNewEvent] */
-    /* setallEvents(allEvents[filterIndex].people.push(...newregisterEvent)); */
-
-    /* console.log('after');
-    console.log(allEvents[filterIndex].people) */
-
-    /* allEvents[filterIndex].people += myregisterEvent; */
   };
 
   return (
