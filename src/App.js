@@ -98,10 +98,10 @@ function App() {
     setViewObject(myViewObject);
   };
 
-  const [editModel, setEditModel] = useState(false);
+  /*   const [editModal, setEditModel] = useState(false); */
   const changeEditModel = (e) => {
     e.preventDefault();
-    setEditModel(!editModel);
+    setEditModal(!editModal);
   };
 
   const [registerModal, setRegisterModal] = useState(false);

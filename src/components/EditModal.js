@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditModal({ visualState, onAdd, closeBtn}) {
+function EditModal({ visualState, onAdd, closeBtn }) {
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
@@ -65,7 +65,7 @@ function EditModal({ visualState, onAdd, closeBtn}) {
         />
         <div className="p-2 flex justify-evenly">
           <button
-            onClick={visualState}
+            onClick={closeBtn}
             className="rounded-full bg-white px-2 py-1"
             //onClick={closeBtn}
           >
