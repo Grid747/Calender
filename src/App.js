@@ -13,6 +13,7 @@ import RegisterModal from "./components/RegisterModal";
 
 function App() {
   const [allEvents, setallEvents] = useState(Data);
+
   const addEvent = (myNewEvent) => {
     setallEvents([...allEvents, myNewEvent]);
   };
@@ -135,6 +136,12 @@ function App() {
     /* can update by removing then readding but then need to do the filter feature */
   };
 
+  const [editModel, setEditModel] = useState(false);
+  const changeEditModel = (e) => {
+    e.preventDefault();
+    setEditModel(!editModel);
+  };
+
   const [registerModal, setRegisterModal] = useState(false);
   const changeRegisterModel = (e) => {
     e.preventDefault();
@@ -164,13 +171,63 @@ function App() {
     /* can update by removing then readding but then need to do the filter feature */
   };
 
-  const [registerData, setRegisterData] = useState("");
+  //const [registerData, setRegisterData] = useState("");
+  //const [dummyData, setDummyData] = useState('');
+
   const registerEvent = (myregisterEvent) => {
     console.log(myregisterEvent);
     console.log(filterID);
     console.log(filterIndex);
     console.log(allEvents[filterIndex]);
-    console.log((allEvents[filterIndex].people.name = myregisterEvent.name));
+
+
+ 
+    /* setallEvents(allEvents);
+    console.log(allEvents); */
+
+    console.log("all events filter Index")
+    console.log(allEvents[filterIndex].people);
+
+    
+    console.log("all events people");
+    console.log(allEvents[filterIndex].people);
+
+    let giraffe = allEvents[filterIndex].people;
+    console.log(giraffe)
+
+    let hipp0 = giraffe.push(myregisterEvent);
+    console.log("hipp0");
+    console.log(hipp0);
+
+    /* setallEvents(allEvents[filterIndex].people.push(myregisterEvent)); */
+
+
+/*     console.log("messing with dummy data")
+    setallEvents([allEvents[filterIndex].people, newregisterEvent]); */
+
+/*     console.log("dummyData after")
+    console.log(allEvents[filterIndex].people); */
+    
+    /* array1.push(...array2)
+    [].concat(array1, array2)
+    [...array1, ...array2] */
+
+
+    /* console.log("before")
+    console.log(allEvents[filterIndex].people)
+    console.log("during")
+    console.log(setallEvents(allEvents[filterIndex].people)) */
+
+    /* [...allEvents, myNewEvent] */
+    /* setallEvents(allEvents[filterIndex].people.push(...newregisterEvent)); */
+   
+    /* console.log('after');
+    console.log(allEvents[filterIndex].people) */
+    
+
+    /* allEvents[filterIndex].people += myregisterEvent; */
+    
+
   };
 
   return (
@@ -196,7 +253,7 @@ function App() {
         <div className="flex flex-col">
           <PackageButton label="PCS Package" />
           <InstrucButton label="Instructions" />
-          <div>{editModal && <EditModal onAdd={editEvent} />}</div>
+          <div>{editModal && <EditModal onAdd={editEvent} closeBtn={changeEditModel} />}</div>
           <div>
             {viewModal && (
               <ViewModal

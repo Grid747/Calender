@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditModal({ visualState, onAdd }) {
+function EditModal({ visualState, onAdd, closeBtn}) {
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
@@ -67,6 +67,7 @@ function EditModal({ visualState, onAdd }) {
           <button
             onClick={visualState}
             className="rounded-full bg-white px-2 py-1"
+            //onClick={closeBtn}
           >
             Cancel
           </button>

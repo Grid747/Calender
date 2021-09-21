@@ -10,12 +10,12 @@ function RegisterModal({ closebtn, subOn }) {
   const [email, setEmail] = useState("");
   const changeEmail = (e) => setEmail(e.target.value);
 
-  const [phone, setPhone] = useState("");
-  const changePhone = (e) => setPhone(e.target.value);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const changePhoneNumber = (e) => setPhoneNumber(e.target.value);
 
   const submitbtn = (e) => {
     e.preventDefault();
-    subOn({ rank, name, email, phone });
+    subOn({ rank, name, email, phoneNumber });
   };
 
   return (
@@ -42,8 +42,8 @@ function RegisterModal({ closebtn, subOn }) {
         <h1 className="flex justify-center">Phone #:</h1>
         <input
           className="flex justify-center"
-          type="number"
-          onChange={changePhone}
+          type="text"
+          onChange={changePhoneNumber}
         />
         <div className="p-2 flex justify-evenly">
           <button
