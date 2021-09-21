@@ -33,41 +33,23 @@ function App() {
     console.log(updatedEvents);
   };
 
-  const [editModalData, setEditModalData] = useState();
+  /* const [editModalData, setEditModalData] = useState(""); */
   const editEvent = (editedEvent) => {
     const id = filterID;
     const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
     const people = editingEvent[0].people;
-    setEditModalData({
+    let hipp0 = {
       id,
       ...editedEvent,
       people,
-    }); /* sets all the data  */ /* get the index of where it is at */ /* <- should work but doesn't */
-
-    console.log("editModalData");
-    console.log(editModalData);
-
-    console.log("allEvents[filterIndex]");
-    console.log(allEvents[filterIndex]);
-    /* setallEvents((allEvent[filterIndex] = editModalData)); */
-
-    /* console.log(
-      allEvents[filterIndex]
-    ); */
-    /*     setallEvents((allEvents[filterIndex] = editModalData)); */
-
-    /* The last way to be able to do this would be to pop off the data for specific id 
-    then add this one at the end */
-
-    /* below is the method for testing if you deleted the data then readded the data */
-    /*     const updatedEvents = [...allEvents].filter(
-      (oneEvent) => oneEvent.id !== id
+    };
+    setallEvents(
+      allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
     );
-    setallEvents([updatedEvents, editModalData]); */
   };
 
   const [editModal, setEditModal] = useState(false);
-  const editIDEvent = (id, name) => {
+  const editIDEvent = (id) => {
     setEditModal(!editModal);
     setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
@@ -86,8 +68,6 @@ function App() {
 
     let peopleArr = viewingEvent[0].people;
 
-    /* const showPeopleArr =  */
-
     function peopleArrFor() {
       let myArr = [];
       for (let i = 0; i < peopleArr.length; i++) {
@@ -105,11 +85,6 @@ function App() {
       return myArr;
     }
 
-    /* peopleArr.forEach((arrayItem) => {
-      console.log(arrayItem);
-      return arrayItem;
-    }); */
-
     const myViewObject = {
       name: viewingEvent[0].name,
       date: viewingEvent[0].date,
@@ -118,22 +93,9 @@ function App() {
       seats: viewingEvent[0].seats,
       reocurring: viewingEvent[0].reoccuring,
       people: peopleArrFor(),
-
-      /* viewingEvent[0].people[0].name +
-        ", " +
-        viewingEvent[0].people[0].rank +
-        ", " +
-        viewingEvent[0].people[0].email +
-        ", " +
-        viewingEvent[0].people[0].phoneNumber, */
     };
 
     setViewObject(myViewObject);
-
-    /* console.log("ViewObject ");
-    console.log(viewObject); */
-
-    /* can update by removing then readding but then need to do the filter feature */
   };
 
   const [editModel, setEditModel] = useState(false);
@@ -171,47 +133,43 @@ function App() {
     /* can update by removing then readding but then need to do the filter feature */
   };
 
-  //const [registerData, setRegisterData] = useState("");
-  //const [dummyData, setDummyData] = useState('');
-
   const registerEvent = (myregisterEvent) => {
     console.log(myregisterEvent);
     console.log(filterID);
     console.log(filterIndex);
     console.log(allEvents[filterIndex]);
 
-
- 
     /* setallEvents(allEvents);
     console.log(allEvents); */
 
-    console.log("all events filter Index")
+    /* console.log("all events filter Index");
     console.log(allEvents[filterIndex].people);
 
-    
     console.log("all events people");
-    console.log(allEvents[filterIndex].people);
+    console.log(allEvents[filterIndex].people); */
 
     let giraffe = allEvents[filterIndex].people;
-    console.log(giraffe)
+    /* console.log(giraffe); */
 
-    let hipp0 = giraffe.push(myregisterEvent);
-    console.log("hipp0");
-    console.log(hipp0);
+    /* let hipp0 = giraffe.push(myregisterEvent); */
+    giraffe.push(myregisterEvent);
+    /* console.log("hipp0");
+    console.log(hipp0); */
+
+    setFilterID("");
+    setFilterIndex("");
 
     /* setallEvents(allEvents[filterIndex].people.push(myregisterEvent)); */
 
-
-/*     console.log("messing with dummy data")
+    /*     console.log("messing with dummy data")
     setallEvents([allEvents[filterIndex].people, newregisterEvent]); */
 
-/*     console.log("dummyData after")
+    /*     console.log("dummyData after")
     console.log(allEvents[filterIndex].people); */
-    
+
     /* array1.push(...array2)
     [].concat(array1, array2)
     [...array1, ...array2] */
-
 
     /* console.log("before")
     console.log(allEvents[filterIndex].people)
@@ -220,14 +178,11 @@ function App() {
 
     /* [...allEvents, myNewEvent] */
     /* setallEvents(allEvents[filterIndex].people.push(...newregisterEvent)); */
-   
+
     /* console.log('after');
     console.log(allEvents[filterIndex].people) */
-    
 
     /* allEvents[filterIndex].people += myregisterEvent; */
-    
-
   };
 
   return (
@@ -253,7 +208,11 @@ function App() {
         <div className="flex flex-col">
           <PackageButton label="PCS Package" />
           <InstrucButton label="Instructions" />
-          <div>{editModal && <EditModal onAdd={editEvent} closeBtn={changeEditModel} />}</div>
+          <div>
+            {editModal && (
+              <EditModal onAdd={editEvent} closeBtn={changeEditModel} />
+            )}
+          </div>
           <div>
             {viewModal && (
               <ViewModal
