@@ -45,6 +45,7 @@ function App() {
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
     );
     setFilterID("");
+    setEditModal(!editModal)
   };
 
   const [editModal, setEditModal] = useState(false);
@@ -124,11 +125,13 @@ function App() {
     console.log(allEvents[filterIndex]);
 
     let giraffe = allEvents[filterIndex].people;
-
     giraffe.push(myregisterEvent);
+    allEvents[filterIndex].seats -= 1;
+    /* console.log(allEvents[filterIndex].seats) */
+      setFilterID("");
+      setFilterIndex("");
+      setRegisterModal(!registerModal);
 
-    setFilterID("");
-    setFilterIndex("");
   };
 
   return (

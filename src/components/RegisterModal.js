@@ -13,9 +13,12 @@ function RegisterModal({ closebtn, subOn }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const changePhoneNumber = (e) => setPhoneNumber(e.target.value);
 
+  const [seat, setNumberSeats] = useState("");
+  const changeSeats = (numberSeat) => setNumberSeats(numberSeat - 1);
+
   const submitbtn = (e) => {
     e.preventDefault();
-    subOn({ rank, name, email, phoneNumber });
+    subOn({ rank, name, email, phoneNumber, seat });
   };
 
   return (
@@ -53,7 +56,7 @@ function RegisterModal({ closebtn, subOn }) {
           >
             Cancel
           </button>
-          <button type="submit" className="rounded-full bg-white px-2 py-1">
+          <button type="submit" className="rounded-full bg-white px-2 py-1" onChange={changeSeats}>
             Submit
           </button>
         </div>
