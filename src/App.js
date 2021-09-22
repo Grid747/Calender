@@ -46,6 +46,7 @@ function App() {
     );
     setFilterID("");
     setEditModal(!editModal)
+    setDisable(!disable)
   };
   const [disable, setDisable] = useState(false)
   const [editModal, setEditModal] = useState(false);
@@ -137,10 +138,10 @@ function App() {
     giraffe.push(myregisterEvent);
     allEvents[filterIndex].seats -= 1;
     /* console.log(allEvents[filterIndex].seats) */
-      setFilterID("");
-      setFilterIndex("");
-      setDisable(disable);
-      setRegisterModal(!registerModal);
+    setFilterID("");
+    setFilterIndex("");
+    setDisable(!disable);
+    setRegisterModal(!registerModal);
 
   };
   
