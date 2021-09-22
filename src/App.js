@@ -56,7 +56,7 @@ function App() {
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent)
   };
-console.log(disable)
+
   const [viewModal, setViewModal] = useState(false);
   const changeViewModel = (e) => {
     e.preventDefault();
