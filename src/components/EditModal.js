@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditModal({ onAdd, closeBtn }) {
+function EditModal({ onAdd, closeBtn, disable }) {
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
@@ -99,12 +99,14 @@ function EditModal({ onAdd, closeBtn }) {
         <div className="p-2 flex justify-evenly">
           <button
             onClick={closeBtn}
+            
             className="rounded-full bg-white px-2 py-1"
           >
             Cancel
           </button>
           <button
             type="submit"
+            
             onClick={formSubmit}
             className="rounded-full bg-white px-2 py-1"
           >

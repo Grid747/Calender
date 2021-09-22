@@ -8,6 +8,7 @@ function ArrayMap ({
   viewEvent,
   deleteEvent,
   dropValue,
+  disable,
 }) {
   return (
     <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
@@ -28,6 +29,7 @@ function ArrayMap ({
                 <div className='flex justify-evenly'>
                   <button
                     id="registerBtn"
+                    disabled={disable}
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => registerEvent(myEvents.id)}
                   >
@@ -38,6 +40,7 @@ function ArrayMap ({
                 <div className='flex justify-evenly'>
                   <button
                     id="editBtn"
+                    disabled={disable}
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => editEvent(myEvents.id)}
                   >
@@ -45,12 +48,14 @@ function ArrayMap ({
                   </button>
                   <button
                     id="viewBtn"
+                    disabled={disable}
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => viewEvent(myEvents.id)}
                   >
                     View
                   </button>
                   <button
+                    disabled={disable}
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => deleteEvent(myEvents.id)}
                   >

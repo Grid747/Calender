@@ -9,6 +9,7 @@ function ViewModal({
   reoccuring,
   people,
   closeBtn,
+  disable
 }) {
   return (
     <div className="inlne-flex py-4 border-2 border-gray-400 bg-blue-500 justify-center">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function RegisterModal({ closebtn, subOn }) {
+function RegisterModal({ closebtn, subOn, disable }) {
   const [rank, setRank] = useState("");
   const changeRank = (e) => setRank(e.target.value);
 
@@ -53,6 +53,7 @@ function RegisterModal({ closebtn, subOn }) {
             type="button"
             className="rounded-full bg-white px-2 py-1"
             onClick={closebtn}
+            disabled={disable}
           >
             Cancel
           </button>

@@ -47,25 +47,30 @@ function App() {
     setFilterID("");
     setEditModal(!editModal)
   };
-
+  const [disable, setDisable] = useState(false)
   const [editModal, setEditModal] = useState(false);
   const editIDEvent = (id) => {
     setEditModal(!editModal);
+    setDisable(!disable)
     setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent)
   };
-
+console.log(disable)
   const [viewModal, setViewModal] = useState(false);
   const changeViewModel = (e) => {
     e.preventDefault();
     setViewModal(!viewModal);
+    setDisable(!disable)
   };
+
+
   
 
   const [viewObject, setViewObject] = useState();
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
+    setDisable(!disable)
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
 
     let peopleArr = viewingEvent[0].people;
@@ -103,18 +108,21 @@ function App() {
   const changeEditModel = (e) => {
     e.preventDefault();
     setEditModal(!editModal);
+    setDisable(!disable)
   };
 
   const [registerModal, setRegisterModal] = useState(false);
   const changeRegisterModel = (e) => {
     e.preventDefault();
     setRegisterModal(!registerModal);
+    setDisable(!disable)
   };
 
   const registerIDEvent = (id) => {
     setRegisterModal(!registerModal);
 
     setFilterID(id);
+    setDisable(!disable)
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
   };
@@ -131,6 +139,7 @@ function App() {
     /* console.log(allEvents[filterIndex].seats) */
       setFilterID("");
       setFilterIndex("");
+      setDisable(disable);
       setRegisterModal(!registerModal);
 
   };
@@ -166,7 +175,7 @@ function App() {
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
           dropValue={loginValue}
-          //disable={disableScreen}
+          disable={disable}
         />
         <div className="flex flex-col">
           <PackageButton label="PCS Package" />
