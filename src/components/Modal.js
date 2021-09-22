@@ -103,7 +103,7 @@ function Modal({ onAdd }) {
             value="Off"
             onChange={changeRecur}
           />
-           <label for="no">No</label>
+          <label htmlFor="no">No</label>
           <input
             type="radio"
             id="Daily"
@@ -111,7 +111,7 @@ function Modal({ onAdd }) {
             value="Daily"
             onChange={changeRecur}
           />
-          <label for="css">Daily</label>
+          <label htmlFor="css">Daily</label>
           <input
             type="radio"
             id="Weekly"
@@ -119,7 +119,7 @@ function Modal({ onAdd }) {
             value="Weekly"
             onChange={changeRecur}
           />
-          <label for="Weekly">Weekly</label>
+          <label htmlFor="Weekly">Weekly</label>
           <div className="px-1 content-center flex">
             <button className="rounded-full px-3 bg-white">Submit</button>
           </div>

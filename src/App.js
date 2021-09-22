@@ -53,7 +53,7 @@ function App() {
     setEditModal(!editModal);
     setFilterID(id);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
-    setFilterIndex(indexOfEvent);
+    setFilterIndex(indexOfEvent)
   };
 
   const [viewModal, setViewModal] = useState(false);
@@ -61,6 +61,7 @@ function App() {
     e.preventDefault();
     setViewModal(!viewModal);
   };
+  
 
   const [viewObject, setViewObject] = useState();
   const viewIDEvent = (id) => {
@@ -133,6 +134,18 @@ function App() {
       setRegisterModal(!registerModal);
 
   };
+  
+  /*const disableScreen = () => {
+    var buttonDiv = document.getElementById('buttons');
+    buttonDiv.className += "bg-transparent";
+    document.body.appendChild(buttonDiv);
+  };*/
+  //console.log(disableScreen)
+  /*const disableRegisterBtn = () => {
+    disableScreen("registerBtn");
+    console.log(disableRegisterBtn())
+  }*/
+  //document.getElementById("registerBtn").onclick = disableScreen
 
   return (
     <div className="flex flex-col justify-center">
@@ -153,13 +166,17 @@ function App() {
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
           dropValue={loginValue}
+          //disable={disableScreen}
         />
         <div className="flex flex-col">
           <PackageButton label="PCS Package" />
           <InstrucButton label="Instructions" />
           <div>
             {editModal && (
-              <EditModal onAdd={editEvent} closeBtn={changeEditModel} />
+              <EditModal 
+                onAdd={editEvent} 
+                closeBtn={changeEditModel} 
+              />
             )}
           </div>
           <div>

@@ -20,7 +20,6 @@ function RegisterModal({ closebtn, subOn }) {
     e.preventDefault();
     subOn({ rank, name, email, phoneNumber, seat });
   };
-
   return (
     <div className="flex px-4 border-2 border-gray-400 bg-blue-500 justify-center">
       <form onSubmit={submitbtn}>
@@ -39,13 +38,14 @@ function RegisterModal({ closebtn, subOn }) {
         <h1 className="flex justify-center">Email:</h1>
         <input
           className="flex justify-center"
-          type="text"
+          type="email"
           onChange={changeEmail}
         />
         <h1 className="flex justify-center">Phone #:</h1>
         <input
           className="flex justify-center"
-          type="text"
+          type="tel"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           onChange={changePhoneNumber}
         />
         <div className="p-2 flex justify-evenly">

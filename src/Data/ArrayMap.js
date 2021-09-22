@@ -1,14 +1,14 @@
 import Event from "../components/Event";
 /* import { useState } from "react"; */
 
-const ArrayMap = ({
+function ArrayMap ({
   mydata,
   registerEvent,
   editEvent,
   viewEvent,
   deleteEvent,
   dropValue,
-}) => {
+}) {
   return (
     <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
       {mydata.map((myEvents) => {
@@ -27,6 +27,7 @@ const ArrayMap = ({
               {!dropValue ? (
                 <div className='flex justify-evenly'>
                   <button
+                    id="registerBtn"
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => registerEvent(myEvents.id)}
                   >
@@ -36,12 +37,14 @@ const ArrayMap = ({
               ) : (
                 <div className='flex justify-evenly'>
                   <button
+                    id="editBtn"
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => editEvent(myEvents.id)}
                   >
                     Edit
                   </button>
                   <button
+                    id="viewBtn"
                     className='bg-gray-400 rounded-sm px-2'
                     onClick={() => viewEvent(myEvents.id)}
                   >
