@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditModal({ onAdd, closeBtn, disable }) {
+function EditModal({ onAdd, closeBtn, submit }) {
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
@@ -25,6 +25,7 @@ function EditModal({ onAdd, closeBtn, disable }) {
   const formSubmit = (e) => {
     e.preventDefault();
     onAdd({ name, date, start, end, seats, recurring, people });
+    submit()
   };
 
   return (
@@ -35,7 +36,6 @@ function EditModal({ onAdd, closeBtn, disable }) {
           className="w-64"
           type="text"
           onChange={changeName}
-          value={"hello"}
           ></input>
         <h1 className="flex justify-center text-lg">Event Date: </h1>
         <input

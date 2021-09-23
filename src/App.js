@@ -131,11 +131,11 @@ function App() {
   };
 
   const registerEvent = (myregisterEvent) => {
-    console.log(myregisterEvent);
-    console.log(filterID);
-    console.log(filterIndex);
-    console.log(allEvents[filterIndex]);
-
+    //console.log(myregisterEvent);
+    //console.log(filterID);
+    //console.log(filterIndex);
+    //console.log(allEvents[filterIndex]);
+    window.alert("You are now registered for this event.")
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
     allEvents[filterIndex].seats -= 1;
@@ -146,6 +146,10 @@ function App() {
     setRegisterModal(!registerModal);
 
   };
+
+  const editSubmit = () => {
+    window.alert("You have now edited this event.")
+  }
   
   /*const disableScreen = () => {
     var buttonDiv = document.getElementById('buttons');
@@ -188,6 +192,7 @@ function App() {
               <EditModal 
                 onAdd={editEvent} 
                 closeBtn={changeEditModel} 
+                submit={editSubmit}
               />
             )}
           </div>
