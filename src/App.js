@@ -14,6 +14,7 @@ function App() {
 
   const addEvent = (myNewEvent) => {
     setallEvents([...allEvents, myNewEvent]);
+    window.alert("You have added a new event.")
   };
 
   const [loginValue, setloginValue] = useState(false);

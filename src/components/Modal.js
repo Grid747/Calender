@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 /* import Data from "../Data/Data"; */
 
-function Modal({ onAdd }) {
+function Modal({ onAdd, submit }) {
   /*   function handleSubmit(e) {
     e.preventDefault();
     console.log("You clicked submit.");
@@ -57,8 +57,8 @@ function Modal({ onAdd }) {
   const formSubmit = (e) => {
     e.preventDefault();
     const id = Math.floor(Math.random() * 100000000) + 1;
-
     onAdd({ id, name, date, start, end, seats, recurring });
+    submit()
   };
 
   return (

@@ -14,6 +14,11 @@ function ModelOpener({ onAdd }) {
     }
   };
 
+  let submit = () => {
+    setshowModal(!showModal)
+    setLabel("Add Event")
+  }
+
   return (
     <div className='flex flex-col justify-center px-2'>
       <div className='flex justify-center'>
@@ -35,7 +40,7 @@ function ModelOpener({ onAdd }) {
         </div>
       </div>
       <div className='flex justify-center px-2'>
-        {showModal && <Modal onAdd={onAdd} />}
+        {showModal && <Modal onAdd={onAdd} submit={submit} />}
       </div>
     </div>
   );
