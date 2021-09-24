@@ -18,33 +18,6 @@ function EditModal({
   changePeople,
   formSubmit,
 }) {
-  /*   const [name, setName] = useState("");
-  const changeName = (e) => setName(e.target.value);
-
-  const [date, setEventDate] = useState("");
-  const changeEventDate = (e) => setEventDate(e.target.value);
-
-  const [start, setStartTime] = useState("");
-  const changeStartTime = (e) => setStartTime(e.target.value);
-
-  const [end, setEndTime] = useState("");
-  const changeEndTime = (e) => setEndTime(e.target.value);
-
-  const [seats, setSeats] = useState(0);
-  const changeSeats = (e) => setSeats(e.target.value);
-
-  const [recurring, setRecurring] = useState(0);
-  const changeRecur = (e) => setRecurring(e.target.value);
-
-  const [people, setPeople] = useState(0);
-  const changePeople = (e) => setPeople(e.target.value);
-
-  const formSubmit = (e) => {
-    e.preventDefault();
-    onAdd({ name, date, start, end, seats, recurring, people });
-    submit()
-  }; */
-
   return (
     <div className="flex flex-col justify-center content-center py-4 border-2 border-gray-400 bg-blue-500">
       <form>

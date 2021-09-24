@@ -34,32 +34,8 @@ function App() {
     window.alert("You are now in delete mode.");
   };
 
-  /*   const editEvent = (editedEvent) => {
-    const id = filterID;
-    const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
-    const people = editingEvent[0].people;
-    let hipp0 = {
-      id,
-      ...editedEvent,
-      people,
-    };
-    setallEvents(
-      allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
-    );
-    setFilterID("");
-    setEditModal(!editModal)
-    setDisable(!disable)
-  }; */
   const [disable, setDisable] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  /*   const editIDEvent = (id) => {
-    setEditModal(!editModal);
-    setDisable(!disable);
-    setFilterID(id);
-    window.alert("You are now editing all of this event.");
-    const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
-    setFilterIndex(indexOfEvent);
-  }; */
 
   /************************************************************************************** */
 
@@ -90,11 +66,8 @@ function App() {
     setEditModal(!editModal);
     setDisable(!disable);
     setFilterID(id);
-    /* window.alert("You are now editing all of this event."); */
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
-
-    console.log(allEvents[indexOfEvent]);
     setName(allEvents[indexOfEvent].name);
     setDate(allEvents[indexOfEvent].date);
     setStart(allEvents[indexOfEvent].start);
@@ -214,13 +187,23 @@ function App() {
     setDisable(!disable);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
+    console.log("AllEvents");
+    console.log(allEvents);
   };
 
   const registerEvent = (myregisterEvent) => {
-    //console.log(myregisterEvent);
-    //console.log(filterID);
-    //console.log(filterIndex);
-    //console.log(allEvents[filterIndex]);
+    console.log("myregisterEvent");
+    console.log(myregisterEvent);
+    console.log("filter ID and Filter Index in that order");
+    console.log(filterID);
+    console.log(filterIndex);
+
+    console.log(allEvents);
+    console.log("allEvents");
+
+    console.log("allEvents[filterIndex]");
+    console.log(allEvents[filterIndex]);
+
     window.alert("You are now registered for this event.");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);

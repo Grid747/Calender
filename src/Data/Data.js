@@ -6,7 +6,7 @@ const myEvents = [
     start: "15:30",
     end: "16:30",
     seats: 20,
-    reoccuring: "Yes",
+    reoccuring: "Off",
     people: [
       {
         name: "aaron",
@@ -29,7 +29,7 @@ const myEvents = [
     start: "15:30",
     end: "22:30",
     seats: 20,
-    reoccuring: "true",
+    reoccuring: "Daily",
     people: [
       {
         name: "aaron",
@@ -52,7 +52,7 @@ const myEvents = [
     start: "15:30",
     end: "22:30",
     seats: 20,
-    reoccuring: true,
+    reoccuring: "Weekly",
     people: [
       {
         name: "aaron",
