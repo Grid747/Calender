@@ -41,7 +41,7 @@ function RegisterModal({ closebtn, subOn, disable }) {
           type="email"
           onChange={changeEmail}
         />
-        <h1 className="flex justify-center">Phone #:</h1>
+        <h1 className="flex justify-center">Phone (###-###-####):</h1>
         <input
           className="flex justify-center"
           type="tel"
@@ -57,7 +57,11 @@ function RegisterModal({ closebtn, subOn, disable }) {
           >
             Cancel
           </button>
-          <button type="submit" className="rounded-full bg-white px-2 py-1" onChange={changeSeats}>
+          <button
+            type="submit"
+            className="rounded-full bg-white px-2 py-1"
+            onChange={changeSeats}
+          >
             Submit
           </button>
         </div>
