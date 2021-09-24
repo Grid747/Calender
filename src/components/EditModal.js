@@ -42,54 +42,60 @@ function EditModal({ onAdd, closeBtn, submit }) {
           className="flex justify-center w-64"
           type="date"
           onChange={changeEventDate}
-          ></input>
+        ></input>
         <h1 className="flex justify-center text-lg">Start Time:</h1>
         <input
           className="flex justify-center w-64"
           type="time"
           onChange={changeStartTime}
-          ></input>
+        ></input>
         <h1 className="flex justify-center text-lg">End Time: </h1>
         <input
           className="flex justify-center w-64"
           type="time"
           onChange={changeEndTime}
-          ></input>
+        ></input>
         <h1 className="flex justify-center text-lg"># of Seats: </h1>
         <input
           className="flex justify-center w-64"
           type="number"
           onChange={changeSeats}
-          ></input>
+        ></input>
         <h1 className="flex justify-center text-lg">Reoccuring: </h1>
-          <input
-            className="inline-flex justify-center w-10"
-            type="radio"
-            id="no"
-            name="repeating"
-            value="Off"
-            onChange={changeRecur}
-          />
-          <label className="inline-flex justify-center" htmlFor="no">No</label>
-          <input
-            className="inline-flex justify-center w-10"
-            type="radio"
-            id="Daily"
-            name="repeating"
-            value="Daily"
-            onChange={changeRecur}
-          />
-          <label className="inline-flex justify-center" htmlFor="css">Daily</label>
-          <input
-            className="inline-flex justify-center w-10"
-            type="radio"
-            id="Weekly"
-            name="repeating"
-            value="Weekly"
-            onChange={changeRecur}
-          />
-          <label className="inline-flex justify-center" htmlFor="Weekly">Weekly</label>
-          <br />
+        <input
+          className="inline-flex justify-center w-10"
+          type="radio"
+          id="no"
+          name="repeating"
+          value="Off"
+          onChange={changeRecur}
+        />
+        <label className="inline-flex justify-center" htmlFor="no">
+          No
+        </label>
+        <input
+          className="inline-flex justify-center w-10"
+          type="radio"
+          id="Daily"
+          name="repeating"
+          value="Daily"
+          onChange={changeRecur}
+        />
+        <label className="inline-flex justify-center" htmlFor="css">
+          Daily
+        </label>
+        <input
+          className="inline-flex justify-center w-10"
+          type="radio"
+          id="Weekly"
+          name="repeating"
+          value="Weekly"
+          onChange={changeRecur}
+        />
+        <label className="inline-flex justify-center" htmlFor="Weekly">
+          Weekly
+        </label>
+        <br />
         <h1 className="flex justify-center text-lg">Attendee's: </h1>
         <input
           className="flex justify-center w-64"

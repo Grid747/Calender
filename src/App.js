@@ -58,7 +58,7 @@ function App() {
     setFilterID(id);
     window.alert("You are now editing all of this event." )
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
-    setFilterIndex(indexOfEvent)
+    setFilterIndex(indexOfEvent);
   };
 
   const [viewModal, setViewModal] = useState(false);
