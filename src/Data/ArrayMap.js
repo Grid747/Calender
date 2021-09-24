@@ -11,6 +11,7 @@ function ArrayMap ({
   disable,
 }) {
   return (
+    //need to find out  how to sort by date.
     <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
       {mydata.map((myEvents) => {
         return (
@@ -55,6 +56,7 @@ function ArrayMap ({
                     View
                   </button>
                   <button
+                    id="editbtn"
                     disabled={disable}
                     className='bg-gray-400 rounded-sm px-2 hover:shadow-xl'
                     onClick={() => deleteEvent(myEvents.id)}

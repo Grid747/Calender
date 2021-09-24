@@ -26,11 +26,12 @@ function App() {
   const [filterIndex, setFilterIndex] = useState(0);
 
   const deleteIDEvent = (id) => {
-    const updatedEvents = [...allEvents].filter(
+     const updatedEvents = [...allEvents].filter(
       (oneEvent) => oneEvent.id !== id
     );
     setallEvents(updatedEvents);
-    console.log(updatedEvents);
+    console.log(updatedEvents); 
+    window.alert("You are now in delete mode.");
   };
 
   const editEvent = (editedEvent) => {
@@ -149,19 +150,12 @@ function App() {
 
   const editSubmit = () => {
     window.alert("You have now edited this event.")
-  }
-  
-  /*const disableScreen = () => {
-    var buttonDiv = document.getElementById('buttons');
-    buttonDiv.className += "bg-transparent";
-    document.body.appendChild(buttonDiv);
-  };*/
-  //console.log(disableScreen)
-  /*const disableRegisterBtn = () => {
-    disableScreen("registerBtn");
-    console.log(disableRegisterBtn())
-  }*/
-  //document.getElementById("registerBtn").onclick = disableScreen
+  };
+
+  /*allEvents.forEach(data => {
+    console.log(data.name);
+    data.date = data.date.filter(date)
+  })*/
 
   return (
     <div className="flex flex-col justify-center">
