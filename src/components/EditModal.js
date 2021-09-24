@@ -1,7 +1,24 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react"; */
 
-function EditModal({ onAdd, closeBtn, submit }) {
-  const [name, setName] = useState("");
+function EditModal({
+  closeBtn,
+  name,
+  changeName,
+  date,
+  changeDate,
+  start,
+  changeStart,
+  end,
+  changeEnd,
+  seats,
+  changeSeats,
+  recurring,
+  changeRecur,
+  people,
+  changePeople,
+  formSubmit,
+}) {
+  /*   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
   const [date, setEventDate] = useState("");
@@ -26,7 +43,7 @@ function EditModal({ onAdd, closeBtn, submit }) {
     e.preventDefault();
     onAdd({ name, date, start, end, seats, recurring, people });
     submit()
-  };
+  }; */
 
   return (
     <div className="flex flex-col justify-center content-center py-4 border-2 border-gray-400 bg-blue-500">
@@ -36,30 +53,35 @@ function EditModal({ onAdd, closeBtn, submit }) {
           className="w-64"
           type="text"
           onChange={changeName}
-          ></input>
+          value={name}
+        ></input>
         <h1 className="flex justify-center text-lg">Event Date: </h1>
         <input
           className="flex justify-center w-64"
           type="date"
-          onChange={changeEventDate}
+          onChange={changeDate}
+          value={date}
         ></input>
         <h1 className="flex justify-center text-lg">Start Time:</h1>
         <input
           className="flex justify-center w-64"
           type="time"
-          onChange={changeStartTime}
+          onChange={changeStart}
+          value={start}
         ></input>
         <h1 className="flex justify-center text-lg">End Time: </h1>
         <input
           className="flex justify-center w-64"
           type="time"
-          onChange={changeEndTime}
+          onChange={changeEnd}
+          value={end}
         ></input>
         <h1 className="flex justify-center text-lg"># of Seats: </h1>
         <input
           className="flex justify-center w-64"
           type="number"
           onChange={changeSeats}
+          value={seats}
         ></input>
         <h1 className="flex justify-center text-lg">Reoccuring: </h1>
         <input
@@ -105,14 +127,12 @@ function EditModal({ onAdd, closeBtn, submit }) {
         <div className="p-2 flex justify-evenly">
           <button
             onClick={closeBtn}
-            
             className="rounded-full bg-white px-2 py-1"
           >
             Cancel
           </button>
           <button
             type="submit"
-            
             onClick={formSubmit}
             className="rounded-full bg-white px-2 py-1"
           >

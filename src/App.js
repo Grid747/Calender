@@ -14,7 +14,7 @@ function App() {
 
   const addEvent = (myNewEvent) => {
     setallEvents([...allEvents, myNewEvent]);
-    window.alert("You have added a new event.")
+    window.alert("You have added a new event.");
   };
 
   const [loginValue, setloginValue] = useState(false);
@@ -26,15 +26,15 @@ function App() {
   const [filterIndex, setFilterIndex] = useState(0);
 
   const deleteIDEvent = (id) => {
-     const updatedEvents = [...allEvents].filter(
+    const updatedEvents = [...allEvents].filter(
       (oneEvent) => oneEvent.id !== id
     );
     setallEvents(updatedEvents);
-    console.log(updatedEvents); 
+    console.log(updatedEvents);
     window.alert("You are now in delete mode.");
   };
 
-  const editEvent = (editedEvent) => {
+  /*   const editEvent = (editedEvent) => {
     const id = filterID;
     const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
     const people = editingEvent[0].people;
@@ -49,32 +49,117 @@ function App() {
     setFilterID("");
     setEditModal(!editModal)
     setDisable(!disable)
-  };
-  const [disable, setDisable] = useState(false)
+  }; */
+  const [disable, setDisable] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const editIDEvent = (id) => {
+  /*   const editIDEvent = (id) => {
     setEditModal(!editModal);
-    setDisable(!disable)
+    setDisable(!disable);
     setFilterID(id);
-    window.alert("You are now editing all of this event." )
+    window.alert("You are now editing all of this event.");
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
+  }; */
+
+  /************************************************************************************** */
+
+  const [name, setName] = useState("");
+  const changeName = (e) => setName(e.target.value);
+
+  const [date, setDate] = useState("");
+  const changeDate = (e) => setDate(e.target.value);
+
+  const [start, setStart] = useState("");
+  const changeStart = (e) => setStart(e.target.value);
+
+  const [end, setEnd] = useState("");
+  const changeEnd = (e) => setEnd(e.target.value);
+
+  const [seats, setSeats] = useState(0);
+  const changeSeats = (e) => setSeats(e.target.value);
+
+  const [recurring, setRecurring] = useState("");
+  const changeRecur = (e) => setRecurring(e.target.value);
+
+  const [people, setPeople] = useState("");
+  const changePeople = (e) => setPeople(e.target.value);
+
+  /************************ */
+
+  const editIDEvent = (id) => {
+    setEditModal(!editModal);
+    setDisable(!disable);
+    setFilterID(id);
+    /* window.alert("You are now editing all of this event."); */
+    const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
+    setFilterIndex(indexOfEvent);
+
+    console.log(allEvents[indexOfEvent]);
+    setName(allEvents[indexOfEvent].name);
+    setDate(allEvents[indexOfEvent].date);
+    setStart(allEvents[indexOfEvent].start);
+    setEnd(allEvents[indexOfEvent].end);
+    setSeats(allEvents[indexOfEvent].seats);
+    setRecurring(allEvents[indexOfEvent].reoccuring);
   };
+
+  /************************** */
+
+  const editModalSubmit = (e) => {
+    e.preventDefault();
+    console.log("filter Index then ID in that order");
+    console.log(filterIndex);
+    console.log(filterID);
+
+    console.log("stuff for adding");
+    console.log(name);
+    console.log(date);
+    console.log(start);
+    console.log(end);
+    console.log(seats);
+    console.log(recurring);
+    /* console.log(people) */
+
+    const id = filterID;
+    const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    const people = editingEvent[0].people;
+    let hipp0 = {
+      id,
+      name,
+      date,
+      start,
+      end,
+      seats,
+      recurring,
+      people,
+    };
+    setallEvents(
+      allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
+    );
+    setFilterID("");
+    setName("");
+    setDate("");
+    setStart("");
+    setEnd("");
+    setSeats("");
+    setRecurring("");
+    setEditModal(!editModal);
+    setDisable(!disable);
+  };
+
+  /***************************************************************************************** */
 
   const [viewModal, setViewModal] = useState(false);
   const changeViewModel = (e) => {
     e.preventDefault();
     setViewModal(!viewModal);
-    setDisable(!disable)
+    setDisable(!disable);
   };
-
-
-  
 
   const [viewObject, setViewObject] = useState();
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
-    setDisable(!disable)
+    setDisable(!disable);
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
 
     let peopleArr = viewingEvent[0].people;
@@ -112,21 +197,21 @@ function App() {
   const changeEditModel = (e) => {
     e.preventDefault();
     setEditModal(!editModal);
-    setDisable(!disable)
+    setDisable(!disable);
   };
 
   const [registerModal, setRegisterModal] = useState(false);
   const changeRegisterModel = (e) => {
     e.preventDefault();
     setRegisterModal(!registerModal);
-    setDisable(!disable)
+    setDisable(!disable);
   };
 
   const registerIDEvent = (id) => {
     setRegisterModal(!registerModal);
 
     setFilterID(id);
-    setDisable(!disable)
+    setDisable(!disable);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
   };
@@ -136,7 +221,7 @@ function App() {
     //console.log(filterID);
     //console.log(filterIndex);
     //console.log(allEvents[filterIndex]);
-    window.alert("You are now registered for this event.")
+    window.alert("You are now registered for this event.");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
     allEvents[filterIndex].seats -= 1;
@@ -145,11 +230,10 @@ function App() {
     setFilterIndex("");
     setDisable(!disable);
     setRegisterModal(!registerModal);
-
   };
 
   const editSubmit = () => {
-    window.alert("You have now edited this event.")
+    window.alert("You have now edited this event.");
   };
 
   /*allEvents.forEach(data => {
@@ -183,10 +267,24 @@ function App() {
           <InstrucButton label="Instructions" />
           <div>
             {editModal && (
-              <EditModal 
-                onAdd={editEvent} 
-                closeBtn={changeEditModel} 
-                submit={editSubmit}
+              <EditModal
+                /* onAdd={editEvent}  */
+                name={name}
+                changeName={changeName}
+                date={date}
+                changeDate={changeDate}
+                start={start}
+                changeStart={changeStart}
+                end={end}
+                changeEnd={changeEnd}
+                seats={seats}
+                changeSeats={changeSeats}
+                recurring={recurring}
+                changeRecur={changeRecur}
+                people={people}
+                changePeople={changeRecur}
+                closeBtn={changeEditModel}
+                formSubmit={editModalSubmit}
               />
             )}
           </div>
