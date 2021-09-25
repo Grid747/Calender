@@ -9,16 +9,18 @@ const myEvents = [
     reoccuring: "Off",
     people: [
       {
-        name: "aaron",
         rank: "2Lt",
+        name: "aaron",
         email: "hotmail@hotmail.com",
-        phoneNumber: "9119119911",
+        phoneNumber: '911-911-9911',
+        seat: ''
       },
       {
-        name: "caden Wood",
         rank: "SrA",
+        name: "caden Wood",
         email: "hotmail@gmail.com",
-        phoneNumber: "9987654321",
+        phoneNumber: '998-765-4321',
+        seat: ''
       },
     ],
   },
@@ -32,16 +34,18 @@ const myEvents = [
     reoccuring: "Daily",
     people: [
       {
-        name: "aaron",
         rank: "2Lt",
+        name: "aaron",
         email: "hotmail@hotmail.com",
-        phoneNumber: "9119119911",
+        phoneNumber: '911-911-9911',
+        seat: ''
       },
       {
-        name: "caden Wood",
         rank: "SrA",
+        name: "caden Wood",
         email: "hotmail@gmail.com",
-        phoneNumber: "9987654321",
+        phoneNumber: '998-765-4321',
+        seat: ''
       },
     ],
   },
@@ -55,16 +59,18 @@ const myEvents = [
     reoccuring: "Weekly",
     people: [
       {
-        name: "aaron",
         rank: "2Lt",
+        name: "aaron",
         email: "hotmail@hotmail.com",
-        phoneNumber: "9119119911",
+        phoneNumber: '911-911-9911',
+        seat: ''
       },
       {
-        name: "caden Wood",
         rank: "SrA",
+        name: "caden Wood",
         email: "hotmail@gmail.com",
-        phoneNumber: "9987654321",
+        phoneNumber: '998-765-4321',
+        seat: ''
       },
     ],
   },

@@ -10,6 +10,13 @@ function ArrayMap ({
   dropValue,
   disable,
 }) {
+
+  const arrayMapPeople = (mapEvent) =>{
+    editEvent(mapEvent.id, mapEvent.people)
+
+  }
+
+
   return (
     //need to find out  how to sort by date.
     <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>

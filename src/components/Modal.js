@@ -33,8 +33,13 @@ function Modal({ onAdd, submit }) {
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
-  const [recurring, setRecurring] = useState(0);
+  const [recurring, setRecurring] = useState("");
   const changeRecur = (e) => setRecurring(e.target.value);
+
+  let people = []
+
+  //const [people, setPeople] = useState([{}]);
+  //const changePeople = (e) => setPeople(e.target.value);
 
   /*   const newEvent = {
     id: 0,
@@ -57,41 +62,48 @@ function Modal({ onAdd, submit }) {
   const formSubmit = (e) => {
     e.preventDefault();
     const id = Math.floor(Math.random() * 100000000) + 1;
-    onAdd({ id, name, date, start, end, seats, recurring });
+    onAdd({ id, name, date, start, end, seats, recurring, people });
     submit()
   };
+
+  console.log(name);
+  console.log(date)
+  console.log(start)
+  console.log(end)
+  console.log(seats)
+  console.log(recurring)
 
   return (
     <div className="flex justify-center border w-full">
       <form onSubmit={formSubmit}>
-        <div className="bg-gray-400 px-3 py-1 w-full h-full flex">
+        <div className="bg-gray-400 px-3 py-1 w-full h-12 flex">
           <h1 className="px-1">Event Name</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1"
+            className="border-2 border-gray-900 rounded px-1 h-10 w-20"
             type="text"
             onChange={changeName}
           />
           <h1 className="px-1">Event Date</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1"
+            className="border-2 border-gray-900 rounded px-1 h-10 w-20"
             type="date"
             onChange={changeEventDate}
           />
           <h1 className="px-1">Start Time</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1"
+            className="border-2 border-gray-900 rounded px-1 h-10 w-20"
             type="time"
             onChange={changeStartTime}
           />
           <h1 className="px-1">End Time</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1"
+            className="border-2 border-gray-900 rounded px-1 h-10 w-20"
             type="time"
             onChange={changeEndTime}
           />
           <h1 className="px-1"># of seats</h1>
           <input
-            className="border-2 border-gray-900 rounded px-1"
+            className="border-2 border-gray-900 rounded px-1 h-10 w-20"
             type="number"
             onChange={changeSeats}
           />
@@ -121,10 +133,11 @@ function Modal({ onAdd, submit }) {
           />
           <label htmlFor="Weekly">Weekly</label>
           <div className="px-1 content-center flex">
-            <button className="rounded-full px-3 bg-white">Submit</button>
+            <button className="rounded-full px-3 bg-white h-10 w-20">Submit</button>
           </div>
         </div>
       </form>
+      
       {/*       {showBox && (
         <DataBox
           name={name}

@@ -13,6 +13,11 @@ function App() {
   const [allEvents, setallEvents] = useState(Data);
 
   const addEvent = (myNewEvent) => {
+
+    console.log(myNewEvent)
+
+    //let myNewerEvent = [...myNewEvent, people]
+
     setallEvents([...allEvents, myNewEvent]);
     window.alert("You have added a new event.");
   };
@@ -58,7 +63,19 @@ function App() {
   const changeRecur = (e) => setRecurring(e.target.value);
 
   const [people, setPeople] = useState("");
-  const changePeople = (e) => setPeople(e.target.value);
+  /* const changePeople = (e) => setPeople(e.target.value) */
+  
+  /* 888888888 */
+  const changePeople = (index)=>{
+    console.log(index)
+    console.log(people)
+    const theSinglePerson=[...people].filter((onePerson)=> people.indexOf(onePerson) == index);
+    console.log(theSinglePerson); // does not work
+
+
+
+    
+  }
 
   /************************ */
 
@@ -74,6 +91,11 @@ function App() {
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
+    console.log("All the people")
+    console.log(allEvents[indexOfEvent].people)
+    setPeople(allEvents[indexOfEvent].people)
+
+    
   };
 
   /************************** */
@@ -91,11 +113,10 @@ function App() {
     console.log(end);
     console.log(seats);
     console.log(recurring);
-    /* console.log(people) */
+    console.log(people);
 
     const id = filterID;
-    const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
-    const people = editingEvent[0].people;
+    //const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
     let hipp0 = {
       id,
       name,
@@ -116,8 +137,12 @@ function App() {
     setEnd("");
     setSeats("");
     setRecurring("");
+    setPeople("");
     setEditModal(!editModal);
     setDisable(!disable);
+    
+    window.alert("You have now edited this event.");
+
   };
 
   /***************************************************************************************** */
@@ -207,16 +232,13 @@ function App() {
     window.alert("You are now registered for this event.");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
+    console.log(giraffe)
     allEvents[filterIndex].seats -= 1;
     /* console.log(allEvents[filterIndex].seats) */
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
     setRegisterModal(!registerModal);
-  };
-
-  const editSubmit = () => {
-    window.alert("You have now edited this event.");
   };
 
   /*allEvents.forEach(data => {
@@ -264,8 +286,8 @@ function App() {
                 changeSeats={changeSeats}
                 recurring={recurring}
                 changeRecur={changeRecur}
-                people={people}
-                changePeople={changeRecur}
+                peopleData={people}
+                changePeople={changePeople}
                 closeBtn={changeEditModel}
                 formSubmit={editModalSubmit}
               />
