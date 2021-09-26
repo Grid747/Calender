@@ -130,7 +130,9 @@ function App() {
     console.log(start);
     console.log(end);
     console.log(seats);
+    console.log(typeof seats);
     console.log(recurring);
+
     //console.log(people);
 
     console.log("people before filter operation");
@@ -140,6 +142,15 @@ function App() {
     const updatedPeople = [...people].filter(
       (falsePeople) => falsePeople.ischecked === true
     );
+    console.log("people length");
+    console.log(people.length);
+    console.log("updated people length");
+    console.log(updatedPeople.length);
+
+    let adding2Seats = people.length - updatedPeople.length;
+    console.log("number of seats being added");
+    console.log(adding2Seats);
+    console.log(typeof adding2Seats);
 
     /*     console.log("doing filter operation");
     const updatedPeople = [...people].filter(
@@ -163,7 +174,7 @@ function App() {
       date,
       start,
       end,
-      seats,
+      seats: parseInt(seats) + adding2Seats,
       recurring,
       people: updatedPeople,
     };
@@ -175,7 +186,7 @@ function App() {
     setDate("");
     setStart("");
     setEnd("");
-    setSeats("");
+    setSeats(0);
     setRecurring("");
     setPeople([]);
     setEditModal(!editModal);
