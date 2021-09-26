@@ -13,12 +13,11 @@ function RegisterModal({ closebtn, subOn, disable }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const changePhoneNumber = (e) => setPhoneNumber(e.target.value);
 
-  const [seat, setNumberSeats] = useState("");
-  const changeSeats = (numberSeat) => setNumberSeats(numberSeat - 1);
+  let ischecked = true;
 
   const submitbtn = (e) => {
     e.preventDefault();
-    subOn({ rank, name, email, phoneNumber, seat });
+    subOn({ rank, name, email, phoneNumber, ischecked });
   };
   return (
     <div className="flex px-4 border-2 border-gray-400 bg-blue-500 justify-center">
@@ -57,11 +56,7 @@ function RegisterModal({ closebtn, subOn, disable }) {
           >
             Cancel
           </button>
-          <button
-            type="submit"
-            className="rounded-full bg-white px-2 py-1"
-            onChange={changeSeats}
-          >
+          <button type="submit" className="rounded-full bg-white px-2 py-1">
             Submit
           </button>
         </div>
