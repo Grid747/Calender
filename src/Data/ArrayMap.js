@@ -1,7 +1,7 @@
 import Event from "../components/Event";
 /* import { useState } from "react"; */
 
-function ArrayMap ({
+function ArrayMap({
   mydata,
   registerEvent,
   editEvent,
@@ -10,20 +10,16 @@ function ArrayMap ({
   dropValue,
   disable,
 }) {
-
-  const arrayMapPeople = (mapEvent) =>{
-    editEvent(mapEvent.id, mapEvent.people)
-
-  }
-
-
   return (
     //need to find out  how to sort by date.
-    <div className='flex flex-wrap h-full w-9/12 lg:w-8/12  px-2'>
+    <div className="flex flex-wrap h-full w-9/12 lg:w-8/12  px-2">
       {mydata.map((myEvents) => {
         return (
-          <div key={myEvents.id} className='p-4 hover:shadow-2xl hover:bg-gray-50'>
-            <div className='box-content border-8 border-gray-400 p-2 w-60 overflow-x-auto h-52'>
+          <div
+            key={myEvents.id}
+            className="p-4 hover:shadow-2xl hover:bg-gray-50"
+          >
+            <div className="box-content border-8 border-gray-400 p-2 w-60 overflow-x-auto h-52">
               <Event
                 key={myEvents.id}
                 name={myEvents.name}
@@ -34,22 +30,22 @@ function ArrayMap ({
                 reoccuring={myEvents.recurring}
               />
               {!dropValue ? (
-                <div className='flex justify-evenly'>
+                <div className="flex justify-evenly">
                   <button
                     id="registerBtn"
                     disabled={disable}
-                    className='bg-gray-400 rounded-sm px-2 hover:shadow-xl'
+                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
                     onClick={() => registerEvent(myEvents.id)}
                   >
                     Register
                   </button>
                 </div>
               ) : (
-                <div className='flex justify-evenly'>
+                <div className="flex justify-evenly">
                   <button
                     id="editBtn"
                     disabled={disable}
-                    className='bg-gray-400 rounded-sm px-2 hover:shadow-xl'
+                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
                     onClick={() => editEvent(myEvents.id)}
                   >
                     Edit
@@ -57,7 +53,7 @@ function ArrayMap ({
                   <button
                     id="viewBtn"
                     disabled={disable}
-                    className='bg-gray-400 rounded-sm px-2 hover:shadow-xl'
+                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
                     onClick={() => viewEvent(myEvents.id)}
                   >
                     View
@@ -65,7 +61,7 @@ function ArrayMap ({
                   <button
                     id="editbtn"
                     disabled={disable}
-                    className='bg-gray-400 rounded-sm px-2 hover:shadow-xl'
+                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
                     onClick={() => deleteEvent(myEvents.id)}
                   >
                     Delete
@@ -78,6 +74,6 @@ function ArrayMap ({
       })}
     </div>
   );
-};
+}
 
 export default ArrayMap;

@@ -111,7 +111,6 @@ function App() {
     console.log(start);
     console.log(end);
     console.log(seats);
-    console.log(typeof seats);
     console.log(recurring);
 
     console.log("people before filter operation");
@@ -130,6 +129,19 @@ function App() {
     console.log("number of seats being added");
     console.log(adding2Seats);
     console.log(typeof adding2Seats);
+
+    if (
+      (name === "") |
+      (date === "") |
+      (start === "") |
+      (end === "") |
+      // eslint-disable-next-line
+      (seats == 0 && adding2Seats == 0) |
+      (seats === "") |
+      (recurring === "")
+    ) {
+      return window.alert("Error one of the inputs is missing its value");
+    }
 
     const id = filterID;
     let hipp0 = {
