@@ -255,6 +255,15 @@ function App() {
     console.log("allEvents[filterIndex]");
     console.log(allEvents[filterIndex]);
 
+    if (
+      (myregisterEvent.rank === "") |
+      (myregisterEvent.name === "") |
+      (myregisterEvent.email === "") |
+      (myregisterEvent.phoneNumber === "")
+    ) {
+      return window.alert("You are missing one or more of the inputs");
+    }
+
     window.alert("You are now registered for this event.");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
