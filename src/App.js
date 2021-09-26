@@ -14,9 +14,6 @@ function App() {
 
   const addEvent = (myNewEvent) => {
     console.log(myNewEvent);
-
-    //let myNewerEvent = [...myNewEvent, people]
-
     setallEvents([...allEvents, myNewEvent]);
     window.alert("You have added a new event.");
   };
@@ -63,7 +60,7 @@ function App() {
 
   const [people, setPeople] = useState([]);
 
-  /* 88888888888888888888888888888888888888888 */
+  /* ****************************** */
 
   const checkingChecked = (index, isItChecked) => {
     console.log(index);
@@ -79,21 +76,7 @@ function App() {
     console.log("operation done");
     console.log(myNewPeopleCheckMarked);
     setPeople(myNewPeopleCheckMarked);
-
-    /*     console.log(people[index].ischecked);
-    let orangutang = people[index].ischecked;
-
-    let apple = !orangutang;
-    console.log("orangutang"); */
-    /* console.log(orangutang); */
   };
-
-  /*   const changePeople = (index)=>{
-    console.log(index)
-    console.log(people)
-    const theSinglePerson=[...people].filter((onePerson)=> people.indexOf(onePerson) == index);
-    console.log(theSinglePerson); // does not work
-  } */
 
   /************************ */
 
@@ -116,8 +99,6 @@ function App() {
 
   /************************** */
 
-  /* kalsdfj;asdfjasdfjasdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj */
-
   const editModalSubmit = (e) => {
     e.preventDefault();
     console.log("filter Index then ID in that order");
@@ -132,8 +113,6 @@ function App() {
     console.log(seats);
     console.log(typeof seats);
     console.log(recurring);
-
-    //console.log(people);
 
     console.log("people before filter operation");
     console.log(people);
@@ -152,22 +131,7 @@ function App() {
     console.log(adding2Seats);
     console.log(typeof adding2Seats);
 
-    /*     console.log("doing filter operation");
-    const updatedPeople = [...people].filter(
-      (falsePeople) => falsePeople.ischecked === true
-    );
-
-    console.log("completed the filter and now showing updated people");
-    console.log(updatedPeople);
-    console.log("trying to set people to the new updated people");
-    setPeople(updatedPeople);
-    console.log("OPERATION COMPLETE should be the new list");
-    console.log(people);
-
-    console.log("\n\n\n\n\\n\n\n\\n\n"); */
-
     const id = filterID;
-    //const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
     let hipp0 = {
       id,
       name,
@@ -284,17 +248,11 @@ function App() {
     giraffe.push(myregisterEvent);
     console.log(giraffe);
     allEvents[filterIndex].seats -= 1;
-    /* console.log(allEvents[filterIndex].seats) */
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
     setRegisterModal(!registerModal);
   };
-
-  /*allEvents.forEach(data => {
-    console.log(data.name);
-    data.date = data.date.filter(date)
-  })*/
 
   return (
     <div className="flex flex-col justify-center">
