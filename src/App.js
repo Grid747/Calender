@@ -61,8 +61,7 @@ function App() {
   const [recurring, setRecurring] = useState("");
   const changeRecur = (e) => setRecurring(e.target.value);
 
-  const [people, setPeople] = useState("");
-  /* const changePeople = (e) => setPeople(e.target.value) */
+  const [people, setPeople] = useState([]);
 
   /* 88888888888888888888888888888888888888888 */
 
@@ -117,6 +116,8 @@ function App() {
 
   /************************** */
 
+  /* kalsdfj;asdfjasdfjasdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj;asdfj */
+
   const editModalSubmit = (e) => {
     e.preventDefault();
     console.log("filter Index then ID in that order");
@@ -130,7 +131,29 @@ function App() {
     console.log(end);
     console.log(seats);
     console.log(recurring);
+    //console.log(people);
+
+    console.log("people before filter operation");
     console.log(people);
+    console.log("doing filter operation");
+
+    const updatedPeople = [...people].filter(
+      (falsePeople) => falsePeople.ischecked === true
+    );
+
+    /*     console.log("doing filter operation");
+    const updatedPeople = [...people].filter(
+      (falsePeople) => falsePeople.ischecked === true
+    );
+
+    console.log("completed the filter and now showing updated people");
+    console.log(updatedPeople);
+    console.log("trying to set people to the new updated people");
+    setPeople(updatedPeople);
+    console.log("OPERATION COMPLETE should be the new list");
+    console.log(people);
+
+    console.log("\n\n\n\n\\n\n\n\\n\n"); */
 
     const id = filterID;
     //const editingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
@@ -142,7 +165,7 @@ function App() {
       end,
       seats,
       recurring,
-      people,
+      people: updatedPeople,
     };
     setallEvents(
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
@@ -154,7 +177,7 @@ function App() {
     setEnd("");
     setSeats("");
     setRecurring("");
-    setPeople("");
+    setPeople([]);
     setEditModal(!editModal);
     setDisable(!disable);
 

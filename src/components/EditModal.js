@@ -106,7 +106,7 @@ function EditModal({
               <input
                 type="checkbox"
                 checked={foodie.ischecked}
-                onClick={() => checkingChecked(index, foodie.ischecked)}
+                onChange={() => checkingChecked(index, foodie.ischecked)}
               />
               {foodie.name}
             </div>
