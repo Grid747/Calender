@@ -13,8 +13,7 @@ function App() {
   const [allEvents, setallEvents] = useState(Data);
 
   const addEvent = (myNewEvent) => {
-
-    console.log(myNewEvent)
+    console.log(myNewEvent);
 
     //let myNewerEvent = [...myNewEvent, people]
 
@@ -64,18 +63,38 @@ function App() {
 
   const [people, setPeople] = useState("");
   /* const changePeople = (e) => setPeople(e.target.value) */
-  
-  /* 888888888 */
-  const changePeople = (index)=>{
+
+  /* 88888888888888888888888888888888888888888 */
+
+  const checkingChecked = (index, isItChecked) => {
+    console.log(index);
+    console.log(isItChecked);
+
+    let myNewPeopleCheckMarked = [...people];
+    console.log(myNewPeopleCheckMarked);
+    console.log(myNewPeopleCheckMarked[index]);
+    console.log(myNewPeopleCheckMarked[index].ischecked);
+    myNewPeopleCheckMarked[index].ischecked =
+      !myNewPeopleCheckMarked[index].ischecked;
+
+    console.log("operation done");
+    console.log(myNewPeopleCheckMarked);
+    setPeople(myNewPeopleCheckMarked);
+
+    /*     console.log(people[index].ischecked);
+    let orangutang = people[index].ischecked;
+
+    let apple = !orangutang;
+    console.log("orangutang"); */
+    /* console.log(orangutang); */
+  };
+
+  /*   const changePeople = (index)=>{
     console.log(index)
     console.log(people)
     const theSinglePerson=[...people].filter((onePerson)=> people.indexOf(onePerson) == index);
     console.log(theSinglePerson); // does not work
-
-
-
-    
-  }
+  } */
 
   /************************ */
 
@@ -91,11 +110,9 @@ function App() {
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
-    console.log("All the people")
-    console.log(allEvents[indexOfEvent].people)
-    setPeople(allEvents[indexOfEvent].people)
-
-    
+    console.log("All the people");
+    console.log(allEvents[indexOfEvent].people);
+    setPeople(allEvents[indexOfEvent].people);
   };
 
   /************************** */
@@ -140,9 +157,8 @@ function App() {
     setPeople("");
     setEditModal(!editModal);
     setDisable(!disable);
-    
-    window.alert("You have now edited this event.");
 
+    window.alert("You have now edited this event.");
   };
 
   /***************************************************************************************** */
@@ -232,7 +248,7 @@ function App() {
     window.alert("You are now registered for this event.");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
-    console.log(giraffe)
+    console.log(giraffe);
     allEvents[filterIndex].seats -= 1;
     /* console.log(allEvents[filterIndex].seats) */
     setFilterID("");
@@ -287,7 +303,7 @@ function App() {
                 recurring={recurring}
                 changeRecur={changeRecur}
                 peopleData={people}
-                changePeople={changePeople}
+                checkingChecked={checkingChecked}
                 closeBtn={changeEditModel}
                 formSubmit={editModalSubmit}
               />

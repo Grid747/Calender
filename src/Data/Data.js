@@ -12,15 +12,15 @@ const myEvents = [
         rank: "2Lt",
         name: "aaron",
         email: "hotmail@hotmail.com",
-        phoneNumber: '911-911-9911',
-        seat: ''
+        phoneNumber: "911-911-9911",
+        seat: "",
       },
       {
         rank: "SrA",
         name: "caden Wood",
         email: "hotmail@gmail.com",
-        phoneNumber: '998-765-4321',
-        seat: ''
+        phoneNumber: "998-765-4321",
+        seat: "",
       },
     ],
   },
@@ -37,15 +37,15 @@ const myEvents = [
         rank: "2Lt",
         name: "aaron",
         email: "hotmail@hotmail.com",
-        phoneNumber: '911-911-9911',
-        seat: ''
+        phoneNumber: "911-911-9911",
+        seat: "",
       },
       {
         rank: "SrA",
         name: "caden Wood",
         email: "hotmail@gmail.com",
-        phoneNumber: '998-765-4321',
-        seat: ''
+        phoneNumber: "998-765-4321",
+        seat: "",
       },
     ],
   },
@@ -62,15 +62,17 @@ const myEvents = [
         rank: "2Lt",
         name: "aaron",
         email: "hotmail@hotmail.com",
-        phoneNumber: '911-911-9911',
-        seat: ''
+        phoneNumber: "911-911-9911",
+        ischecked: true,
+        seat: "",
       },
       {
         rank: "SrA",
         name: "caden Wood",
         email: "hotmail@gmail.com",
-        phoneNumber: '998-765-4321',
-        seat: ''
+        phoneNumber: "998-765-4321",
+        ischecked: true,
+        seat: "",
       },
     ],
   },

@@ -13,15 +13,9 @@ function EditModal({
   recurring,
   changeRecur,
   peopleData,
-  changePeople,
-  peopleID,
+  checkingChecked,
   formSubmit,
 }) {
-
-  function personFunc(index){
-    changePeople({index})
-  }
-
   /* 
   You are able to lift up the index. Then next thing you need to do is create a functions
   that will be able read the index bind the current situation and go from there.
@@ -74,7 +68,11 @@ function EditModal({
           value="Off"
           onChange={changeRecur}
         />
-        <label className="inline-flex justify-center" htmlFor="no" value={recurring}>
+        <label
+          className="inline-flex justify-center"
+          htmlFor="no"
+          value={recurring}
+        >
           No
         </label>
         <input
@@ -102,21 +100,18 @@ function EditModal({
         <br />
         <h1 className="flex justify-center text-lg">Attendee's: </h1>
         {/* ////////////////////////////////// */}
-          {peopleData.map((foodie, index) => {
-            return(
-              <div key={index}>
-                <input
-                type="text"
-                onChange={personFunc.bind(this,index)}
-                value={foodie.name}
-                />
-              </div>
-            )
-          })}
-
-
-
-
+        {peopleData.map((foodie, index) => {
+          return (
+            <div key={index}>
+              <input
+                type="checkbox"
+                checked={foodie.ischecked}
+                onClick={() => checkingChecked(index, foodie.ischecked)}
+              />
+              {foodie.name}
+            </div>
+          );
+        })}
 
         {/* //////////////////////////// */}
         <div className="p-2 flex justify-evenly">
@@ -140,6 +135,5 @@ function EditModal({
 }
 
 export default EditModal;
-
 
 //https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html
