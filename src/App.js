@@ -14,6 +14,18 @@ function App() {
 
   const addEvent = (myNewEvent) => {
     console.log(myNewEvent);
+    if (
+      (myNewEvent.name === "") |
+      (myNewEvent.date === "") |
+      (myNewEvent.start === "") |
+      (myNewEvent.end === "") |
+      (myNewEvent.seats === 0) |
+      (myNewEvent.seats === "") |
+      (myNewEvent.recurring === "")
+    ) {
+      return window.alert("One or more inputs were empty. Please try again");
+    }
+    console.log("hello the banana was pink in the blueberry forest");
     setallEvents([...allEvents, myNewEvent]);
     window.alert("You have added a new event.");
   };
