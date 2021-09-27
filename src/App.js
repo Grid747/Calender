@@ -13,7 +13,6 @@ function App() {
   const [allEvents, setallEvents] = useState(Data);
 
   const addEvent = (myNewEvent) => {
-    console.log(myNewEvent);
     if (
       (myNewEvent.name === "") |
       (myNewEvent.date === "") |
@@ -25,8 +24,33 @@ function App() {
     ) {
       return window.alert("One or more inputs were empty. Please try again");
     }
-    console.log("hello the banana was pink in the blueberry forest");
-    setallEvents([...allEvents, myNewEvent]);
+
+    if (myNewEvent.recurring === "Daily") {
+      console.log("You picked daily");
+    } else if (myNewEvent.recurring === "Weekly") {
+      console.log("You picked Weekly");
+      let today = new Date(); // this will get the current date and time. This will be useful for when I am trying to delete stuff cuz it over due. Will need to do this more than likely serverside
+      let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
+      let weekLater = new Date(dateinput.setDate(dateinput.getDate() + 7));
+
+      console.log("today is", today);
+      console.log("date input is", dateinput);
+      console.log("date input but one week later", weekLater);
+
+      /* do a for or while loop that create a new event object with the date and add it to a new array 
+         constantly replace the date input as the new date from week later */
+
+      /* let dd = String(today.getDate()).padStart(2, "0");
+      let mm = String(today.getMonth() + 1).padStart(2, "0");
+      let yyyy = today.getFullYear();
+      today = yyyy + "-" + mm + "-" + dd; */
+
+      //console.log("the time since 1970 is ", today.getTime());
+      //let todayTime = today.getTime(); //<-- this will get the time from 1970
+    } else {
+      setallEvents([...allEvents, myNewEvent]);
+    }
+
     window.alert("You have added a new event.");
   };
 
