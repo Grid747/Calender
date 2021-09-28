@@ -8,6 +8,8 @@ import PackageButton from "./components/PcsPackageBtn";
 import InstrucButton from "./components/InstrucBtn";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
+//import ModelOpener from "./components/ModelOpener";
+//import Modal from "./components/Modal";
 
 function App() {
   const [allEvents, setallEvents] = useState(Data);
@@ -25,17 +27,68 @@ function App() {
       return window.alert("One or more inputs were empty. Please try again");
     }
 
-    if (myNewEvent.recurring === "Daily") {
-      console.log("You picked daily");
+    if (myNewEvent.recurring === "No") {
+      console.log("You picked no reoccurence.");
+      const id = Math.floor(Math.random() * 100000000) + 1;
+      myNewEvent = [id, ...myNewEvent];
+
     } else if (myNewEvent.recurring === "Weekly") {
       console.log("You picked Weekly");
-      let today = new Date(); // this will get the current date and time. This will be useful for when I am trying to delete stuff cuz it over due. Will need to do this more than likely serverside
-      let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
-      let weekLater = new Date(dateinput.setDate(dateinput.getDate() + 7));
+      //let today = new Date(); // this will get the current date and time. This will be useful for when I am trying to delete stuff cuz it over due. Will need to do this more than likely serverside
+      console.log("before dateinput")
+      
+      let uniqueId= [];
+      //let fakeallEvents = allEvents
 
-      console.log("today is", today);
-      console.log("date input is", dateinput);
-      console.log("date input but one week later", weekLater);
+      for(let i = 0; i < 12; i++){
+        //console.log("my date", dateinput);
+        const id = Math.floor(Math.random() * 100000000) + 1;
+        console.log(id)
+        uniqueId[i] =id
+      }
+      console.log(uniqueId)
+
+      let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
+      let uniqueDate = []
+      for(let i = 0; i < 12; i++){
+        //console.log("my date", dateinput);
+        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7))
+        let dd = String(specialDate.getDate()).padStart(2, "0");
+        let mm = String(specialDate.getMonth()).padStart(2, "0");
+        let yyyy = specialDate.getFullYear();
+        let specialDateString = yyyy +"-" + mm + "-" + dd;
+        uniqueDate[i] = specialDateString
+      }
+      console.log(uniqueDate)
+
+      let fakeSingleEvent = myNewEvent
+
+      let repeatedArr = []
+      for(let i = 0; i < 12; i++){
+        //console.log("my date", dateinput);
+        repeatedArr[i] = fakeSingleEvent;
+/*         repeatedArr[i].id = uniqueId[i]
+        repeatedArr[i].date = uniqueDate[i] */
+      }
+      console.log(repeatedArr);
+
+      repeatedArr[0].id = uniqueId[0];
+      repeatedArr[1].id = uniqueId[1];
+
+      console.log("break break");
+      console.log(repeatedArr)
+
+
+      //let fakeallEvents = allEvents;
+
+      //console.log(fakeallEvents);
+      //let combinedArray = allEvents.concat(reoccuringEvents)
+
+
+      //fakeallEvents = allEvents.concat(fakeallEvents)
+
+
+      //setallEvents([...allEvents, reoccuringEvents])
 
       /* do a for or while loop that create a new event object with the date and add it to a new array 
          constantly replace the date input as the new date from week later */
@@ -68,7 +121,7 @@ function App() {
     );
     setallEvents(updatedEvents);
     console.log(updatedEvents);
-    window.alert("You are now in delete mode.");
+    window.alert("You are now deleting this event.");
   };
 
   const [disable, setDisable] = useState(false);
@@ -176,7 +229,9 @@ function App() {
       (seats === "") |
       (recurring === "")
     ) {
-      return window.alert("Error one of the inputs is missing its value");
+      return(
+        window.alert("Error one of the inputs is missing its value")
+      )
     }
 
     const id = filterID;

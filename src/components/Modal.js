@@ -61,8 +61,8 @@ function Modal({ onAdd, submit }) {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    const id = Math.floor(Math.random() * 100000000) + 1;
-    onAdd({ id, name, date, start, end, seats, recurring, people });
+
+    onAdd({ name, date, start, end, seats, recurring, people });
     submit()
   };
 
@@ -116,14 +116,6 @@ function Modal({ onAdd, submit }) {
             onChange={changeRecur}
           />
           <label htmlFor="no">No</label>
-          <input
-            type="radio"
-            id="Daily"
-            name="repeating"
-            value="Daily"
-            onChange={changeRecur}
-          />
-          <label htmlFor="css">Daily</label>
           <input
             type="radio"
             id="Weekly"

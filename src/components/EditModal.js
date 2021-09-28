@@ -55,43 +55,14 @@ function EditModal({
           value={seats}
         ></input>
         <h1 className="flex justify-center text-lg">Reoccuring: </h1>
-        <input
-          className="inline-flex justify-center w-10"
-          type="radio"
+        <p
+          className="inline-flex justify-center"
           id="no"
           name="repeating"
           value="Off"
           onChange={changeRecur}
-        />
-        <label
-          className="inline-flex justify-center"
-          htmlFor="no"
-          value={recurring}
-        >
-          No
-        </label>
-        <input
-          className="inline-flex justify-center w-10"
-          type="radio"
-          id="Daily"
-          name="repeating"
-          value="Daily"
-          onChange={changeRecur}
-        />
-        <label className="inline-flex justify-center" htmlFor="css">
-          Daily
-        </label>
-        <input
-          className="inline-flex justify-center w-10"
-          type="radio"
-          id="Weekly"
-          name="repeating"
-          value="Weekly"
-          onChange={changeRecur}
-        />
-        <label className="inline-flex justify-center" htmlFor="Weekly">
-          Weekly
-        </label>
+        >{recurring}</p>
+        
         <br />
         <h1 className="flex justify-center text-lg">Attendee's: </h1>
         {peopleData.map((foodie, index) => {
