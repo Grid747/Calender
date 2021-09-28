@@ -31,62 +31,73 @@ function App() {
       console.log("You picked no reoccurence.");
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent = [id, ...myNewEvent];
-
     } else if (myNewEvent.recurring === "Weekly") {
       console.log("You picked Weekly");
       //let today = new Date(); // this will get the current date and time. This will be useful for when I am trying to delete stuff cuz it over due. Will need to do this more than likely serverside
-      console.log("before dateinput")
-      
-      let uniqueId= [];
+      console.log("before dateinput");
+
+      let uniqueId = [];
       //let fakeallEvents = allEvents
 
-      for(let i = 0; i < 12; i++){
+      for (let i = 0; i < 12; i++) {
         //console.log("my date", dateinput);
         const id = Math.floor(Math.random() * 100000000) + 1;
-        console.log(id)
-        uniqueId[i] =id
+        console.log(id);
+        uniqueId[i] = id;
       }
-      console.log(uniqueId)
+      console.log(uniqueId);
 
       let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
-      let uniqueDate = []
-      for(let i = 0; i < 12; i++){
+      let uniqueDate = [];
+      for (let i = 0; i < 12; i++) {
         //console.log("my date", dateinput);
-        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7))
+        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
         let dd = String(specialDate.getDate()).padStart(2, "0");
         let mm = String(specialDate.getMonth()).padStart(2, "0");
         let yyyy = specialDate.getFullYear();
-        let specialDateString = yyyy +"-" + mm + "-" + dd;
-        uniqueDate[i] = specialDateString
+        let specialDateString = yyyy + "-" + mm + "-" + dd;
+        uniqueDate[i] = specialDateString;
       }
-      console.log(uniqueDate)
+      console.log(uniqueDate);
 
-      let fakeSingleEvent = myNewEvent
-
-      let repeatedArr = []
-      for(let i = 0; i < 12; i++){
+      let repeatedArr = [];
+      for (let i = 0; i < 12; i++) {
         //console.log("my date", dateinput);
-        repeatedArr[i] = fakeSingleEvent;
-/*         repeatedArr[i].id = uniqueId[i]
+        repeatedArr[i] = myNewEvent;
+        /*         repeatedArr[i].id = uniqueId[i]
         repeatedArr[i].date = uniqueDate[i] */
       }
       console.log(repeatedArr);
 
-      repeatedArr[0].id = uniqueId[0];
-      repeatedArr[1].id = uniqueId[1];
+      console.log("finale");
+      let finalrepeatedArr = JSON.parse(JSON.stringify(repeatedArr));
+      /* console.log(finalrepeatedArr); */
 
-      console.log("break break");
-      console.log(repeatedArr)
+      /* console.log("break break");
+      finalrepeatedArr[3].id = uniqueId[3];
+      console.log(finalrepeatedArr); */
+      for (let i = 0; i < 12; i++) {
+        finalrepeatedArr[i].id = uniqueId[i];
+        finalrepeatedArr[i].date = uniqueDate[i];
+      }
+      console.log(finalrepeatedArr);
 
+      console.log("finale finale");
+      let deepAllEvents = JSON.parse(JSON.stringify(allEvents));
+
+      let finalFinalFinalArr = [].concat(deepAllEvents, finalrepeatedArr);
+      console.log(finalFinalFinalArr);
+
+      setallEvents(finalFinalFinalArr);
+      /*       console.log("break break");
+      console.log(repeatedArr); */
 
       //let fakeallEvents = allEvents;
 
       //console.log(fakeallEvents);
       //let combinedArray = allEvents.concat(reoccuringEvents)
 
-
       //fakeallEvents = allEvents.concat(fakeallEvents)
-
 
       //setallEvents([...allEvents, reoccuringEvents])
 
@@ -195,12 +206,12 @@ function App() {
     console.log(filterID);
 
     console.log("stuff for adding");
-    console.log(name);
+    /*     console.log(name);
     console.log(date);
     console.log(start);
     console.log(end);
     console.log(seats);
-    console.log(recurring);
+    console.log(recurring); */
 
     console.log("people before filter operation");
     console.log(people);
@@ -229,9 +240,7 @@ function App() {
       (seats === "") |
       (recurring === "")
     ) {
-      return(
-        window.alert("Error one of the inputs is missing its value")
-      )
+      return window.alert("Error one of the inputs is missing its value");
     }
 
     const id = filterID;

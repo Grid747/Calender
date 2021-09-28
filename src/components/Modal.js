@@ -36,7 +36,7 @@ function Modal({ onAdd, submit }) {
   const [recurring, setRecurring] = useState("");
   const changeRecur = (e) => setRecurring(e.target.value);
 
-  let people = []
+  let people = [];
 
   //const [people, setPeople] = useState([{}]);
   //const changePeople = (e) => setPeople(e.target.value);
@@ -63,15 +63,15 @@ function Modal({ onAdd, submit }) {
     e.preventDefault();
 
     onAdd({ name, date, start, end, seats, recurring, people });
-    submit()
+    submit();
   };
 
-  console.log(name);
-  console.log(date)
+  console.log(date);
+  /* console.log(name);
   console.log(start)
   console.log(end)
   console.log(seats)
-  console.log(recurring)
+  console.log(recurring) */
 
   return (
     <div className="flex justify-center border w-full">
@@ -125,11 +125,13 @@ function Modal({ onAdd, submit }) {
           />
           <label htmlFor="Weekly">Weekly</label>
           <div className="px-1 content-center flex">
-            <button className="rounded-full px-3 bg-white h-10 w-20">Submit</button>
+            <button className="rounded-full px-3 bg-white h-10 w-20">
+              Submit
+            </button>
           </div>
         </div>
       </form>
-      
+
       {/*       {showBox && (
         <DataBox
           name={name}
