@@ -27,7 +27,7 @@ function ArrayMap({
                 startTime={myEvents.start}
                 endTime={myEvents.end}
                 seatNum={myEvents.seats}
-                reoccuring={myEvents.recurring}
+                reoccuring={myEvents.reoccuring}
               />
               {!dropValue ? (
                 <div className="flex justify-evenly">

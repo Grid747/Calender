@@ -10,8 +10,7 @@ function EditModal({
   changeEnd,
   seats,
   changeSeats,
-  recurring,
-  changeRecur,
+  reoccuring,
   peopleData,
   checkingChecked,
   formSubmit,
@@ -55,14 +54,8 @@ function EditModal({
           value={seats}
         ></input>
         <h1 className="flex justify-center text-lg">Reoccuring: </h1>
-        <p
-          className="inline-flex justify-center"
-          id="no"
-          name="repeating"
-          value="Off"
-          onChange={changeRecur}
-        >{recurring}</p>
-        
+        <p className="inline-flex justify-center">{reoccuring}</p>
+
         <br />
         <h1 className="flex justify-center text-lg">Attendee's: </h1>
         {peopleData.map((foodie, index) => {

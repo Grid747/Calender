@@ -22,25 +22,22 @@ function App() {
       (myNewEvent.end === "") |
       (myNewEvent.seats === 0) |
       (myNewEvent.seats === "") |
-      (myNewEvent.recurring === "")
+      (myNewEvent.reoccuring === "")
     ) {
       return window.alert("One or more inputs were empty. Please try again");
     }
 
-    if (myNewEvent.recurring === "No") {
+    if (myNewEvent.reoccuring === "No") {
       console.log("You picked no reoccurence.");
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent = [id, ...myNewEvent];
-    } else if (myNewEvent.recurring === "Weekly") {
+    } else if (myNewEvent.reoccuring === "Weekly") {
       console.log("You picked Weekly");
-      //let today = new Date(); // this will get the current date and time. This will be useful for when I am trying to delete stuff cuz it over due. Will need to do this more than likely serverside
       console.log("before dateinput");
 
       let uniqueId = [];
-      //let fakeallEvents = allEvents
 
       for (let i = 0; i < 12; i++) {
-        //console.log("my date", dateinput);
         const id = Math.floor(Math.random() * 100000000) + 1;
         console.log(id);
         uniqueId[i] = id;
@@ -50,7 +47,6 @@ function App() {
       let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
       let uniqueDate = [];
       for (let i = 0; i < 12; i++) {
-        //console.log("my date", dateinput);
         let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
         let dd = String(specialDate.getDate()).padStart(2, "0");
         let mm = String(specialDate.getMonth()).padStart(2, "0");
@@ -62,20 +58,13 @@ function App() {
 
       let repeatedArr = [];
       for (let i = 0; i < 12; i++) {
-        //console.log("my date", dateinput);
         repeatedArr[i] = myNewEvent;
-        /*         repeatedArr[i].id = uniqueId[i]
-        repeatedArr[i].date = uniqueDate[i] */
       }
       console.log(repeatedArr);
 
       console.log("finale");
       let finalrepeatedArr = JSON.parse(JSON.stringify(repeatedArr));
-      /* console.log(finalrepeatedArr); */
 
-      /* console.log("break break");
-      finalrepeatedArr[3].id = uniqueId[3];
-      console.log(finalrepeatedArr); */
       for (let i = 0; i < 12; i++) {
         finalrepeatedArr[i].id = uniqueId[i];
         finalrepeatedArr[i].date = uniqueDate[i];
@@ -89,30 +78,6 @@ function App() {
       console.log(finalFinalFinalArr);
 
       setallEvents(finalFinalFinalArr);
-      /*       console.log("break break");
-      console.log(repeatedArr); */
-
-      //let fakeallEvents = allEvents;
-
-      //console.log(fakeallEvents);
-      //let combinedArray = allEvents.concat(reoccuringEvents)
-
-      //fakeallEvents = allEvents.concat(fakeallEvents)
-
-      //setallEvents([...allEvents, reoccuringEvents])
-
-      /* do a for or while loop that create a new event object with the date and add it to a new array 
-         constantly replace the date input as the new date from week later */
-
-      /* let dd = String(today.getDate()).padStart(2, "0");
-      let mm = String(today.getMonth() + 1).padStart(2, "0");
-      let yyyy = today.getFullYear();
-      today = yyyy + "-" + mm + "-" + dd; */
-
-      //console.log("the time since 1970 is ", today.getTime());
-      //let todayTime = today.getTime(); //<-- this will get the time from 1970
-    } else {
-      setallEvents([...allEvents, myNewEvent]);
     }
 
     window.alert("You have added a new event.");
@@ -155,8 +120,7 @@ function App() {
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
-  const [recurring, setRecurring] = useState("");
-  const changeRecur = (e) => setRecurring(e.target.value);
+  const [reoccuring, setRecurring] = useState("");
 
   const [people, setPeople] = useState([]);
 
@@ -192,6 +156,8 @@ function App() {
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
+    console.log("all event reoccuring", allEvents[indexOfEvent]);
+    console.log("recurring", reoccuring);
     console.log("All the people");
     console.log(allEvents[indexOfEvent].people);
     setPeople(allEvents[indexOfEvent].people);
@@ -238,7 +204,7 @@ function App() {
       // eslint-disable-next-line
       (seats == 0 && adding2Seats == 0) |
       (seats === "") |
-      (recurring === "")
+      (reoccuring === "")
     ) {
       return window.alert("Error one of the inputs is missing its value");
     }
@@ -251,7 +217,7 @@ function App() {
       start,
       end,
       seats: parseInt(seats) + adding2Seats,
-      recurring,
+      recurring: reoccuring,
       people: updatedPeople,
     };
     setallEvents(
@@ -413,8 +379,7 @@ function App() {
                 changeEnd={changeEnd}
                 seats={seats}
                 changeSeats={changeSeats}
-                recurring={recurring}
-                changeRecur={changeRecur}
+                reoccuring={reoccuring}
                 peopleData={people}
                 checkingChecked={checkingChecked}
                 closeBtn={changeEditModel}

@@ -33,7 +33,7 @@ function Modal({ onAdd, submit }) {
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
-  const [recurring, setRecurring] = useState("");
+  const [reoccuring, setRecurring] = useState("");
   const changeRecur = (e) => setRecurring(e.target.value);
 
   let people = [];
@@ -62,12 +62,12 @@ function Modal({ onAdd, submit }) {
   const formSubmit = (e) => {
     e.preventDefault();
 
-    onAdd({ name, date, start, end, seats, recurring, people });
+    onAdd({ name, date, start, end, seats, reoccuring, people });
     submit();
   };
 
-  console.log(date);
-  /* console.log(name);
+  /*   console.log(date)
+  console.log(name);
   console.log(start)
   console.log(end)
   console.log(seats)

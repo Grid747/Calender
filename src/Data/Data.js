@@ -31,7 +31,7 @@ const myEvents = [
     start: "15:30",
     end: "22:30",
     seats: 20,
-    reoccuring: "Daily",
+    reoccuring: "Weekly",
     people: [
       {
         rank: "2Lt",
