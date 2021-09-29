@@ -40,7 +40,7 @@ function ModelOpener({ onAdd }) {
           </button>
         </div>
       </div>
-      <div className='flex justify-center px-2'>
+      <div className='flex justify-center px-2 bg-opacity-50 bg-gray-400'>
         {showModal && <Modal onAdd={onAdd} submit={submit} />}
       </div>
     </div>

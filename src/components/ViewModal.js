@@ -9,7 +9,6 @@ function ViewModal({
   reoccuring,
   people,
   closeBtn,
-  disable
 }) {
   return (
     <div className="inlne-flex py-4 border-2 border-gray-400 bg-blue-500 justify-center">
@@ -42,9 +41,9 @@ function ViewModal({
         {people}
       </p>
       <div className="p-2 flex justify-evenly">
-        <button onClick={closeBtn} className="rounded-full bg-white px-2 py-1">
-          Close
-        </button>
+        <button onClick={closeBtn} className="rounded-full px-3 bg-white h-10 w-20 hover:shadow-lg">
+            Close
+            </button>
       </div>
     </div>
   );

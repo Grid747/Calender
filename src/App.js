@@ -26,11 +26,16 @@ function App() {
     ) {
       return window.alert("One or more inputs were empty. Please try again");
     }
+    
 
+    console.log("before the If statement")
     if (myNewEvent.reoccuring === "No") {
+      console.log("test")
+      console.log(myNewEvent.reoccuring)
       console.log("You picked no reoccurence.");
       const id = Math.floor(Math.random() * 100000000) + 1;
-      myNewEvent = [id, ...myNewEvent];
+      myNewEvent.id = id;
+      setallEvents([...allEvents, myNewEvent])
     } else if (myNewEvent.reoccuring === "Weekly") {
       console.log("You picked Weekly");
       console.log("before dateinput");
@@ -266,7 +271,7 @@ function App() {
           peopleArr[i].email +
           " " +
           peopleArr[i].phoneNumber +
-          "; \r\n";
+          "; \r\n\n";
       }
       return myArr;
     }

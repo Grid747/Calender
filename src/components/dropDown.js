@@ -15,7 +15,7 @@ const DropDown = ({ onAdd, dropValue, newDropValue }) => {
             name='Login'
             value={dropValue}
             onChange={newDropValue}
-            className='mx-2 border-2 border-gray-400 border-offset'
+            className='mx-2 border-2 border-gray-400 border-offset hover:shadow-lg'
           >
             <option value={false}>Member</option>
             <option value={true}>Admin</option>

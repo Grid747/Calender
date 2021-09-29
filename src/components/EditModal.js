@@ -72,19 +72,12 @@ function EditModal({
         })}
 
         <div className="p-2 flex justify-evenly">
-          <button
-            onClick={closeBtn}
-            className="rounded-full bg-white px-2 py-1"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            onClick={formSubmit}
-            className="rounded-full bg-white px-2 py-1"
-          >
+        <button onClick={closeBtn} className="rounded-full px-3 bg-white h-10 w-20 hover:shadow-lg">
+            Close
+            </button>
+            <button onClick={formSubmit} className="rounded-full px-3 bg-white h-10 w-20 hover:shadow-lg">
             Submit
-          </button>
+            </button>
         </div>
       </form>
     </div>
