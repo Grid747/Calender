@@ -20,7 +20,7 @@ function RegisterModal({ closebtn, subOn, disable }) {
     subOn({ rank, name, email, phoneNumber, ischecked });
   };
   return (
-    <div className="flex px-4 border-2 border-gray-400 bg-blue-500 justify-center">
+    <div className="flex px-4 border-2 border-gray-900 bg-blue-300 justify-center">
       <form onSubmit={submitbtn}>
         <h1 className="flex justify-center">Rank:</h1>
         <input
@@ -50,13 +50,13 @@ function RegisterModal({ closebtn, subOn, disable }) {
         <div className="p-2 flex justify-evenly">
           <button
             type="button"
-            className="rounded-full bg-white px-2 py-1"
+            className="rounded-full border border-gray-900 bg-white px-2 py-1"
             onClick={closebtn}
             disabled={disable}
           >
             Cancel
           </button>
-          <button type="submit" className="rounded-full bg-white px-2 py-1">
+          <button type="submit" className="rounded-full border border-gray-900 bg-white px-2 py-1">
             Submit
           </button>
         </div>

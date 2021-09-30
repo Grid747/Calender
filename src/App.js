@@ -4,8 +4,8 @@ import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
-import PackageButton from "./components/PcsPackageBtn";
-import InstrucButton from "./components/InstrucBtn";
+//import PackageButton from "./components/PcsPackageBtn";
+//import InstrucButton from "./components/InstrucBtn";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
 //import ModelOpener from "./components/ModelOpener";
@@ -271,7 +271,7 @@ function App() {
           peopleArr[i].email +
           " " +
           peopleArr[i].phoneNumber +
-          "; \r\n\n";
+          ";\r\n";
       }
       return myArr;
     }
@@ -347,10 +347,10 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center bg-gray-100">
       <br />
-      <div className="flex justify-center text-3xl">Registration Site</div>
-      <div className="flex justify-end w-full">
+      <div className="flex justify-center text-4xl">Registration Site</div>
+      <div className="flex justify-end w-full shadow-lg">
         <DropDown
           onAdd={addEvent}
           dropValue={loginValue}
@@ -367,10 +367,8 @@ function App() {
           dropValue={loginValue}
           disable={disable}
         />
-        <div className="flex flex-col">
-          <PackageButton label="PCS Package" />
-          <InstrucButton label="Instructions" />
-          <div>
+        
+          <div className="pt-8">
             {editModal && (
               <EditModal
                 /* onAdd={editEvent}  */
@@ -392,7 +390,7 @@ function App() {
               />
             )}
           </div>
-          <div>
+          <div className="pt-8">
             {viewModal && (
               <ViewModal
                 name={viewObject.name}
@@ -406,7 +404,7 @@ function App() {
               />
             )}
           </div>
-          <div>
+          <div className="pt-8">
             {registerModal && (
               <RegisterModal
                 closebtn={changeRegisterModel}
@@ -414,7 +412,7 @@ function App() {
               />
             )}
           </div>
-        </div>
+        
       </div>
     </div>
   );

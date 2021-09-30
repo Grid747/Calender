@@ -12,14 +12,14 @@ function ArrayMap({
 }) {
   return (
     //need to find out  how to sort by date.
-    <div className="flex flex-wrap h-full w-9/12 lg:w-8/12  px-2">
+    <div className="flex flex-wrap h-full w-9/12 lg:w-8/12 px-2">
       {mydata.map((myEvents) => {
         return (
           <div
             key={myEvents.id}
-            className="p-4 hover:shadow-2xl hover:bg-gray-50"
+            className="p-2"
           >
-            <div className="box-content border-8 border-gray-400 p-2 w-60 overflow-x-auto h-52">
+            <div className="box-content border-2 border-gray-900 w-60 overflow-x-auto h-52 hover:shadow-2xl rounded-lg bg-blue-300">
               <Event
                 key={myEvents.id}
                 name={myEvents.name}
@@ -34,7 +34,7 @@ function ArrayMap({
                   <button
                     id="registerBtn"
                     disabled={disable}
-                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
                     onClick={() => registerEvent(myEvents.id)}
                   >
                     Register
@@ -45,7 +45,7 @@ function ArrayMap({
                   <button
                     id="editBtn"
                     disabled={disable}
-                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
                     onClick={() => editEvent(myEvents.id)}
                   >
                     Edit
@@ -53,7 +53,7 @@ function ArrayMap({
                   <button
                     id="viewBtn"
                     disabled={disable}
-                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
                     onClick={() => viewEvent(myEvents.id)}
                   >
                     View
@@ -61,7 +61,7 @@ function ArrayMap({
                   <button
                     id="editbtn"
                     disabled={disable}
-                    className="bg-gray-400 rounded-sm px-2 hover:shadow-xl"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
                     onClick={() => deleteEvent(myEvents.id)}
                   >
                     Delete

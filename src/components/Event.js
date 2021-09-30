@@ -6,8 +6,8 @@ function Event({ name, eventDate, startTime, endTime, seatNum, reoccuring }) {
   }; */
 
   return (
-    <div className='flex p-4'>
-      <div className='flex flex-col bg-transparent w-auto h-auto'>
+    <div className='flex justify-center p-4'>
+      <div className='flex flex-col w-auto h-auto'>
         <h1 className='flex px-2'>Name: {name}</h1>
         <div className='flex px-2'>
           <label>Event Date: {eventDate}</label>

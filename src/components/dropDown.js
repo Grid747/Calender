@@ -29,7 +29,7 @@ const DropDown = ({ onAdd, dropValue, newDropValue }) => {
           {dropValue ? (
             <ModelOpener /* label="Add Event" */ onAdd={onAdd} />
           ) : (
-            <div className='pb-20'></div>
+            <div className='bg-blue-900 h-12 w-full pb-12 flex justify-center font-bold uppercase p-2 text-2xl text-white'>647th Force Support Squadron</div>
           )}
         </div>
       </div>

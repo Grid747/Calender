@@ -16,7 +16,7 @@ function EditModal({
   formSubmit,
 }) {
   return (
-    <div className="flex flex-col justify-center content-center py-4 border-2 border-gray-400 bg-blue-500">
+    <div className="rounded-lg flex flex-col justify-center content-center p-4 border-2 border-gray-900 bg-blue-300">
       <form>
         <h1 className="flex justify-center text-lg">Event Name:</h1>
         <input
@@ -72,10 +72,10 @@ function EditModal({
         })}
 
         <div className="p-2 flex justify-evenly">
-        <button onClick={closeBtn} className="rounded-full px-3 bg-white h-10 w-20 hover:shadow-lg">
+        <button onClick={closeBtn} className="rounded-full px-3 border border-gray-900 bg-white h-10 w-20 hover:shadow-lg">
             Close
             </button>
-            <button onClick={formSubmit} className="rounded-full px-3 bg-white h-10 w-20 hover:shadow-lg">
+            <button onClick={formSubmit} className="rounded-full px-3 border border-gray-900 bg-white h-10 w-20 hover:shadow-lg">
             Submit
             </button>
         </div>

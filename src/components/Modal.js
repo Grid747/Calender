@@ -74,35 +74,35 @@ function Modal({ onAdd, submit }) {
   console.log(recurring) */
 
   return (
-    <div className="fixed pin z-50 overflow-auto bg-gray-400 bg-opacity-50 flex w-full h-full">
-        <div className="flex justify-center w-full bg-opacity-50">
+    <div className="fixed pin pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-50 flex w-full h-full">
+        {/* <div className="flex justify-center w-full"> */}
           <form onSubmit={formSubmit}>
-            <div className="bg-blue-400 rounded px-3 py-1 w-full h-auto flex-col">
-              <h1 className="px-1">Event Name</h1>
+            <div className="bg-blue-200 rounded px-12 py-8 w-full h-auto flex-col">
+              <h1 className="px-1 flex justify-center">Event Name</h1>
               <input
                 className="border-2 border-gray-900 rounded px-1 h-10"
                 type="text"
                 onChange={changeName}
               />
-              <h1 className="px-1">Event Date</h1>
+              <h1 className="px-1 flex justify-center">Event Date</h1>
               <input
-                className="border-2 border-gray-900 rounded px-1 h-10"
+                className="border-2 border-gray-900 rounded px-1 w-full h-10"
                 type="date"
                 onChange={changeEventDate}
               />
-              <h1 className="px-1">Start Time</h1>
+              <h1 className="px-1 flex justify-center">Start Time</h1>
               <input
-                className="border-2 border-gray-900 rounded px-1 h-10"
+                className="border-2 border-gray-900 rounded px-1 w-full w-fullh-10"
                 type="time"
                 onChange={changeStartTime}
               />
-              <h1 className="px-1">End Time</h1>
+              <h1 className="px-1 flex justify-center">End Time</h1>
               <input
-                className="border-2 border-gray-900 rounded px-1 h-10"
+                className="border-2 border-gray-900 rounded px-1 w-full h-10"
                 type="time"
                 onChange={changeEndTime}
               />
-              <h1 className="px-1"># of seats</h1>
+              <h1 className="px-1 flex justify-center"># of seats</h1>
               <input
                 className="border-2 border-gray-900 rounded px-1 h-10"
                 type="number"
@@ -130,8 +130,8 @@ function Modal({ onAdd, submit }) {
               />
               <label className="justify-center" htmlFor="Weekly"> Weekly(For 12 Weeks)</label>
               </div>
-              <div className="px-1 justify-center content-center flex">
-                <button className="rounded-full px-3 bg-white h-10 w-20 hover:shadow-lg">
+              <div className="px-1 pt-2 justify-center content-center flex">
+                <button className="rounded-full px-3 bg-white h-10 w-20 border border-gray-900 hover:shadow-lg">
                   Submit
                 </button>
               </div>
@@ -148,8 +148,7 @@ function Modal({ onAdd, submit }) {
               reoccuring={recur}
             />
           )} */}
-        </div>
-      
+        {/* </div> */}
     </div>
   );
 }
