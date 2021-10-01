@@ -1,5 +1,7 @@
 /* import React, { useState } from "react"; */
 import ModelOpener from "./ModelOpener";
+import InstrucButton from "./InstrucBtn";
+import PackageButton from "./PcsPackageBtn";
 
 const DropDown = ({ onAdd, dropValue, newDropValue }) => {
   /*   const [dropValue, setdropValue] = useState(false);
@@ -29,7 +31,13 @@ const DropDown = ({ onAdd, dropValue, newDropValue }) => {
           {dropValue ? (
             <ModelOpener /* label="Add Event" */ onAdd={onAdd} />
           ) : (
-            <div className='bg-blue-900 h-12 w-full pb-12 flex justify-center font-bold uppercase p-2 text-2xl text-white'>647th Force Support Squadron</div>
+            <div className='bg-blue-900 h-24 w-full font-bold p-2'>
+              <p className="text-2xl text-white uppercase flex justify-center">647th Force Support Squadron</p>
+              <div className="flex justify-center">
+              <InstrucButton label="Instructions" />
+              <PackageButton label="PCS Package" />
+              </div>
+            </div>
           )}
         </div>
       </div>

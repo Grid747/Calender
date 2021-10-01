@@ -20,7 +20,8 @@ function RegisterModal({ closebtn, subOn, disable }) {
     subOn({ rank, name, email, phoneNumber, ischecked });
   };
   return (
-    <div className="flex px-4 border-2 border-gray-900 bg-blue-300 justify-center">
+    <div className="fixed pin z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
+    <div className="flex px-4 h-64 flex-col border-2 border-gray-900 bg-blue-300 justify-center">
       <form onSubmit={submitbtn}>
         <h1 className="flex justify-center">Rank:</h1>
         <input
@@ -61,6 +62,7 @@ function RegisterModal({ closebtn, subOn, disable }) {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 }

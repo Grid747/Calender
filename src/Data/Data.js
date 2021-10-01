@@ -2,7 +2,7 @@ const myEvents = [
   {
     id: 1,
     name: "Event1",
-    date: "1997-12-22",
+    date: "2022-12-22",
     start: "15:30",
     end: "16:30",
     seats: 20,
@@ -52,7 +52,7 @@ const myEvents = [
   {
     id: 3,
     name: "Event3",
-    date: "1994-12-26",
+    date: "2021-09-30",
     start: "15:30",
     end: "22:30",
     seats: 20,

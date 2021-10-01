@@ -1,4 +1,5 @@
 import Event from "../components/Event";
+/* import myEvents from "./Data"; */
 /* import { useState } from "react"; */
 
 function ArrayMap({
@@ -11,14 +12,10 @@ function ArrayMap({
   disable,
 }) {
   return (
-    //need to find out  how to sort by date.
-    <div className="flex flex-wrap h-full w-9/12 lg:w-8/12 px-2">
+    <div className="flex flex-wrap h-full px-2">
       {mydata.map((myEvents) => {
         return (
-          <div
-            key={myEvents.id}
-            className="p-2"
-          >
+          <div key={myEvents.id} className="p-2">
             <div className="box-content border-2 border-gray-900 w-60 overflow-x-auto h-52 hover:shadow-2xl rounded-lg bg-blue-300">
               <Event
                 key={myEvents.id}

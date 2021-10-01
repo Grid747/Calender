@@ -16,11 +16,13 @@ function EditModal({
   formSubmit,
 }) {
   return (
-    <div className="rounded-lg flex flex-col justify-center content-center p-4 border-2 border-gray-900 bg-blue-300">
+    <div className="fixed pin z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
+      <div>
+      <div className="rounded-lg flex h-auto flex-col justify-center p-4 border-2 border-gray-900 bg-blue-300">
       <form>
         <h1 className="flex justify-center text-lg">Event Name:</h1>
         <input
-          className="w-64"
+          className="flex justify-center w-64"
           type="text"
           onChange={changeName}
           value={name}
@@ -80,6 +82,8 @@ function EditModal({
             </button>
         </div>
       </form>
+      </div>
+    </div>
     </div>
   );
 }

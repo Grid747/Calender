@@ -3,7 +3,7 @@ import PCSIntsructions from "../files/PCSInstructions.pptx";
 
 const InstrucButton = ({ label }) => {
   return (
-    <div className='flex h-10 pr-10'>
+    <div className='flex justify-end h-10'>
       <a href={PCSIntsructions}>
         <button
           className='bg-white hover:bg-gray-900 text-gray-900 font-bold 

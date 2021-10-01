@@ -1,8 +1,7 @@
 import React from "react";
 import Modal from "./Modal";
 import { useState } from "react";
-import PackageButton from "./PcsPackageBtn";
-import InstrucButton from "./InstrucBtn";
+import RefreshButton from "./RefreshBtn";
 
 function ModelOpener({ onAdd }) {
   const [showModal, setshowModal] = useState(false);
@@ -22,30 +21,24 @@ function ModelOpener({ onAdd }) {
   };
 
   return (
-    <div className="bg-red-400 border p-1.5 h-14 w-full z-50">
-      <div className="flex flex-col justify-center px-2 items-center">
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center">
-          <div className="items-center">
-          <InstrucButton label="Instructions" />
-          </div>
-          <div className="items-center">
+    <div className="bg-red-500 border justify-centerp-1.5 h-24 w-full z-50">
+      <p className="text-2xl font-bold text-white uppercase flex justify-center">647th FSS Admin</p>
+      <div className="flex justify-center items-center">
+          <div className="items-center pl-4">
             <button
               className={`${
                 showModal
                   ? 'bg-white hover:bg-gray-900 text-gray-900 font-bold hover:text-white py-2 px-2 border border-gray-900 hover:border-transparent rounded'
                   : 'bg-white hover:bg-gray-900 text-gray-900 font-bold hover:text-white py-2 px-2 border border-gray-900 hover:border-transparent rounded'
-              }`}
-              onClick={onclick}
+                }`}
+                onClick={onclick}
             >
               {label}
             </button>
-            </div>
-            <div className="items-center">
-            <PackageButton label="PCS Package" />
           </div>
+          <div className="flex justify-center items-center">
+            <RefreshButton />
           </div>
-        </div>
         <div className="flex justify-center px-2 bg-opacity-50 bg-gray-400">
           {showModal && <Modal onAdd={onAdd} submit={submit} />}
         </div>

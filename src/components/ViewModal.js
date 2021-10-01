@@ -11,7 +11,9 @@ function ViewModal({
   closeBtn,
 }) {
   return (
-    <div className="inlne-flex py-4 border-2 w-56 items-center content-center border-gray-900 bg-blue-300 justify-center">
+    <div className="fixed pin z-50 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
+      <div>
+    <div className="flex flex-col py-4 h-auto  border-2 w-56 items-center content-center border-gray-900 bg-blue-300 justify-center">
       <h1 className="flex justify-center font-bold">Event Name: </h1>
       <p className="flex justify-center" type="text">
         {name}
@@ -37,7 +39,7 @@ function ViewModal({
         {reoccuring}
       </p>
       <h1 className="flex justify-center font-bold">People: </h1>
-      <p className="flex flex-col justify-center pl-10 w-44 text-center overflow-hidden" type="text">
+      <p className="flex justify-center text-center" type="text">
         {people}
       </p>
       <div className="p-2 flex justify-evenly">
@@ -45,6 +47,8 @@ function ViewModal({
             Close
             </button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

@@ -356,22 +356,10 @@ function App() {
           dropValue={loginValue}
           newDropValue={loginChange}
         />
-      </div>
-      <div className="flex flex-wrap justify-start w-full h-full">
-        <ArrayMap
-          mydata={allEvents}
-          deleteEvent={deleteIDEvent}
-          editEvent={editIDEvent}
-          viewEvent={viewIDEvent}
-          registerEvent={registerIDEvent}
-          dropValue={loginValue}
-          disable={disable}
-        />
-        
-          <div className="pt-8">
+        </div>
+        <div>
             {editModal && (
               <EditModal
-                /* onAdd={editEvent}  */
                 name={name}
                 changeName={changeName}
                 date={date}
@@ -390,7 +378,7 @@ function App() {
               />
             )}
           </div>
-          <div className="pt-8">
+        <div>
             {viewModal && (
               <ViewModal
                 name={viewObject.name}
@@ -404,7 +392,7 @@ function App() {
               />
             )}
           </div>
-          <div className="pt-8">
+        <div>
             {registerModal && (
               <RegisterModal
                 closebtn={changeRegisterModel}
@@ -412,7 +400,16 @@ function App() {
               />
             )}
           </div>
-        
+      <div className="flex flex-wrap justify-start w-full h-full">
+        <ArrayMap
+          mydata={allEvents}
+          deleteEvent={deleteIDEvent}
+          editEvent={editIDEvent}
+          viewEvent={viewIDEvent}
+          registerEvent={registerIDEvent}
+          dropValue={loginValue}
+          disable={disable}
+        />
       </div>
     </div>
   );

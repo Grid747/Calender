@@ -74,10 +74,12 @@ function Modal({ onAdd, submit }) {
   console.log(recurring) */
 
   return (
-    <div className="fixed pin pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-50 flex w-full h-full">
-        {/* <div className="flex justify-center w-full"> */}
+    <div className="fixed pin z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
+        {/*<div className="flex justify-center w-full">*/}
+        <div>
+        <div className="rounded-lg flex h-auto flex-col justify-center p-4 border-2 border-gray-900 bg-blue-300">
           <form onSubmit={formSubmit}>
-            <div className="bg-blue-200 rounded px-12 py-8 w-full h-auto flex-col">
+            {/* <div className="bg-blue-200 rounded px-12 py-8 w-full h-auto flex-col"> */}
               <h1 className="px-1 flex justify-center">Event Name</h1>
               <input
                 className="border-2 border-gray-900 rounded px-1 h-10"
@@ -135,7 +137,6 @@ function Modal({ onAdd, submit }) {
                   Submit
                 </button>
               </div>
-            </div>
           </form>
 
           {/*       {showBox && (
@@ -148,7 +149,9 @@ function Modal({ onAdd, submit }) {
               reoccuring={recur}
             />
           )} */}
-        {/* </div> */}
+         {/* </div> */}
+         </div>
+         </div>
     </div>
   );
 }
