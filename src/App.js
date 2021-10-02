@@ -313,6 +313,14 @@ function App() {
     console.log(allEvents);
   };
 
+  //const [chairSeat, setChairSeat] = useState(false)
+  /* const chair = () => {
+    if (allEvents[filterIndex].seats === 0) {
+      //setChairSeat(!chairSeat)
+      console.log(chairSeat)
+    }
+  } */
+
   const registerEvent = (myregisterEvent) => {
     console.log("myregisterEvent");
     console.log(myregisterEvent);
@@ -336,10 +344,17 @@ function App() {
     }
 
     window.alert("You are now registered for this event.");
+    console.log("Find me")
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
     console.log(giraffe);
     allEvents[filterIndex].seats -= 1;
+/*     if (allEvents[filterIndex].seats === 0){
+      console.log("I am inside")
+      setDisable(disable);
+    } */
+    /* console.log("disable is: ")
+    console.log(disable) */
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
@@ -409,6 +424,7 @@ function App() {
           registerEvent={registerIDEvent}
           dropValue={loginValue}
           disable={disable}
+          registerSeat={allEvents[filterIndex].seats}
         />
       </div>
     </div>

@@ -74,7 +74,7 @@ function Modal({ onAdd, submit }) {
   console.log(recurring) */
 
   return (
-    <div className="fixed pin z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
+    <div className="fixed z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
         {/*<div className="flex justify-center w-full">*/}
         <div>
         <div className="rounded-lg flex h-auto flex-col justify-center p-4 border-2 border-gray-900 bg-blue-300">

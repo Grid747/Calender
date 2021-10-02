@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import { useState } from "react";
 import RefreshButton from "./RefreshBtn";
 
+
 function ModelOpener({ onAdd }) {
   const [showModal, setshowModal] = useState(false);
   const [label, setLabel] = useState("Add Event");
@@ -22,7 +23,7 @@ function ModelOpener({ onAdd }) {
 
   return (
     <div className="bg-red-500 border justify-centerp-1.5 h-24 w-full z-50">
-      <p className="text-2xl font-bold text-white uppercase flex justify-center">647th FSS Admin</p>
+      <p className="text-2xl pt-2 font-bold text-white uppercase flex justify-center">647th FSS Admin</p>
       <div className="flex justify-center items-center">
           <div className="items-center pl-4">
             <button
@@ -39,7 +40,7 @@ function ModelOpener({ onAdd }) {
           <div className="flex justify-center items-center">
             <RefreshButton />
           </div>
-        <div className="flex justify-center px-2 bg-opacity-50 bg-gray-400">
+        <div className="flex justify-center fixed pt-16">
           {showModal && <Modal onAdd={onAdd} submit={submit} />}
         </div>
       </div>
