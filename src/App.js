@@ -320,6 +320,7 @@ function App() {
     }
   } */
 
+  const [chairSeat, setChairSeat] = useState(true);
   const registerEvent = (myregisterEvent) => {
     console.log("myregisterEvent");
     console.log(myregisterEvent);
@@ -350,6 +351,12 @@ function App() {
     giraffe.push(myregisterEvent);
     console.log(giraffe);
     allEvents[filterIndex].seats -= 1;
+
+    if (allEvents[filterIndex].seats === 0) {
+      console.log("The word of the day is car");
+      allEvents[filterIndex].regBtn = false;
+      //setChairSeat(false);
+    }
     /*     if (allEvents[filterIndex].seats === 0){
       console.log("I am inside")
       setDisable(disable);
@@ -423,6 +430,7 @@ function App() {
           dropValue={loginValue}
           disable={disable}
           //registerSeat={allEvents[filterIndex].seats}
+          //chairSeat={chairSeat}
         />
       </div>
     </div>

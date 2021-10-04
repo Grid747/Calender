@@ -5,8 +5,9 @@ const myEvents = [
     date: "2022-12-22",
     start: "15:30",
     end: "16:30",
-    seats: 20,
+    seats: 1,
     reoccuring: "Off",
+    regBtn: true,
     people: [
       {
         id: 1,
@@ -34,6 +35,7 @@ const myEvents = [
     end: "22:30",
     seats: 20,
     reoccuring: "Weekly",
+    regBtn: true,
     people: [
       {
         id: 2,
@@ -61,6 +63,7 @@ const myEvents = [
     end: "22:30",
     seats: 20,
     reoccuring: "Weekly",
+    regBtn: true,
     people: [
       {
         id: 3,

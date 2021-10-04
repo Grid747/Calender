@@ -1,6 +1,5 @@
 import Event from "../components/Event";
 /* import myEvents from "./Data"; */
-import { useState } from "react";
 
 function ArrayMap({
   mydata,
@@ -10,14 +9,8 @@ function ArrayMap({
   deleteEvent,
   dropValue,
   disable,
-  registerSeat,
+  chairSeat,
 }) {
-  console.log(registerSeat);
-  const [chairSeat, setChairSeat] = useState(true);
-  if (registerSeat === 0) {
-    setChairSeat(!chairSeat);
-  }
-
   return (
     <div className="flex flex-wrap h-full px-2">
       {mydata.map((myEvents) => {
@@ -35,7 +28,7 @@ function ArrayMap({
               />
               {!dropValue ? (
                 <div className="flex justify-evenly">
-                  {chairSeat ? (
+                  {myEvents.regBtn ? (
                     <button
                       id="registerBtn"
                       disabled={disable}
@@ -44,7 +37,9 @@ function ArrayMap({
                     >
                       Register
                     </button>
-                  ) : null}
+                  ) : (
+                    ""
+                  )}
                 </div>
               ) : (
                 <div className="flex justify-evenly">
