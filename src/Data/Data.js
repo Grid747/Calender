@@ -9,6 +9,7 @@ const myEvents = [
     reoccuring: "Off",
     people: [
       {
+        id: 1,
         rank: "2Lt",
         name: "aaron",
         email: "hotmail@hotmail.com",
@@ -16,6 +17,7 @@ const myEvents = [
         ischecked: true,
       },
       {
+        id: 1,
         rank: "SrA",
         name: "caden Wood",
         email: "hotmail@gmail.com",
@@ -34,6 +36,7 @@ const myEvents = [
     reoccuring: "Weekly",
     people: [
       {
+        id: 2,
         rank: "2Lt",
         name: "aaron",
         email: "hotmail@hotmail.com",
@@ -41,6 +44,7 @@ const myEvents = [
         ischecked: true,
       },
       {
+        id: 2,
         rank: "SrA",
         name: "caden Wood",
         email: "hotmail@gmail.com",
@@ -59,6 +63,7 @@ const myEvents = [
     reoccuring: "Weekly",
     people: [
       {
+        id: 3,
         rank: "2Lt",
         name: "aaron",
         email: "hotmail@hotmail.com",
@@ -66,6 +71,7 @@ const myEvents = [
         ischecked: true,
       },
       {
+        id: 3,
         rank: "SrA",
         name: "caden Wood",
         email: "hotmail@gmail.com",

@@ -26,16 +26,15 @@ function App() {
     ) {
       return window.alert("One or more inputs were empty. Please try again");
     }
-    
 
-    console.log("before the If statement")
+    console.log("before the If statement");
     if (myNewEvent.reoccuring === "No") {
-      console.log("test")
-      console.log(myNewEvent.reoccuring)
+      console.log("test");
+      console.log(myNewEvent.reoccuring);
       console.log("You picked no reoccurence.");
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent.id = id;
-      setallEvents([...allEvents, myNewEvent])
+      setallEvents([...allEvents, myNewEvent]);
     } else if (myNewEvent.reoccuring === "Weekly") {
       console.log("You picked Weekly");
       console.log("before dateinput");
@@ -328,11 +327,13 @@ function App() {
     console.log(filterID);
     console.log(filterIndex);
 
-    console.log(allEvents);
     console.log("allEvents");
+    console.log(allEvents);
 
     console.log("allEvents[filterIndex]");
     console.log(allEvents[filterIndex]);
+
+    myregisterEvent.id = filterID;
 
     if (
       (myregisterEvent.rank === "") |
@@ -344,12 +345,12 @@ function App() {
     }
 
     window.alert("You are now registered for this event.");
-    console.log("Find me")
+    console.log("Find me");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
     console.log(giraffe);
     allEvents[filterIndex].seats -= 1;
-/*     if (allEvents[filterIndex].seats === 0){
+    /*     if (allEvents[filterIndex].seats === 0){
       console.log("I am inside")
       setDisable(disable);
     } */
@@ -371,50 +372,47 @@ function App() {
           dropValue={loginValue}
           newDropValue={loginChange}
         />
-        </div>
-        <div>
-            {editModal && (
-              <EditModal
-                name={name}
-                changeName={changeName}
-                date={date}
-                changeDate={changeDate}
-                start={start}
-                changeStart={changeStart}
-                end={end}
-                changeEnd={changeEnd}
-                seats={seats}
-                changeSeats={changeSeats}
-                reoccuring={reoccuring}
-                peopleData={people}
-                checkingChecked={checkingChecked}
-                closeBtn={changeEditModel}
-                formSubmit={editModalSubmit}
-              />
-            )}
-          </div>
-        <div>
-            {viewModal && (
-              <ViewModal
-                name={viewObject.name}
-                date={viewObject.date}
-                start={viewObject.start}
-                end={viewObject.end}
-                seats={viewObject.seats}
-                reoccuring={viewObject.reocurring}
-                people={viewObject.people}
-                closeBtn={changeViewModel}
-              />
-            )}
-          </div>
-        <div>
-            {registerModal && (
-              <RegisterModal
-                closebtn={changeRegisterModel}
-                subOn={registerEvent}
-              />
-            )}
-          </div>
+      </div>
+      <div>
+        {editModal && (
+          <EditModal
+            name={name}
+            changeName={changeName}
+            date={date}
+            changeDate={changeDate}
+            start={start}
+            changeStart={changeStart}
+            end={end}
+            changeEnd={changeEnd}
+            seats={seats}
+            changeSeats={changeSeats}
+            reoccuring={reoccuring}
+            peopleData={people}
+            checkingChecked={checkingChecked}
+            closeBtn={changeEditModel}
+            formSubmit={editModalSubmit}
+          />
+        )}
+      </div>
+      <div>
+        {viewModal && (
+          <ViewModal
+            name={viewObject.name}
+            date={viewObject.date}
+            start={viewObject.start}
+            end={viewObject.end}
+            seats={viewObject.seats}
+            reoccuring={viewObject.reocurring}
+            people={viewObject.people}
+            closeBtn={changeViewModel}
+          />
+        )}
+      </div>
+      <div>
+        {registerModal && (
+          <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
+        )}
+      </div>
       <div className="flex flex-wrap justify-start w-full h-full">
         <ArrayMap
           mydata={allEvents}
@@ -424,7 +422,7 @@ function App() {
           registerEvent={registerIDEvent}
           dropValue={loginValue}
           disable={disable}
-          registerSeat={allEvents[filterIndex].seats}
+          //registerSeat={allEvents[filterIndex].seats}
         />
       </div>
     </div>

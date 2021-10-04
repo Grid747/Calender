@@ -12,13 +12,12 @@ function ArrayMap({
   disable,
   registerSeat,
 }) {
-  console.log(registerSeat)
-  const [chairSeat, setChairSeat] = useState(true)
+  console.log(registerSeat);
+  const [chairSeat, setChairSeat] = useState(true);
   if (registerSeat === 0) {
-    setChairSeat(!chairSeat)
+    setChairSeat(!chairSeat);
   }
 
-  
   return (
     <div className="flex flex-wrap h-full px-2">
       {mydata.map((myEvents) => {
@@ -37,15 +36,15 @@ function ArrayMap({
               {!dropValue ? (
                 <div className="flex justify-evenly">
                   {chairSeat ? (
-                  <button
-                    id="registerBtn"
-                    disabled={disable}
-                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
-                    onClick={() => registerEvent(myEvents.id)}
-                  >
-                    Register
-                  </button>
-              ) :(null)}
+                    <button
+                      id="registerBtn"
+                      disabled={disable}
+                      className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                      onClick={() => registerEvent(myEvents.id)}
+                    >
+                      Register
+                    </button>
+                  ) : null}
                 </div>
               ) : (
                 <div className="flex justify-evenly">
