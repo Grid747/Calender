@@ -124,8 +124,6 @@ function App() {
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
-  const [regBtn, setRegBtn] = useState(true);
-
   const [reoccuring, setRecurring] = useState("");
 
   const [people, setPeople] = useState([]);
@@ -161,7 +159,6 @@ function App() {
     setStart(allEvents[indexOfEvent].start);
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
-    setRegBtn(allEvents[indexOfEvent].regBtn);
     setRecurring(allEvents[indexOfEvent].reoccuring);
     console.log("all event reoccuring", allEvents[indexOfEvent]);
     console.log("recurring", reoccuring);
@@ -239,7 +236,7 @@ function App() {
       people: updatedPeople,
     };
 
-    
+
     setallEvents(
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
       );
@@ -251,7 +248,6 @@ function App() {
     setStart("");
     setEnd("");
     setSeats(0);
-    setRegBtn(true)
     setRecurring("");
     setPeople([]);
     setEditModal(!editModal);
@@ -385,7 +381,6 @@ function App() {
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
-    setRegBtn(true)
     setRegisterModal(!registerModal);
   };
 
@@ -450,7 +445,6 @@ function App() {
           editEvent={editIDEvent}
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
-          //registerButton={regBtn}
           dropValue={loginValue}
           disable={disable}
           //registerSeat={allEvents[filterIndex].seats}

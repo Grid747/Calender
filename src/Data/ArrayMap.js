@@ -9,7 +9,6 @@ function ArrayMap({
   deleteEvent,
   dropValue,
   disable,
-  registerButton,
   /* chairSeat, */
 }) {
   return (
