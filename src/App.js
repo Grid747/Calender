@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
@@ -8,6 +8,43 @@ import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
 
 function App() {
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+
+  /**
+   * API SECTION
+   */
+  const [API, setAPI] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:3001/event/table")
+      .then((res) => res.json())
+      .then((res) => setAPI(res))
+      .catch((err) => err);
+  });
+
+  console.log(API);
+
+  const [APISingleEvent, setAPISingleEvent] = useState("");
+
+  //replace didcomponentmount and didcompononentupdate
+  /*   useEffect((id) => {
+    fetch(`http://localhost:3001/event/${id}`)
+      .then((res) => res.json())
+      .then((res) => setAPISingleEvent(res));
+  });
+ */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+
   /*
    * This is for the login drop down on the right where you change from member to admin
    */
@@ -358,6 +395,7 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
+      <p className="">{API[0].Name}</p>
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
