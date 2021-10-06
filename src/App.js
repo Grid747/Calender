@@ -124,6 +124,8 @@ function App() {
   const [seats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
+  const [regBtn, setRegBtn] = useState(true);
+
   const [reoccuring, setRecurring] = useState("");
 
   const [people, setPeople] = useState([]);
@@ -159,6 +161,7 @@ function App() {
     setStart(allEvents[indexOfEvent].start);
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
+    setRegBtn(allEvents[indexOfEvent].regBtn);
     setRecurring(allEvents[indexOfEvent].reoccuring);
     console.log("all event reoccuring", allEvents[indexOfEvent]);
     console.log("recurring", reoccuring);
@@ -194,11 +197,12 @@ function App() {
     console.log(people.length);
     console.log("updated people length");
     console.log(updatedPeople.length);
-
+    
     let adding2Seats = people.length - updatedPeople.length;
     console.log("number of seats being added");
     console.log(adding2Seats);
     console.log(typeof adding2Seats);
+
 
     if (
       (name === "") |
@@ -212,7 +216,16 @@ function App() {
     ) {
       return window.alert("Error one of the inputs is missing its value");
     }
-
+    let regBtnSpecific
+    console.log("filter index seats");
+    console.log(allEvents[filterIndex].seats)
+    if (allEvents[filterIndex].seats >= 0 ) {
+      console.log("hello i am in the if with submit on edit")
+      regBtnSpecific = true;
+    }else{
+      regBtnSpecific = false;
+    }
+    
     const id = filterID;
     let hipp0 = {
       id,
@@ -221,18 +234,24 @@ function App() {
       start,
       end,
       seats: parseInt(seats) + adding2Seats,
-      recurring: reoccuring,
+      regBtn: regBtnSpecific,
+      reoccuring: reoccuring,
       people: updatedPeople,
     };
+
+    
     setallEvents(
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
-    );
+      );
+      
+
     setFilterID("");
     setName("");
     setDate("");
     setStart("");
     setEnd("");
     setSeats(0);
+    setRegBtn(true)
     setRecurring("");
     setPeople([]);
     setEditModal(!editModal);
@@ -320,7 +339,7 @@ function App() {
     }
   } */
 
-  const [chairSeat, setChairSeat] = useState(true);
+  /* const [chairSeat, setChairSeat] = useState(true); */
   const registerEvent = (myregisterEvent) => {
     console.log("myregisterEvent");
     console.log(myregisterEvent);
@@ -346,7 +365,7 @@ function App() {
     }
 
     window.alert("You are now registered for this event.");
-    console.log("Find me");
+    /* console.log("Find me"); */
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
     console.log(giraffe);
@@ -366,6 +385,7 @@ function App() {
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
+    setRegBtn(true)
     setRegisterModal(!registerModal);
   };
 
@@ -417,7 +437,10 @@ function App() {
       </div>
       <div>
         {registerModal && (
-          <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
+          <RegisterModal 
+            closebtn={changeRegisterModel} 
+            subOn={registerEvent} 
+          />
         )}
       </div>
       <div className="flex flex-wrap justify-start w-full h-full">
@@ -427,6 +450,7 @@ function App() {
           editEvent={editIDEvent}
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
+          //registerButton={regBtn}
           dropValue={loginValue}
           disable={disable}
           //registerSeat={allEvents[filterIndex].seats}

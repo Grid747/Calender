@@ -9,7 +9,8 @@ function ArrayMap({
   deleteEvent,
   dropValue,
   disable,
-  chairSeat,
+  registerButton,
+  /* chairSeat, */
 }) {
   return (
     <div className="flex flex-wrap h-full px-2">
