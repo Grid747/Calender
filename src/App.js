@@ -15,21 +15,22 @@ function App() {
   /**************************************************************************** */
   /**************************************************************************** */
 
+
   /**
    * API SECTION
    */
-  const [API, setAPI] = useState("");
+  //const [API, setAPI] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3001/event/table")
       .then((res) => res.json())
-      .then((res) => setAPI(res))
+      .then((res) => setallEvents(res))
       .catch((err) => err);
   });
 
-  console.log(API);
+  //console.log(API);
 
-  const [APISingleEvent, setAPISingleEvent] = useState("");
+  //const [APISingleEvent, setAPISingleEvent] = useState("");
 
   //replace didcomponentmount and didcompononentupdate
   /*   useEffect((id) => {
@@ -52,12 +53,13 @@ function App() {
   const loginChange = () => {
     setloginValue(!loginValue);
   };
-
+    
   /*
    * Sets all the data from the data file
    */
-  const [allEvents, setallEvents] = useState(Data);
-
+    const [allEvents, setallEvents] = useState(Data);
+  
+  
   /**
    * This is for addEvent button. when you click the button it will add the id and check for Weekly or once
    * Afterward if it is once, then it will add the event once. If it is weekly it will add the event for 12
@@ -76,6 +78,7 @@ function App() {
     ) {
       return window.alert("One or more inputs were empty. Please try again");
     }
+    //fix modal stay alive after alert
 
     if (myNewEvent.reoccuring === "No") {
       const id = Math.floor(Math.random() * 100000000) + 1;
@@ -395,7 +398,7 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-      <p className="">{API[0].Name}</p>
+      {/* <p>{API[0].Name}</p> */}
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
