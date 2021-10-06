@@ -4,16 +4,14 @@ import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
-//import PackageButton from "./components/PcsPackageBtn";
-//import InstrucButton from "./components/InstrucBtn";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
-//import ModelOpener from "./components/ModelOpener";
-//import Modal from "./components/Modal";
 
 function App() {
+  /* Sets all the data from the data file */
   const [allEvents, setallEvents] = useState(Data);
 
+  /******************************************************************* */
   const addEvent = (myNewEvent) => {
     if (
       (myNewEvent.name === "") |
@@ -27,18 +25,11 @@ function App() {
       return window.alert("One or more inputs were empty. Please try again");
     }
 
-    console.log("before the If statement");
     if (myNewEvent.reoccuring === "No") {
-      console.log("test");
-      console.log(myNewEvent.reoccuring);
-      console.log("You picked no reoccurence.");
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent.id = id;
       setallEvents([...allEvents, myNewEvent]);
     } else if (myNewEvent.reoccuring === "Weekly") {
-      console.log("You picked Weekly");
-      console.log("before dateinput");
-
       let uniqueId = [];
 
       for (let i = 0; i < 12; i++) {
@@ -46,7 +37,6 @@ function App() {
         console.log(id);
         uniqueId[i] = id;
       }
-      console.log(uniqueId);
 
       let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
       let uniqueDate = [];
@@ -58,34 +48,26 @@ function App() {
         let specialDateString = yyyy + "-" + mm + "-" + dd;
         uniqueDate[i] = specialDateString;
       }
-      console.log(uniqueDate);
 
       let repeatedArr = [];
       for (let i = 0; i < 12; i++) {
         repeatedArr[i] = myNewEvent;
       }
-      console.log(repeatedArr);
 
-      console.log("finale");
       let finalrepeatedArr = JSON.parse(JSON.stringify(repeatedArr));
-
       for (let i = 0; i < 12; i++) {
         finalrepeatedArr[i].id = uniqueId[i];
         finalrepeatedArr[i].date = uniqueDate[i];
       }
-      console.log(finalrepeatedArr);
 
-      console.log("finale finale");
       let deepAllEvents = JSON.parse(JSON.stringify(allEvents));
-
       let finalFinalFinalArr = [].concat(deepAllEvents, finalrepeatedArr);
-      console.log(finalFinalFinalArr);
-
       setallEvents(finalFinalFinalArr);
     }
-
     window.alert("You have added a new event.");
   };
+
+  /*************************************************************************************** */
 
   const [loginValue, setloginValue] = useState(false);
   const loginChange = () => {
@@ -95,14 +77,16 @@ function App() {
   const [filterID, setFilterID] = useState(0);
   const [filterIndex, setFilterIndex] = useState(0);
 
+  /****************************************************************************************** */
   const deleteIDEvent = (id) => {
     const updatedEvents = [...allEvents].filter(
       (oneEvent) => oneEvent.id !== id
     );
     setallEvents(updatedEvents);
-    console.log(updatedEvents);
     window.alert("You are now deleting this event.");
   };
+
+  /**************************************************************************************** */
 
   const [disable, setDisable] = useState(false);
   const [editModal, setEditModal] = useState(false);
@@ -130,23 +114,14 @@ function App() {
 
   /* ****************************** */
 
-  const checkingChecked = (index, isItChecked) => {
-    console.log(index);
-    console.log(isItChecked);
-
+  const checkingChecked = (index) => {
     let myNewPeopleCheckMarked = [...people];
-    console.log(myNewPeopleCheckMarked);
-    console.log(myNewPeopleCheckMarked[index]);
-    console.log(myNewPeopleCheckMarked[index].ischecked);
     myNewPeopleCheckMarked[index].ischecked =
       !myNewPeopleCheckMarked[index].ischecked;
-
-    console.log("operation done");
-    console.log(myNewPeopleCheckMarked);
     setPeople(myNewPeopleCheckMarked);
   };
 
-  /************************ */
+  /********************************* */
 
   const editIDEvent = (id) => {
     setEditModal(!editModal);
@@ -160,10 +135,6 @@ function App() {
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
-    console.log("all event reoccuring", allEvents[indexOfEvent]);
-    console.log("recurring", reoccuring);
-    console.log("All the people");
-    console.log(allEvents[indexOfEvent].people);
     setPeople(allEvents[indexOfEvent].people);
   };
 
@@ -194,12 +165,11 @@ function App() {
     console.log(people.length);
     console.log("updated people length");
     console.log(updatedPeople.length);
-    
+
     let adding2Seats = people.length - updatedPeople.length;
     console.log("number of seats being added");
     console.log(adding2Seats);
     console.log(typeof adding2Seats);
-
 
     if (
       (name === "") |
@@ -213,16 +183,16 @@ function App() {
     ) {
       return window.alert("Error one of the inputs is missing its value");
     }
-    let regBtnSpecific
+    let regBtnSpecific;
     console.log("filter index seats");
-    console.log(allEvents[filterIndex].seats)
-    if (allEvents[filterIndex].seats >= 0 ) {
-      console.log("hello i am in the if with submit on edit")
+    console.log(allEvents[filterIndex].seats);
+    if (allEvents[filterIndex].seats >= 0) {
+      console.log("hello i am in the if with submit on edit");
       regBtnSpecific = true;
-    }else{
+    } else {
       regBtnSpecific = false;
     }
-    
+
     const id = filterID;
     let hipp0 = {
       id,
@@ -236,11 +206,9 @@ function App() {
       people: updatedPeople,
     };
 
-
     setallEvents(
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
-      );
-      
+    );
 
     setFilterID("");
     setName("");
@@ -432,10 +400,7 @@ function App() {
       </div>
       <div>
         {registerModal && (
-          <RegisterModal 
-            closebtn={changeRegisterModel} 
-            subOn={registerEvent} 
-          />
+          <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
         )}
       </div>
       <div className="flex flex-wrap justify-start w-full h-full">

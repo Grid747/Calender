@@ -1,5 +1,4 @@
 import Event from "../components/Event";
-/* import myEvents from "./Data"; */
 
 function ArrayMap({
   mydata,
