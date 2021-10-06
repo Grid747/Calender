@@ -8,10 +8,25 @@ import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
 
 function App() {
-  /* Sets all the data from the data file */
+  /*
+   * This is for the login drop down on the right where you change from member to admin
+   */
+  const [loginValue, setloginValue] = useState(false);
+  const loginChange = () => {
+    setloginValue(!loginValue);
+  };
+
+  /*
+   * Sets all the data from the data file
+   */
   const [allEvents, setallEvents] = useState(Data);
 
-  /******************************************************************* */
+  /**
+   * This is for addEvent button. when you click the button it will add the id and check for Weekly or once
+   * Afterward if it is once, then it will add the event once. If it is weekly it will add the event for 12
+   * weeks by converting all the new dates to the strings deeply copying everything and replacing everything
+   * with the new data and setting that data as the allEvents
+   */
   const addEvent = (myNewEvent) => {
     if (
       (myNewEvent.name === "") |
@@ -67,17 +82,12 @@ function App() {
     window.alert("You have added a new event.");
   };
 
-  /*************************************************************************************** */
-
-  const [loginValue, setloginValue] = useState(false);
-  const loginChange = () => {
-    setloginValue(!loginValue);
-  };
-
-  const [filterID, setFilterID] = useState(0);
-  const [filterIndex, setFilterIndex] = useState(0);
-
   /****************************************************************************************** */
+
+  /**
+   * This will find the id of the one clicked to delete and delete it and show the new list
+   * of allEvents
+   */
   const deleteIDEvent = (id) => {
     const updatedEvents = [...allEvents].filter(
       (oneEvent) => oneEvent.id !== id
@@ -87,11 +97,16 @@ function App() {
   };
 
   /**************************************************************************************** */
+  /**************************************************************************************** */
+  /**************************************************************************************** */
 
-  const [disable, setDisable] = useState(false);
-  const [editModal, setEditModal] = useState(false);
-
-  /************************************************************************************** */
+  /**
+   * This section is pure states used to help with controlling the data as it is moved around
+   * This was heavily used within editmodal and regsitering modals. this is making sure the
+   * data is stored when something is clicked and be used when submitting
+   */
+  const [filterID, setFilterID] = useState(0);
+  const [filterIndex, setFilterIndex] = useState(0);
 
   const [name, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
@@ -112,17 +127,17 @@ function App() {
 
   const [people, setPeople] = useState([]);
 
-  /* ****************************** */
+  /* *************************************************************************************** */
+  /* *************************************************************************************** */
+  /********************************************************************************************* */
 
-  const checkingChecked = (index) => {
-    let myNewPeopleCheckMarked = [...people];
-    myNewPeopleCheckMarked[index].ischecked =
-      !myNewPeopleCheckMarked[index].ischecked;
-    setPeople(myNewPeopleCheckMarked);
-  };
+  const [disable, setDisable] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
-  /********************************* */
-
+  /**
+   * When edit button on the admin side is clicked it gathers all the data and puts them into
+   * the states that are being used
+   */
   const editIDEvent = (id) => {
     setEditModal(!editModal);
     setDisable(!disable);
@@ -138,38 +153,17 @@ function App() {
     setPeople(allEvents[indexOfEvent].people);
   };
 
-  /************************** */
-
+  /**
+   * This is for submit button on the edit modal/form when submit it will update the value given inside
+   * that modal/form. Afterwords it sets all the states back to null/default so no data carries over
+   */
   const editModalSubmit = (e) => {
     e.preventDefault();
-    console.log("filter Index then ID in that order");
-    console.log(filterIndex);
-    console.log(filterID);
-
-    console.log("stuff for adding");
-    /*     console.log(name);
-    console.log(date);
-    console.log(start);
-    console.log(end);
-    console.log(seats);
-    console.log(recurring); */
-
-    console.log("people before filter operation");
-    console.log(people);
-    console.log("doing filter operation");
-
     const updatedPeople = [...people].filter(
       (falsePeople) => falsePeople.ischecked === true
     );
-    console.log("people length");
-    console.log(people.length);
-    console.log("updated people length");
-    console.log(updatedPeople.length);
 
     let adding2Seats = people.length - updatedPeople.length;
-    console.log("number of seats being added");
-    console.log(adding2Seats);
-    console.log(typeof adding2Seats);
 
     if (
       (name === "") |
@@ -183,11 +177,9 @@ function App() {
     ) {
       return window.alert("Error one of the inputs is missing its value");
     }
+
     let regBtnSpecific;
-    console.log("filter index seats");
-    console.log(allEvents[filterIndex].seats);
     if (allEvents[filterIndex].seats >= 0) {
-      console.log("hello i am in the if with submit on edit");
       regBtnSpecific = true;
     } else {
       regBtnSpecific = false;
@@ -224,16 +216,42 @@ function App() {
     window.alert("You have now edited this event.");
   };
 
-  /***************************************************************************************** */
+  /*
+   * This changes the checked mark for when you change if a person is attending or not in the
+   * edit modal/form
+   */
+  const checkingChecked = (index) => {
+    let myNewPeopleCheckMarked = [...people];
+    myNewPeopleCheckMarked[index].ischecked =
+      !myNewPeopleCheckMarked[index].ischecked;
+    setPeople(myNewPeopleCheckMarked);
+  };
 
-  const [viewModal, setViewModal] = useState(false);
-  const changeViewModel = (e) => {
+  /**
+   * This will close the edit modal and have the buttons stop being disabled
+   */
+  const changeEditModel = (e) => {
     e.preventDefault();
-    setViewModal(!viewModal);
+    setEditModal(!editModal);
     setDisable(!disable);
   };
 
+  /***************************************************************************************** */
+  /***************************************************************************************** */
+  /****************************************************************************************** */
+
+  /**
+   * This set it for closing the modal
+   */
+  const [viewModal, setViewModal] = useState(false);
+  /**
+   * This sets it for arraymap for when you click the view button
+   */
   const [viewObject, setViewObject] = useState();
+
+  /**
+   * When you click view button on the admin side it will show view modal for that one ID
+   */
   const viewIDEvent = (id) => {
     setViewModal(!viewModal);
     setDisable(!disable);
@@ -271,52 +289,37 @@ function App() {
     setViewObject(myViewObject);
   };
 
-  const changeEditModel = (e) => {
+  /**
+   * When you click the close button in view modal it will close the modal and stop disabling
+   * the buttons
+   */
+  const changeViewModel = (e) => {
     e.preventDefault();
-    setEditModal(!editModal);
+    setViewModal(!viewModal);
     setDisable(!disable);
   };
+
+  /***************************************************************************************** */
+  /***************************************************************************************** */
+  /***************************************************************************************** */
 
   const [registerModal, setRegisterModal] = useState(false);
-  const changeRegisterModel = (e) => {
-    e.preventDefault();
-    setRegisterModal(!registerModal);
-    setDisable(!disable);
-  };
-
+  /**
+   * This will get the id of which one you are registering for when you click register
+   */
   const registerIDEvent = (id) => {
     setRegisterModal(!registerModal);
-
     setFilterID(id);
     setDisable(!disable);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
-    console.log("AllEvents");
-    console.log(allEvents);
   };
 
-  //const [chairSeat, setChairSeat] = useState(false)
-  /* const chair = () => {
-    if (allEvents[filterIndex].seats === 0) {
-      //setChairSeat(!chairSeat)
-      console.log(chairSeat)
-    }
-  } */
-
-  /* const [chairSeat, setChairSeat] = useState(true); */
+  /**
+   * When you click the submit button on the register modal it will add the user to the data and
+   * subtract one from the current count. If it is 0 then register for the event will disappear
+   */
   const registerEvent = (myregisterEvent) => {
-    console.log("myregisterEvent");
-    console.log(myregisterEvent);
-    console.log("filter ID and Filter Index in that order");
-    console.log(filterID);
-    console.log(filterIndex);
-
-    console.log("allEvents");
-    console.log(allEvents);
-
-    console.log("allEvents[filterIndex]");
-    console.log(allEvents[filterIndex]);
-
     myregisterEvent.id = filterID;
 
     if (
@@ -329,29 +332,30 @@ function App() {
     }
 
     window.alert("You are now registered for this event.");
-    /* console.log("Find me"); */
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
-    console.log(giraffe);
     allEvents[filterIndex].seats -= 1;
 
     if (allEvents[filterIndex].seats === 0) {
       console.log("The word of the day is car");
       allEvents[filterIndex].regBtn = false;
-      //setChairSeat(false);
     }
-    /*     if (allEvents[filterIndex].seats === 0){
-      console.log("I am inside")
-      setDisable(disable);
-    } */
-    /* console.log("disable is: ")
-    console.log(disable) */
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
     setRegisterModal(!registerModal);
   };
 
+  /**
+   * This will close the register modal have the buttons stop being disabled
+   */
+  const changeRegisterModel = (e) => {
+    e.preventDefault();
+    setRegisterModal(!registerModal);
+    setDisable(!disable);
+  };
+
+  /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
       <br />
@@ -412,8 +416,6 @@ function App() {
           registerEvent={registerIDEvent}
           dropValue={loginValue}
           disable={disable}
-          //registerSeat={allEvents[filterIndex].seats}
-          //chairSeat={chairSeat}
         />
       </div>
     </div>
