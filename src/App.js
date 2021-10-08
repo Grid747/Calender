@@ -398,7 +398,11 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
+<<<<<<< Updated upstream
       {/* <p>{API[0].Name}</p> */}
+=======
+      {/* <p className="">{API[0].Name}</p> */}
+>>>>>>> Stashed changes
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
