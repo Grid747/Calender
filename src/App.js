@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
-import { useEffect, useState } from "react";
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 import Data from "./Data/Data";
@@ -7,38 +8,96 @@ import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
 
-function App() {
-  /**************************************************************************** */
-  /**************************************************************************** */
-  /**************************************************************************** */
-  /**************************************************************************** */
-  /**************************************************************************** */
-  /**************************************************************************** */
+const api = axios.create({
+  baseURL: `http://localhost:3001/`,
+});
 
+function App() {
+  //const [allEvents, setallEvents] = useState(Data);
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
+  /**************************************************************************** */
 
   /**
    * API SECTION
    */
-  //const [API, setAPI] = useState("");
-
   useEffect(() => {
-    fetch("http://localhost:3001/event/table")
-      .then((res) => res.json())
-      .then((res) => setallEvents(res))
-      .catch((err) => err);
-  });
+    const apiGetAllEvents = async () => {
+      try {
+        const response = await api.get("/event/table");
+        console.log(response.data);
+        setallEvents(response.data);
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    };
+    apiGetAllEvents();
+  }, []);
 
-  //console.log(API);
+  const apiCreateEvent = async () => {
+    let apiNewEvent = {
+      id: 104, //104 is the new id that is not used yet
+      name: "test7", //new name not used yet
+      date: "2021-10-30",
+      start: "10:30",
+      end: "11:30",
+      seats: 9,
+      reoccuring: "Off",
+      regBtn: 1,
+    };
+    try {
+      const response = await api.post("event/table", apiNewEvent);
+      const apiAllEvents = [...allEvents, response.data];
+      setallEvents(apiAllEvents);
+      window.alert("You added the event");
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
 
-  //const [APISingleEvent, setAPISingleEvent] = useState("");
+  const apiDeleteEvent = async (id) => {
+    try {
+      await api.delete(`event/${id}`);
+      const updatedEvents = [...allEvents].filter(
+        (oneEvent) => oneEvent.id !== id
+      );
+      setallEvents(updatedEvents);
+      window.alert("You are now deleting this event.");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
 
-  //replace didcomponentmount and didcompononentupdate
-  /*   useEffect((id) => {
-    fetch(`http://localhost:3001/event/${id}`)
-      .then((res) => res.json())
-      .then((res) => setAPISingleEvent(res));
-  });
- */
+  const apiUpdateEvent = async (id) => {
+    let apiEditEvent = {
+      id: 677,
+      name: "id 677",
+      date: "2021-10-30",
+      start: "10:30",
+      end: "11:30",
+      seats: 9,
+      reoccuring: "Off",
+      regBtn: 1,
+    };
+
+    try {
+      const response = await api.patch(`event/${id}`, apiEditEvent);
+      setallEvents(
+        allEvents.map((event) =>
+          event.id === id ? { ...response.data } : event
+        )
+      );
+      window.alert(`you edited ${id}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
   /**************************************************************************** */
   /**************************************************************************** */
   /**************************************************************************** */
@@ -53,13 +112,12 @@ function App() {
   const loginChange = () => {
     setloginValue(!loginValue);
   };
-    
+
   /*
    * Sets all the data from the data file
    */
-    const [allEvents, setallEvents] = useState(Data);
-  
-  
+  const [allEvents, setallEvents] = useState(Data);
+
   /**
    * This is for addEvent button. when you click the button it will add the id and check for Weekly or once
    * Afterward if it is once, then it will add the event once. If it is weekly it will add the event for 12
@@ -398,11 +456,10 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-<<<<<<< Updated upstream
       {/* <p>{API[0].Name}</p> */}
-=======
-      {/* <p className="">{API[0].Name}</p> */}
->>>>>>> Stashed changes
+      <button onClick={apiCreateEvent}> Create </button>
+      <button onClick={() => apiDeleteEvent(100)}> Delete </button>
+      <button onClick={() => apiUpdateEvent(677)}> Edit </button>
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
