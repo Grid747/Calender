@@ -212,8 +212,6 @@ function App() {
         finalrepeatedArr[i].date = uniqueDate[i];
       }
 
-      console.log(finalrepeatedArr);
-
       for (let i = 0; i < 12; i++) {
         try {
           const response = await api.post("event/table", finalrepeatedArr[i]);
@@ -235,12 +233,17 @@ function App() {
    * This will find the id of the one clicked to delete and delete it and show the new list
    * of allEvents
    */
-  const deleteIDEvent = (id) => {
-    const updatedEvents = [...allEvents].filter(
-      (oneEvent) => oneEvent.id !== id
-    );
-    setallEvents(updatedEvents);
-    window.alert("You are now deleting this event.");
+  const deleteIDEvent = async (id) => {
+    try {
+      await api.delete(`event/${id}`);
+      const updatedEvents = [...allEvents].filter(
+        (oneEvent) => oneEvent.id !== id
+      );
+      setallEvents(updatedEvents);
+      window.alert("You are now deleting this event.");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   };
 
   /**************************************************************************************** */
