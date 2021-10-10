@@ -13,7 +13,6 @@ const api = axios.create({
 });
 
 function App() {
-  //const [allEvents, setallEvents] = useState(Data);
   /**************************************************************************** */
   /**************************************************************************** */
   /**************************************************************************** */
@@ -124,7 +123,7 @@ function App() {
    * weeks by converting all the new dates to the strings deeply copying everything and replacing everything
    * with the new data and setting that data as the allEvents
    */
-  const addEvent = (myNewEvent) => {
+  const addEvent = async (myNewEvent) => {
     if (
       (myNewEvent.name === "") |
       (myNewEvent.date === "") |
@@ -138,28 +137,68 @@ function App() {
     }
     //fix modal stay alive after alert
 
+    /* Only for one instance */
     if (myNewEvent.reoccuring === "No") {
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent.id = id;
-      setallEvents([...allEvents, myNewEvent]);
+      try {
+        const response = await api.post("event/table", myNewEvent);
+        const apiAllEvents = [...allEvents, response.data];
+        setallEvents(apiAllEvents);
+        window.alert("You added the event");
+        window.location.reload();
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+
+      /* below is for weeks (12 weeks) */
     } else if (myNewEvent.reoccuring === "Weekly") {
       let uniqueId = [];
 
       for (let i = 0; i < 12; i++) {
         const id = Math.floor(Math.random() * 100000000) + 1;
-        console.log(id);
         uniqueId[i] = id;
       }
 
       let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
       let uniqueDate = [];
+
       for (let i = 0; i < 12; i++) {
-        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
-        let dd = String(specialDate.getDate()).padStart(2, "0");
-        let mm = String(specialDate.getMonth()).padStart(2, "0");
-        let yyyy = specialDate.getFullYear();
-        let specialDateString = yyyy + "-" + mm + "-" + dd;
+        let dd = String(dateinput.getDate()).padStart(2, "0");
+        let mm = String(dateinput.getMonth()).padStart(2, "0");
+        let yyyy = dateinput.getFullYear();
+        let specialDateString;
+        if (mm === "00") {
+          mm = "1";
+        } else if (mm === "01") {
+          mm = "2";
+        } else if (mm === "02") {
+          mm = "3";
+        } else if (mm === "03") {
+          mm = "4";
+        } else if (mm === "04") {
+          mm = "5";
+        } else if (mm === "05") {
+          mm = "6";
+        } else if (mm === "06") {
+          mm = "7";
+        } else if (mm === "07") {
+          mm = "8";
+        } else if (mm === "08") {
+          mm = "9";
+        } else if (mm === "09") {
+          mm = "10";
+        } else if (mm === "10") {
+          mm = "11";
+        } else if (mm === "11") {
+          mm = "12";
+        } else {
+          console.log("something broke at: ", i, "iteration");
+        }
+        specialDateString = yyyy + "-" + mm + "-" + dd;
         uniqueDate[i] = specialDateString;
+        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
+        dateinput = specialDate;
       }
 
       let repeatedArr = [];
@@ -173,11 +212,21 @@ function App() {
         finalrepeatedArr[i].date = uniqueDate[i];
       }
 
-      let deepAllEvents = JSON.parse(JSON.stringify(allEvents));
-      let finalFinalFinalArr = [].concat(deepAllEvents, finalrepeatedArr);
-      setallEvents(finalFinalFinalArr);
+      console.log(finalrepeatedArr);
+
+      for (let i = 0; i < 12; i++) {
+        try {
+          const response = await api.post("event/table", finalrepeatedArr[i]);
+          const apiAllEvents = [...allEvents, response.data];
+          setallEvents(apiAllEvents);
+          console.log("added event i: ", i);
+        } catch (err) {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+      window.alert("You added the event");
+      window.location.reload();
     }
-    window.alert("You have added a new event.");
   };
 
   /****************************************************************************************** */
