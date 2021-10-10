@@ -49,7 +49,7 @@ function App() {
     apiGetAllPeople();
   }, []);
 
-  /*   const apiCreateEvent = async () => {
+  const apiCreateEvent = async () => {
     let apiNewEvent = {
       id: 104, //104 is the new id that is not used yet
       name: "test7", //new name not used yet
@@ -108,7 +108,7 @@ function App() {
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
-  }; */
+  };
 
   /**************************************************************************** */
   /**************************************************************************** */
@@ -289,6 +289,7 @@ function App() {
   const [reoccuring, setRecurring] = useState("");
 
   const [people, setPeople] = useState([]);
+  //const [peopleOneEvent, setPeopleOneEvent] = useState([]);
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -488,20 +489,30 @@ function App() {
   /**
    * This will get the id of which one you are registering for when you click register
    */
-  const registerIDEvent = (id) => {
+  const registerIDEvent = async (id) => {
     setRegisterModal(!registerModal);
     setFilterID(id);
     setDisable(!disable);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
+    /* try {
+      const response = await api.get(`/people/${id}`);
+      console.log(response.data);
+      setPeopleOneEvent(response.data);
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    } */
   };
 
   /**
    * When you click the submit button on the register modal it will add the user to the data and
    * subtract one from the current count. If it is 0 then register for the event will disappear
    */
-  const registerEvent = (myregisterEvent) => {
+  const registerEvent = async (myregisterEvent) => {
     myregisterEvent.id = filterID;
+    //const id = filterID;
+
+    //console.log(myregisterEvent);
 
     if (
       (myregisterEvent.rank === "") |
@@ -512,15 +523,31 @@ function App() {
       return window.alert("You are missing one or more of the inputs");
     }
 
-    window.alert("You are now registered for this event.");
-    let giraffe = allEvents[filterIndex].people;
-    giraffe.push(myregisterEvent);
-    allEvents[filterIndex].seats -= 1;
+    /* let giraffe = allEvents[filterIndex].people;
+    giraffe.push(myregisterEvent); */
+
+    console.log(myregisterEvent);
+
+    try {
+      console.log("before response");
+      const response = await api.post("people/table", myregisterEvent);
+      console.log(response.data);
+      const apiAllPeople = [...people, response.data];
+      setPeople(apiAllPeople);
+      window.alert("You added the event");
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+
+    /* allEvents[filterIndex].seats -= 1;
 
     if (allEvents[filterIndex].seats === 0) {
       console.log("The word of the day is car");
       allEvents[filterIndex].regBtn = false;
     }
+    window.alert("You are now registered for this event.");
+ */
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
@@ -539,9 +566,9 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-      {/*       <button onClick={apiCreateEvent}> Create </button>
+      <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
-      <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
+      <button onClick={() => apiUpdateEvent(677)}> Edit </button>
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
