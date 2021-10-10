@@ -510,7 +510,7 @@ function App() {
    */
   const registerEvent = async (myregisterEvent) => {
     myregisterEvent.id = filterID;
-    //const id = filterID;
+    const id = filterID;
 
     //console.log(myregisterEvent);
 
@@ -528,30 +528,47 @@ function App() {
 
     console.log(myregisterEvent);
 
+    const newSeat = allEvents[filterIndex].seats - 1;
+    const seatPatch = { seats: newSeat };
+    //const regBtnPatch = { regBtn: false }; //will be used when the bug below isn't there
+    console.log("id: ", id);
+
     try {
       console.log("before response");
       const response = await api.post("people/table", myregisterEvent);
-      console.log(response.data);
       const apiAllPeople = [...people, response.data];
       setPeople(apiAllPeople);
-      window.alert("You added the event");
-      window.location.reload();
+
+      //this does not work with 0
+      console.log("trying to update the seats now!!!");
+      const responseSeats = await api.patch(`event/${id}`, seatPatch);
+      console.log("You made it past the response eh");
+      setallEvents(
+        allEvents.map((event) =>
+          event.id === id ? { ...responseSeats.data } : event
+        )
+      );
+
+      //can't test this if can't make the above to 0
+      console.log("Made to the regBtn update!");
+      /*       if (allEvents[filterIndex].seats === 0) {
+        const responseRegBtn = await api.patch(`event/${id}`, regBtnPatch);
+        setallEvents(
+          allEvents.map((event) =>
+            event.id === id ? { ...responseRegBtn.data } : event
+          )
+        );
+      } */
+
+      window.alert("You are added to the event");
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
-
-    /* allEvents[filterIndex].seats -= 1;
-
-    if (allEvents[filterIndex].seats === 0) {
-      console.log("The word of the day is car");
-      allEvents[filterIndex].regBtn = false;
-    }
-    window.alert("You are now registered for this event.");
- */
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
     setRegisterModal(!registerModal);
+    window.location.reload();
   };
 
   /**
