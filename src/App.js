@@ -289,7 +289,7 @@ function App() {
   const [reoccuring, setRecurring] = useState("");
 
   const [people, setPeople] = useState([]);
-  //const [peopleOneEvent, setPeopleOneEvent] = useState([]);
+  const [peopleOneEvent, setPeopleOneEvent] = useState([]);
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -302,7 +302,7 @@ function App() {
    * When edit button on the admin side is clicked it gathers all the data and puts them into
    * the states that are being used
    */
-  const editIDEvent = (id) => {
+  const editIDEvent = async (id) => {
     setEditModal(!editModal);
     setDisable(!disable);
     setFilterID(id);
@@ -315,7 +315,14 @@ function App() {
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
     //CHANGED DUE TO THE API
-    setPeople(Data[indexOfEvent].people);
+    //setPeople(Data[indexOfEvent].people);
+    try {
+      const response = await api.get(`/people/${id}`);
+      console.log(response.data);
+      setPeopleOneEvent(response.data);
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   };
 
   /**
@@ -402,11 +409,44 @@ function App() {
    * This changes the checked mark for when you change if a person is attending or not in the
    * edit modal/form
    */
-  const checkingChecked = (index) => {
-    let myNewPeopleCheckMarked = [...people];
+  const checkingChecked = async (index, persons) => {
+    console.log("persons is below");
+    console.log(persons);
+    console.log("index ", index);
+    console.log("peopleOneEvent");
+    console.log(peopleOneEvent);
+    //console.log(peopleOneEvent);
+    //let id = persons[index].id;
+    //let email = persons[index].email;
+
+    let ischecked = { ischecked: 0 };
+
+    let checkMarked = [...peopleOneEvent];
+    checkMarked[index].ischecked = !checkMarked[index].ischecked;
+    console.log("end");
+
+    /*     if (peopleOneEvent[index].ischecked === 1) {
+      console.log("got int he if");
+      try {
+        const response = await api.patch(`event/${id}`, ischecked);
+        setPeopleOneEvent(
+          peopleOneEvent.map((event) =>
+            event.id === id && event.email === email
+              ? { ...response.data }
+              : event
+          )
+        );
+        window.alert(`you edited ${id}`);
+        window.location.reload();
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    } */
+
+    /*     let myNewPeopleCheckMarked = [...peopleOneEvent];
     myNewPeopleCheckMarked[index].ischecked =
-      !myNewPeopleCheckMarked[index].ischecked;
-    setPeople(myNewPeopleCheckMarked);
+      !myNewPeopleCheckMarked[index].ischecked; */
+    //setPeople(myNewPeopleCheckMarked);
   };
 
   /**
@@ -429,17 +469,34 @@ function App() {
   /**
    * This sets it for arraymap for when you click the view button
    */
-  const [viewObject, setViewObject] = useState();
+  const [viewObject, setViewObject] = useState([]);
 
   /**
    * When you click view button on the admin side it will show view modal for that one ID
    */
-  const viewIDEvent = (id) => {
+  const viewIDEvent = async (id) => {
     setViewModal(!viewModal);
     setDisable(!disable);
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
 
-    let peopleArr = viewingEvent[0].people;
+    console.log(viewingEvent);
+
+    console.log("people");
+    const viewingPeople = people.filter(
+      (onePeopleEvent) => onePeopleEvent.id === id
+    );
+    console.log(viewingPeople);
+
+    /* try {
+      const response = await api.get(`/people/${id}`);
+      console.log("response");
+      console.log(response.data);
+      setPeopleOneEvent(response.data);
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    } */
+
+    let peopleArr = viewingPeople;
 
     function peopleArrFor() {
       let myArr = [];
@@ -512,8 +569,6 @@ function App() {
     myregisterEvent.id = filterID;
     const id = filterID;
 
-    //console.log(myregisterEvent);
-
     if (
       (myregisterEvent.rank === "") |
       (myregisterEvent.name === "") |
@@ -522,11 +577,6 @@ function App() {
     ) {
       return window.alert("You are missing one or more of the inputs");
     }
-
-    /* let giraffe = allEvents[filterIndex].people;
-    giraffe.push(myregisterEvent); */
-
-    console.log(myregisterEvent);
 
     const newSeat = allEvents[filterIndex].seats - 1;
     const seatPatch = { seats: newSeat };
@@ -540,6 +590,8 @@ function App() {
       setPeople(apiAllPeople);
 
       //this does not work with 0
+      //What happens is that it sends a success code 204
+      //204 means it sent no data. It only does this with zero
       console.log("trying to update the seats now!!!");
       const responseSeats = await api.patch(`event/${id}`, seatPatch);
       console.log("You made it past the response eh");
@@ -549,7 +601,7 @@ function App() {
         )
       );
 
-      //can't test this if can't make the above to 0
+      //can't test this if I can't make the above to 0
       console.log("Made to the regBtn update!");
       /*       if (allEvents[filterIndex].seats === 0) {
         const responseRegBtn = await api.patch(`event/${id}`, regBtnPatch);
@@ -609,7 +661,7 @@ function App() {
             seats={seats}
             changeSeats={changeSeats}
             reoccuring={reoccuring}
-            peopleData={people}
+            peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
             closeBtn={changeEditModel}
             formSubmit={editModalSubmit}
