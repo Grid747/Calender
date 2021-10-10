@@ -300,14 +300,15 @@ function App() {
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
-    setPeople(allEvents[indexOfEvent].people);
+    //CHANGED DUE TO THE API
+    setPeople(Data[indexOfEvent].people);
   };
 
   /**
    * This is for submit button on the edit modal/form when submit it will update the value given inside
    * that modal/form. Afterwords it sets all the states back to null/default so no data carries over
    */
-  const editModalSubmit = (e) => {
+  const editModalSubmit = async (e) => {
     e.preventDefault();
     const updatedPeople = [...people].filter(
       (falsePeople) => falsePeople.ischecked === true
@@ -345,12 +346,29 @@ function App() {
       seats: parseInt(seats) + adding2Seats,
       regBtn: regBtnSpecific,
       reoccuring: reoccuring,
-      people: updatedPeople,
+      //people: updatedPeople,
     };
 
-    setallEvents(
+    console.log(id);
+    console.log(hipp0);
+    try {
+      const response = await api.patch(`event/${id}`, hipp0);
+      console.log(response.data);
+
+      setallEvents(
+        allEvents.map((event) =>
+          event.id === id ? { ...response.data } : event
+        )
+      );
+      window.alert(`you edited ${id}`);
+      //window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+
+    /*     setallEvents(
       allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
-    );
+    ); */
 
     setFilterID("");
     setName("");
@@ -363,7 +381,7 @@ function App() {
     setEditModal(!editModal);
     setDisable(!disable);
 
-    window.alert("You have now edited this event.");
+    //window.alert("You have now edited this event.");
   };
 
   /*
