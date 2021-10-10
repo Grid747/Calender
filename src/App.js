@@ -23,6 +23,7 @@ function App() {
   /**
    * API SECTION
    */
+  //NEED
   useEffect(() => {
     const apiGetAllEvents = async () => {
       try {
@@ -36,6 +37,7 @@ function App() {
     apiGetAllEvents();
   }, []);
 
+  //NEED
   useEffect(() => {
     const apiGetAllPeople = async () => {
       try {
@@ -49,6 +51,7 @@ function App() {
     apiGetAllPeople();
   }, []);
 
+  //Example all below
   const apiCreateEvent = async () => {
     let apiNewEvent = {
       id: 104, //104 is the new id that is not used yet
@@ -329,6 +332,20 @@ function App() {
    * This is for submit button on the edit modal/form when submit it will update the value given inside
    * that modal/form. Afterwords it sets all the states back to null/default so no data carries over
    */
+
+  /* NEEDS TO BE DONE IN THE EDIT SECTION
+   * Need to get checkboxes working again after that you should be able to do a delete operations for them
+     easiest way might actually just be changing the checkboxes to buttons and have them be small and del
+     as the label. This way we can just give a warning and if they click yes that person is deleted. 
+
+     Checkboxes working will be in checkingchecked which is using patch to update the states which is not 
+     working very well
+
+     deleting the actual people from the DB will be in editModalSubmit
+
+     Oh I forgot but since people isn't working then updatedPeople and adding2Seat (which is right below)
+     won't be working either. Once the other issues are solved then this will be solved too. 
+   */
   const editModalSubmit = async (e) => {
     e.preventDefault();
     const updatedPeople = [...people].filter(
@@ -382,14 +399,10 @@ function App() {
         )
       );
       window.alert(`you edited ${id}`);
-      //window.location.reload();
+      window.location.reload();
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
-
-    /*     setallEvents(
-      allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
-    ); */
 
     setFilterID("");
     setName("");
@@ -408,6 +421,13 @@ function App() {
   /*
    * This changes the checked mark for when you change if a person is attending or not in the
    * edit modal/form
+   */
+
+  /* This is where you would need to do the checkboxes. the way it is setup, it would update when
+   * you edit and save the code. Again del buttons might be the best. The other way is find a way
+   * where you do like a shallow or deep copy (whichever works) and then just do a full post every
+   * time a checkboxed is clicked
+   *
    */
   const checkingChecked = async (index, persons) => {
     console.log("persons is below");
@@ -439,7 +459,7 @@ function App() {
         window.alert(`you edited ${id}`);
         window.location.reload();
       } catch (err) {
-        console.log(`Error: ${err.message}`);
+        console.log(`Error: ${err.message}`); 
       }
     } */
 
@@ -478,23 +498,9 @@ function App() {
     setViewModal(!viewModal);
     setDisable(!disable);
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
-
-    console.log(viewingEvent);
-
-    console.log("people");
     const viewingPeople = people.filter(
       (onePeopleEvent) => onePeopleEvent.id === id
     );
-    console.log(viewingPeople);
-
-    /* try {
-      const response = await api.get(`/people/${id}`);
-      console.log("response");
-      console.log(response.data);
-      setPeopleOneEvent(response.data);
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    } */
 
     let peopleArr = viewingPeople;
 
@@ -552,18 +558,18 @@ function App() {
     setDisable(!disable);
     const indexOfEvent = allEvents.findIndex((oneEvent) => oneEvent.id === id);
     setFilterIndex(indexOfEvent);
-    /* try {
-      const response = await api.get(`/people/${id}`);
-      console.log(response.data);
-      setPeopleOneEvent(response.data);
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    } */
   };
 
   /**
    * When you click the submit button on the register modal it will add the user to the data and
-   * subtract one from the current count. If it is 0 then register for the event will disappear
+   * subtract one from the current count. If it is 0 then register button will disappear
+   */
+
+  /**
+   * So this works when are submitting a new person for the event. submitting a new person
+   * always works. What doesn't work, is that it won't set the seat value to 0. it will set it
+   * to anything but 0. I have comments explaining what happens
+   *
    */
   const registerEvent = async (myregisterEvent) => {
     myregisterEvent.id = filterID;
