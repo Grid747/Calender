@@ -36,7 +36,20 @@ function App() {
     apiGetAllEvents();
   }, []);
 
-  const apiCreateEvent = async () => {
+  useEffect(() => {
+    const apiGetAllPeople = async () => {
+      try {
+        const response = await api.get("/people/table");
+        console.log(response.data);
+        setPeople(response.data);
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    };
+    apiGetAllPeople();
+  }, []);
+
+  /*   const apiCreateEvent = async () => {
     let apiNewEvent = {
       id: 104, //104 is the new id that is not used yet
       name: "test7", //new name not used yet
@@ -95,7 +108,7 @@ function App() {
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
-  };
+  }; */
 
   /**************************************************************************** */
   /**************************************************************************** */
@@ -115,7 +128,7 @@ function App() {
   /*
    * Sets all the data from the data file
    */
-  const [allEvents, setallEvents] = useState(Data);
+  const [allEvents, setallEvents] = useState([]);
 
   /**
    * This is for addEvent button. when you click the button it will add the id and check for Weekly or once
@@ -526,10 +539,9 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-      {/* <p>{API[0].Name}</p> */}
-      <button onClick={apiCreateEvent}> Create </button>
+      {/*       <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
-      <button onClick={() => apiUpdateEvent(677)}> Edit </button>
+      <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
