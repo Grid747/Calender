@@ -1,11 +1,16 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
-import { useEffect, useState } from "react";
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
 //import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
+
+const api = axios.create({
+  baseURL: `http://localhost:3001/`,
+});
 
 function App() {
   /**************************************************************************** */
@@ -15,30 +20,99 @@ function App() {
   /**************************************************************************** */
   /**************************************************************************** */
 
-
   /**
    * API SECTION
    */
-  //const [API, setAPI] = useState("");
-
+  //NEED
   useEffect(() => {
-    fetch("http://localhost:3001/event/table")
-      .then((res) => res.json())
-      .then((res) => setallEvents(res))
-      .catch((err) => err);
-  });
+    const apiGetAllEvents = async () => {
+      try {
+        const response = await api.get("/event/table");
+        console.log(response.data);
+        setallEvents(response.data);
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    };
+    apiGetAllEvents();
+  }, []);
 
-  //console.log(API);
+  //NEED
+  useEffect(() => {
+    const apiGetAllPeople = async () => {
+      try {
+        const response = await api.get("/people/table");
+        console.log(response.data);
+        setPeople(response.data);
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    };
+    apiGetAllPeople();
+  }, []);
 
-  //const [APISingleEvent, setAPISingleEvent] = useState("");
+  //Example all below
+  const apiCreateEvent = async () => {
+    let apiNewEvent = {
+      id: 104, //104 is the new id that is not used yet
+      name: "test7", //new name not used yet
+      date: "2021-10-30",
+      start: "10:30",
+      end: "11:30",
+      seats: 9,
+      reoccuring: "Off",
+      regBtn: 1,
+    };
+    try {
+      const response = await api.post("event/table", apiNewEvent);
+      const apiAllEvents = [...allEvents, response.data];
+      setallEvents(apiAllEvents);
+      window.alert("You added the event");
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
 
-  //replace didcomponentmount and didcompononentupdate
-  /*   useEffect((id) => {
-    fetch(`http://localhost:3001/event/${id}`)
-      .then((res) => res.json())
-      .then((res) => setAPISingleEvent(res));
-  });
- */
+  const apiDeleteEvent = async (id) => {
+    try {
+      await api.delete(`event/${id}`);
+      const updatedEvents = [...allEvents].filter(
+        (oneEvent) => oneEvent.id !== id
+      );
+      setallEvents(updatedEvents);
+      window.alert("You are now deleting this event.");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
+  const apiUpdateEvent = async (id) => {
+    let apiEditEvent = {
+      id: 677,
+      name: "id 677",
+      date: "2021-10-30",
+      start: "10:30",
+      end: "11:30",
+      seats: 9,
+      reoccuring: "Off",
+      regBtn: 1,
+    };
+
+    try {
+      const response = await api.patch(`event/${id}`, apiEditEvent);
+      setallEvents(
+        allEvents.map((event) =>
+          event.id === id ? { ...response.data } : event
+        )
+      );
+      window.alert(`you edited ${id}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
   /**************************************************************************** */
   /**************************************************************************** */
   /**************************************************************************** */
@@ -53,20 +127,25 @@ function App() {
   const loginChange = () => {
     setloginValue(!loginValue);
   };
-    
+
   /*
    * Sets all the data from the data file
    */
+<<<<<<< HEAD
     const [allEvents, setallEvents] = useState([]);
   
   
+=======
+  const [allEvents, setallEvents] = useState([]);
+
+>>>>>>> Broken
   /**
    * This is for addEvent button. when you click the button it will add the id and check for Weekly or once
    * Afterward if it is once, then it will add the event once. If it is weekly it will add the event for 12
    * weeks by converting all the new dates to the strings deeply copying everything and replacing everything
    * with the new data and setting that data as the allEvents
    */
-  const addEvent = (myNewEvent) => {
+  const addEvent = async (myNewEvent) => {
     if (
       (myNewEvent.name === "") |
       (myNewEvent.date === "") |
@@ -80,28 +159,68 @@ function App() {
     }
     //fix modal stay alive after alert
 
+    /* Only for one instance */
     if (myNewEvent.reoccuring === "No") {
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent.id = id;
-      setallEvents([...allEvents, myNewEvent]);
+      try {
+        const response = await api.post("event/table", myNewEvent);
+        const apiAllEvents = [...allEvents, response.data];
+        setallEvents(apiAllEvents);
+        window.alert("You added the event");
+        window.location.reload();
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+
+      /* below is for weeks (12 weeks) */
     } else if (myNewEvent.reoccuring === "Weekly") {
       let uniqueId = [];
 
       for (let i = 0; i < 12; i++) {
         const id = Math.floor(Math.random() * 100000000) + 1;
-        console.log(id);
         uniqueId[i] = id;
       }
 
       let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
       let uniqueDate = [];
+
       for (let i = 0; i < 12; i++) {
-        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
-        let dd = String(specialDate.getDate()).padStart(2, "0");
-        let mm = String(specialDate.getMonth()).padStart(2, "0");
-        let yyyy = specialDate.getFullYear();
-        let specialDateString = yyyy + "-" + mm + "-" + dd;
+        let dd = String(dateinput.getDate()).padStart(2, "0");
+        let mm = String(dateinput.getMonth()).padStart(2, "0");
+        let yyyy = dateinput.getFullYear();
+        let specialDateString;
+        if (mm === "00") {
+          mm = "1";
+        } else if (mm === "01") {
+          mm = "2";
+        } else if (mm === "02") {
+          mm = "3";
+        } else if (mm === "03") {
+          mm = "4";
+        } else if (mm === "04") {
+          mm = "5";
+        } else if (mm === "05") {
+          mm = "6";
+        } else if (mm === "06") {
+          mm = "7";
+        } else if (mm === "07") {
+          mm = "8";
+        } else if (mm === "08") {
+          mm = "9";
+        } else if (mm === "09") {
+          mm = "10";
+        } else if (mm === "10") {
+          mm = "11";
+        } else if (mm === "11") {
+          mm = "12";
+        } else {
+          console.log("something broke at: ", i, "iteration");
+        }
+        specialDateString = yyyy + "-" + mm + "-" + dd;
         uniqueDate[i] = specialDateString;
+        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
+        dateinput = specialDate;
       }
 
       let repeatedArr = [];
@@ -115,11 +234,19 @@ function App() {
         finalrepeatedArr[i].date = uniqueDate[i];
       }
 
-      let deepAllEvents = JSON.parse(JSON.stringify(allEvents));
-      let finalFinalFinalArr = [].concat(deepAllEvents, finalrepeatedArr);
-      setallEvents(finalFinalFinalArr);
+      for (let i = 0; i < 12; i++) {
+        try {
+          const response = await api.post("event/table", finalrepeatedArr[i]);
+          const apiAllEvents = [...allEvents, response.data];
+          setallEvents(apiAllEvents);
+          console.log("added event i: ", i);
+        } catch (err) {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+      window.alert("You added the event");
+      window.location.reload();
     }
-    window.alert("You have added a new event.");
   };
 
   /****************************************************************************************** */
@@ -128,12 +255,17 @@ function App() {
    * This will find the id of the one clicked to delete and delete it and show the new list
    * of allEvents
    */
-  const deleteIDEvent = (id) => {
-    const updatedEvents = [...allEvents].filter(
-      (oneEvent) => oneEvent.id !== id
-    );
-    setallEvents(updatedEvents);
-    window.alert("You are now deleting this event.");
+  const deleteIDEvent = async (id) => {
+    try {
+      await api.delete(`event/${id}`);
+      const updatedEvents = [...allEvents].filter(
+        (oneEvent) => oneEvent.id !== id
+      );
+      setallEvents(updatedEvents);
+      window.alert("You are now deleting this event.");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   };
 
   /**************************************************************************************** */
@@ -166,6 +298,7 @@ function App() {
   const [reoccuring, setRecurring] = useState("");
 
   const [people, setPeople] = useState([]);
+  const [peopleOneEvent, setPeopleOneEvent] = useState([]);
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -178,7 +311,7 @@ function App() {
    * When edit button on the admin side is clicked it gathers all the data and puts them into
    * the states that are being used
    */
-  const editIDEvent = (id) => {
+  const editIDEvent = async (id) => {
     setEditModal(!editModal);
     setDisable(!disable);
     setFilterID(id);
@@ -190,14 +323,36 @@ function App() {
     setEnd(allEvents[indexOfEvent].end);
     setSeats(allEvents[indexOfEvent].seats);
     setRecurring(allEvents[indexOfEvent].reoccuring);
-    setPeople(allEvents[indexOfEvent].people);
+    //CHANGED DUE TO THE API
+    //setPeople(Data[indexOfEvent].people);
+    try {
+      const response = await api.get(`/people/${id}`);
+      console.log(response.data);
+      setPeopleOneEvent(response.data);
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   };
 
   /**
    * This is for submit button on the edit modal/form when submit it will update the value given inside
    * that modal/form. Afterwords it sets all the states back to null/default so no data carries over
    */
-  const editModalSubmit = (e) => {
+
+  /* NEEDS TO BE DONE IN THE EDIT SECTION
+   * Need to get checkboxes working again after that you should be able to do a delete operations for them
+     easiest way might actually just be changing the checkboxes to buttons and have them be small and del
+     as the label. This way we can just give a warning and if they click yes that person is deleted. 
+
+     Checkboxes working will be in checkingchecked which is using patch to update the states which is not 
+     working very well
+
+     deleting the actual people from the DB will be in editModalSubmit
+
+     Oh I forgot but since people isn't working then updatedPeople and adding2Seat (which is right below)
+     won't be working either. Once the other issues are solved then this will be solved too. 
+   */
+  const editModalSubmit = async (e) => {
     e.preventDefault();
     const updatedPeople = [...people].filter(
       (falsePeople) => falsePeople.ischecked === true
@@ -235,12 +390,25 @@ function App() {
       seats: parseInt(seats) + adding2Seats,
       regBtn: regBtnSpecific,
       reoccuring: reoccuring,
-      people: updatedPeople,
+      //people: updatedPeople,
     };
 
-    setallEvents(
-      allEvents.map((item) => (item.id !== hipp0.id ? item : hipp0))
-    );
+    console.log(id);
+    console.log(hipp0);
+    try {
+      const response = await api.patch(`event/${id}`, hipp0);
+      console.log(response.data);
+
+      setallEvents(
+        allEvents.map((event) =>
+          event.id === id ? { ...response.data } : event
+        )
+      );
+      window.alert(`you edited ${id}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
 
     setFilterID("");
     setName("");
@@ -253,18 +421,58 @@ function App() {
     setEditModal(!editModal);
     setDisable(!disable);
 
-    window.alert("You have now edited this event.");
+    //window.alert("You have now edited this event.");
   };
 
   /*
    * This changes the checked mark for when you change if a person is attending or not in the
    * edit modal/form
    */
-  const checkingChecked = (index) => {
-    let myNewPeopleCheckMarked = [...people];
+
+  /* This is where you would need to do the checkboxes. the way it is setup, it would update when
+   * you edit and save the code. Again del buttons might be the best. The other way is find a way
+   * where you do like a shallow or deep copy (whichever works) and then just do a full post every
+   * time a checkboxed is clicked
+   *
+   */
+  const checkingChecked = async (index, persons) => {
+    console.log("persons is below");
+    console.log(persons);
+    console.log("index ", index);
+    console.log("peopleOneEvent");
+    console.log(peopleOneEvent);
+    //console.log(peopleOneEvent);
+    //let id = persons[index].id;
+    //let email = persons[index].email;
+
+    let ischecked = { ischecked: 0 };
+
+    let checkMarked = [...peopleOneEvent];
+    checkMarked[index].ischecked = !checkMarked[index].ischecked;
+    console.log("end");
+
+    /*     if (peopleOneEvent[index].ischecked === 1) {
+      console.log("got int he if");
+      try {
+        const response = await api.patch(`event/${id}`, ischecked);
+        setPeopleOneEvent(
+          peopleOneEvent.map((event) =>
+            event.id === id && event.email === email
+              ? { ...response.data }
+              : event
+          )
+        );
+        window.alert(`you edited ${id}`);
+        window.location.reload();
+      } catch (err) {
+        console.log(`Error: ${err.message}`); 
+      }
+    } */
+
+    /*     let myNewPeopleCheckMarked = [...peopleOneEvent];
     myNewPeopleCheckMarked[index].ischecked =
-      !myNewPeopleCheckMarked[index].ischecked;
-    setPeople(myNewPeopleCheckMarked);
+      !myNewPeopleCheckMarked[index].ischecked; */
+    //setPeople(myNewPeopleCheckMarked);
   };
 
   /**
@@ -287,17 +495,20 @@ function App() {
   /**
    * This sets it for arraymap for when you click the view button
    */
-  const [viewObject, setViewObject] = useState();
+  const [viewObject, setViewObject] = useState([]);
 
   /**
    * When you click view button on the admin side it will show view modal for that one ID
    */
-  const viewIDEvent = (id) => {
+  const viewIDEvent = async (id) => {
     setViewModal(!viewModal);
     setDisable(!disable);
     const viewingEvent = allEvents.filter((oneEvent) => oneEvent.id === id);
+    const viewingPeople = people.filter(
+      (onePeopleEvent) => onePeopleEvent.id === id
+    );
 
-    let peopleArr = viewingEvent[0].people;
+    let peopleArr = viewingPeople;
 
     function peopleArrFor() {
       let myArr = [];
@@ -347,7 +558,7 @@ function App() {
   /**
    * This will get the id of which one you are registering for when you click register
    */
-  const registerIDEvent = (id) => {
+  const registerIDEvent = async (id) => {
     setRegisterModal(!registerModal);
     setFilterID(id);
     setDisable(!disable);
@@ -357,10 +568,18 @@ function App() {
 
   /**
    * When you click the submit button on the register modal it will add the user to the data and
-   * subtract one from the current count. If it is 0 then register for the event will disappear
+   * subtract one from the current count. If it is 0 then register button will disappear
    */
-  const registerEvent = (myregisterEvent) => {
+
+  /**
+   * So this works when are submitting a new person for the event. submitting a new person
+   * always works. What doesn't work, is that it won't set the seat value to 0. it will set it
+   * to anything but 0. I have comments explaining what happens
+   *
+   */
+  const registerEvent = async (myregisterEvent) => {
     myregisterEvent.id = filterID;
+    const id = filterID;
 
     if (
       (myregisterEvent.rank === "") |
@@ -370,6 +589,7 @@ function App() {
     ) {
       return window.alert("You are missing one or more of the inputs");
     }
+<<<<<<< HEAD
     console.log(typeof(myregisterEvent))
     console.log(myregisterEvent)
     window.alert("You are now registered for this event.");
@@ -382,11 +602,52 @@ function App() {
       allEvents[filterIndex].regBtn = false;
     } else {
       allEvents[filterIndex].regBtn = true
+=======
+
+    const newSeat = allEvents[filterIndex].seats - 1;
+    const seatPatch = { seats: newSeat };
+    //const regBtnPatch = { regBtn: false }; //will be used when the bug below isn't there
+    console.log("id: ", id);
+
+    try {
+      console.log("before response");
+      const response = await api.post("people/table", myregisterEvent);
+      const apiAllPeople = [...people, response.data];
+      setPeople(apiAllPeople);
+
+      //this does not work with 0
+      //What happens is that it sends a success code 204
+      //204 means it sent no data. It only does this with zero
+      console.log("trying to update the seats now!!!");
+      const responseSeats = await api.patch(`event/${id}`, seatPatch);
+      console.log("You made it past the response eh");
+      setallEvents(
+        allEvents.map((event) =>
+          event.id === id ? { ...responseSeats.data } : event
+        )
+      );
+
+      //can't test this if I can't make the above to 0
+      console.log("Made to the regBtn update!");
+      /*       if (allEvents[filterIndex].seats === 0) {
+        const responseRegBtn = await api.patch(`event/${id}`, regBtnPatch);
+        setallEvents(
+          allEvents.map((event) =>
+            event.id === id ? { ...responseRegBtn.data } : event
+          )
+        );
+      } */
+
+      window.alert("You are added to the event");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+>>>>>>> Broken
     }
     setFilterID("");
     setFilterIndex("");
     setDisable(!disable);
     setRegisterModal(!registerModal);
+    window.location.reload();
   };
 
   /**
@@ -401,7 +662,9 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-      {/* <p>{API[0].Name}</p> */}
+      <button onClick={apiCreateEvent}> Create </button>
+      <button onClick={() => apiDeleteEvent(100)}> Delete </button>
+      <button onClick={() => apiUpdateEvent(677)}> Edit </button>
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
@@ -425,7 +688,7 @@ function App() {
             seats={seats}
             changeSeats={changeSeats}
             reoccuring={reoccuring}
-            peopleData={people}
+            peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
             closeBtn={changeEditModel}
             formSubmit={editModalSubmit}
