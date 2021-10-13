@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
-import Data from "./Data/Data";
+//import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
@@ -57,7 +57,7 @@ function App() {
   /*
    * Sets all the data from the data file
    */
-    const [allEvents, setallEvents] = useState(Data);
+    const [allEvents, setallEvents] = useState([]);
   
   
   /**
@@ -370,7 +370,8 @@ function App() {
     ) {
       return window.alert("You are missing one or more of the inputs");
     }
-
+    console.log(typeof(myregisterEvent))
+    console.log(myregisterEvent)
     window.alert("You are now registered for this event.");
     let giraffe = allEvents[filterIndex].people;
     giraffe.push(myregisterEvent);
@@ -379,6 +380,8 @@ function App() {
     if (allEvents[filterIndex].seats === 0) {
       console.log("The word of the day is car");
       allEvents[filterIndex].regBtn = false;
+    } else {
+      allEvents[filterIndex].regBtn = true
     }
     setFilterID("");
     setFilterIndex("");
@@ -445,7 +448,10 @@ function App() {
       </div>
       <div>
         {registerModal && (
-          <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
+          <RegisterModal 
+          closebtn={changeRegisterModel} 
+          subOn={registerEvent} 
+          />
         )}
       </div>
       <div className="flex flex-wrap justify-start w-full h-full">
