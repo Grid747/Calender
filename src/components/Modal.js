@@ -25,7 +25,6 @@ function Modal({ onAdd, submit }) {
 
   const formSubmit = (e) => {
     e.preventDefault();
-
     onAdd({ name, date, start, end, seats, reoccuring, people, regBtn });
     submit();
   };

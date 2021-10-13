@@ -60,7 +60,7 @@ function App() {
       start: "10:30",
       end: "11:30",
       seats: 9,
-      reoccuring: "Off",
+      reoccuring: "No",
       regBtn: 1,
     };
     try {
@@ -131,14 +131,8 @@ function App() {
   /*
    * Sets all the data from the data file
    */
-<<<<<<< HEAD
     const [allEvents, setallEvents] = useState([]);
-  
-  
-=======
-  const [allEvents, setallEvents] = useState([]);
 
->>>>>>> Broken
   /**
    * This is for addEvent button. when you click the button it will add the id and check for Weekly or once
    * Afterward if it is once, then it will add the event once. If it is weekly it will add the event for 12
@@ -445,7 +439,7 @@ function App() {
     //let id = persons[index].id;
     //let email = persons[index].email;
 
-    let ischecked = { ischecked: 0 };
+    //let ischecked = { ischecked: 0 };
 
     let checkMarked = [...peopleOneEvent];
     checkMarked[index].ischecked = !checkMarked[index].ischecked;
@@ -589,20 +583,7 @@ function App() {
     ) {
       return window.alert("You are missing one or more of the inputs");
     }
-<<<<<<< HEAD
-    console.log(typeof(myregisterEvent))
-    console.log(myregisterEvent)
-    window.alert("You are now registered for this event.");
-    let giraffe = allEvents[filterIndex].people;
-    giraffe.push(myregisterEvent);
-    allEvents[filterIndex].seats -= 1;
 
-    if (allEvents[filterIndex].seats === 0) {
-      console.log("The word of the day is car");
-      allEvents[filterIndex].regBtn = false;
-    } else {
-      allEvents[filterIndex].regBtn = true
-=======
 
     const newSeat = allEvents[filterIndex].seats - 1;
     const seatPatch = { seats: newSeat };
@@ -641,7 +622,6 @@ function App() {
       window.alert("You are added to the event");
     } catch (err) {
       console.log(`Error: ${err.message}`);
->>>>>>> Broken
     }
     setFilterID("");
     setFilterIndex("");
@@ -662,14 +642,14 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-      <button onClick={apiCreateEvent}> Create </button>
-      <button onClick={() => apiDeleteEvent(100)}> Delete </button>
-      <button onClick={() => apiUpdateEvent(677)}> Edit </button>
+      {/* <button onClick={apiCreateEvent}> Create </button> */}
+      {/* <button onClick={() => apiDeleteEvent(100)}> Delete </button> */}
+      {/* <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">
         <DropDown
-          onAdd={addEvent}
+          onAdd={apiCreateEvent}
           dropValue={loginValue}
           newDropValue={loginChange}
         />
@@ -691,7 +671,7 @@ function App() {
             peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
             closeBtn={changeEditModel}
-            formSubmit={editModalSubmit}
+            formSubmit={() => apiUpdateEvent(104)}
           />
         )}
       </div>
@@ -720,7 +700,7 @@ function App() {
       <div className="flex flex-wrap justify-start w-full h-full">
         <ArrayMap
           mydata={allEvents}
-          deleteEvent={deleteIDEvent}
+          deleteEvent={() => apiDeleteEvent(104)}
           editEvent={editIDEvent}
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
