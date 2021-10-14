@@ -1,4 +1,5 @@
 import Event from "../components/Event";
+import ProgressBar from "../components/progressBar";
 
 function ArrayMap({
   mydata,
@@ -14,8 +15,27 @@ function ArrayMap({
     <div className="flex flex-wrap h-full px-2">
       {mydata.map((mydata) => {
         return (
-          <div key={mydata.id} className="p-2">
-            <div className="box-content ring-4 ring-blue-600 w-60 overflow-x-auto h-52 hover:shadow-2xl rounded-lg bg-blue-300">
+          <div key={mydata.id} className="p-6 px-12">
+            <div className="box-content ring-4 ring-blue-600 w-60 overflow-x-auto h-52 filter drop-shadow-5xl rounded-lg bg-blue-300">
+              <ProgressBar
+              bgcolor={"black"}
+              completed={60}
+              /* const testData = [
+                { bgcolor: "#6a1b9a", completed: 60 },
+                { bgcolor: "#00695c", completed: 30 },
+                { bgcolor: "#ef6c00", completed: 53 },
+              ];
+              
+              function App() {
+                return (
+                  <div className="App">
+                    {testData.map((item, idx) => (
+                      <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
+                    ))}
+                  </div>
+                );
+              }  */
+              />
               <Event
                 key={mydata.id}
                 name={mydata.name}

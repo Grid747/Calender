@@ -1,4 +1,4 @@
-//https://polvara.me/posts/testing-a-custom-select-with-react-testing-library
+/* //https://polvara.me/posts/testing-a-custom-select-with-react-testing-library
 
 //dropdown test
 
@@ -31,5 +31,5 @@ jest.mock("react-select", () => ({ name, value, onChange }) => {
     });
     // highlight-end
     expect(screen.getByText(“Member”)).toBeInTheDocument();
-  });
+  }); */
   

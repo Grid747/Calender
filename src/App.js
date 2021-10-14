@@ -63,15 +63,117 @@ function App() {
       reoccuring: "No",
       regBtn: 1,
     };
-    try {
-      const response = await api.post("event/table", apiNewEvent);
-      const apiAllEvents = [...allEvents, response.data];
-      setallEvents(apiAllEvents);
+    /* if (
+      (myNewEvent.name === "") |
+      (myNewEvent.date === "") |
+      (myNewEvent.start === "") |
+      (myNewEvent.end === "") |
+      (myNewEvent.seats === 0) |
+      (myNewEvent.seats === "") |
+      (myNewEvent.reoccuring === "")
+    ) {
+      return window.alert("One or more inputs were empty. Please try again");
+    }
+    //fix modal stay alive after alert
+
+    /* Only for one instance */
+    /* if (myNewEvent.reoccuring === "No") {
+      const id = Math.floor(Math.random() * 100000000) + 1;
+      myNewEvent.id = id;
+      try {
+        const response = await api.post("event/table", myNewEvent);
+        const apiAllEvents = [...allEvents, response.data];
+        setallEvents(apiAllEvents);
+        window.alert("You added the event");
+        window.location.reload();
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+
+      /* below is for weeks (12 weeks) */
+    /*} else if (myNewEvent.reoccuring === "Weekly") {
+      let uniqueId = [];
+
+      for (let i = 0; i < 12; i++) {
+        const id = Math.floor(Math.random() * 100000000) + 1;
+        uniqueId[i] = id;
+      }
+
+      let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
+      let uniqueDate = [];
+
+      for (let i = 0; i < 12; i++) {
+        let dd = String(dateinput.getDate()).padStart(2, "0");
+        let mm = String(dateinput.getMonth()).padStart(2, "0");
+        let yyyy = dateinput.getFullYear();
+        let specialDateString;
+        if (mm === "00") {
+          mm = "1";
+        } else if (mm === "01") {
+          mm = "2";
+        } else if (mm === "02") {
+          mm = "3";
+        } else if (mm === "03") {
+          mm = "4";
+        } else if (mm === "04") {
+          mm = "5";
+        } else if (mm === "05") {
+          mm = "6";
+        } else if (mm === "06") {
+          mm = "7";
+        } else if (mm === "07") {
+          mm = "8";
+        } else if (mm === "08") {
+          mm = "9";
+        } else if (mm === "09") {
+          mm = "10";
+        } else if (mm === "10") {
+          mm = "11";
+        } else if (mm === "11") {
+          mm = "12";
+        } else {
+          console.log("something broke at: ", i, "iteration");
+        }
+        specialDateString = yyyy + "-" + mm + "-" + dd;
+        uniqueDate[i] = specialDateString;
+        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
+        dateinput = specialDate;
+      }
+
+      let repeatedArr = [];
+      for (let i = 0; i < 12; i++) {
+        repeatedArr[i] = myNewEvent;
+      }
+
+      let finalrepeatedArr = JSON.parse(JSON.stringify(repeatedArr));
+      for (let i = 0; i < 12; i++) {
+        finalrepeatedArr[i].id = uniqueId[i];
+        finalrepeatedArr[i].date = uniqueDate[i];
+      }
+
+      for (let i = 0; i < 12; i++) {
+        try {
+          const response = await api.post("event/table", finalrepeatedArr[i]);
+          const apiAllEvents = [...allEvents, response.data];
+          setallEvents(apiAllEvents);
+          console.log("added event i: ", i);
+        } catch (err) {
+          console.log(`Error: ${err.message}`);
+        }
+      }
       window.alert("You added the event");
       window.location.reload();
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
     }
+  };*/
+      try {
+        const response = await api.post("event/table", apiNewEvent);
+        const apiAllEvents = [...allEvents, response.data];
+        setallEvents(apiAllEvents);
+        window.alert("You added the event");
+        window.location.reload();
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
   };
 
   const apiDeleteEvent = async (id) => {
@@ -90,12 +192,12 @@ function App() {
   const apiUpdateEvent = async (id) => {
     let apiEditEvent = {
       id: 677,
-      name: "id 677",
+      name: "GRID",
       date: "2021-10-30",
       start: "10:30",
       end: "11:30",
       seats: 9,
-      reoccuring: "Off",
+      reoccuring: "No",
       regBtn: 1,
     };
 
@@ -139,7 +241,7 @@ function App() {
    * weeks by converting all the new dates to the strings deeply copying everything and replacing everything
    * with the new data and setting that data as the allEvents
    */
-  const addEvent = async (myNewEvent) => {
+  /*const addEvent = async (myNewEvent) => {
     if (
       (myNewEvent.name === "") |
       (myNewEvent.date === "") |
@@ -154,7 +256,7 @@ function App() {
     //fix modal stay alive after alert
 
     /* Only for one instance */
-    if (myNewEvent.reoccuring === "No") {
+    /*if (myNewEvent.reoccuring === "No") {
       const id = Math.floor(Math.random() * 100000000) + 1;
       myNewEvent.id = id;
       try {
@@ -168,7 +270,7 @@ function App() {
       }
 
       /* below is for weeks (12 weeks) */
-    } else if (myNewEvent.reoccuring === "Weekly") {
+    /*} else if (myNewEvent.reoccuring === "Weekly") {
       let uniqueId = [];
 
       for (let i = 0; i < 12; i++) {
@@ -249,7 +351,7 @@ function App() {
    * This will find the id of the one clicked to delete and delete it and show the new list
    * of allEvents
    */
-  const deleteIDEvent = async (id) => {
+  /* const deleteIDEvent = async (id) => {
     try {
       await api.delete(`event/${id}`);
       const updatedEvents = [...allEvents].filter(
@@ -260,7 +362,7 @@ function App() {
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
-  };
+  }; */
 
   /**************************************************************************************** */
   /**************************************************************************************** */
@@ -346,7 +448,7 @@ function App() {
      Oh I forgot but since people isn't working then updatedPeople and adding2Seat (which is right below)
      won't be working either. Once the other issues are solved then this will be solved too. 
    */
-  const editModalSubmit = async (e) => {
+  /*const editModalSubmit = async (e) => {
     e.preventDefault();
     const updatedPeople = [...people].filter(
       (falsePeople) => falsePeople.ischecked === true
@@ -416,7 +518,7 @@ function App() {
     setDisable(!disable);
 
     //window.alert("You have now edited this event.");
-  };
+  };*/
 
   /*
    * This changes the checked mark for when you change if a person is attending or not in the
@@ -516,7 +618,7 @@ function App() {
           peopleArr[i].email +
           " " +
           peopleArr[i].phoneNumber +
-          ";\r\n";
+          ";" + <br />;
       }
       return myArr;
     }
