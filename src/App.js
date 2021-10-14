@@ -53,9 +53,11 @@ function App() {
 
   //Example all below
   const apiCreateEvent = async () => {
+    setName("hello")
+    console.log(name)
     let apiNewEvent = {
       id: 104, //104 is the new id that is not used yet
-      name: "test7", //new name not used yet
+      name: `${name}`, //new name not used yet
       date: "2021-10-30",
       start: "10:30",
       end: "11:30",
@@ -192,7 +194,7 @@ function App() {
   const apiUpdateEvent = async (id) => {
     let apiEditEvent = {
       id: 677,
-      name: "GRID",
+      name: "Hello",
       date: "2021-10-30",
       start: "10:30",
       end: "11:30",
@@ -744,9 +746,6 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
-      {/* <button onClick={apiCreateEvent}> Create </button> */}
-      {/* <button onClick={() => apiDeleteEvent(100)}> Delete </button> */}
-      {/* <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
       <div className="flex justify-center text-4xl">Registration Site</div>
       <div className="flex justify-end w-full shadow-lg">

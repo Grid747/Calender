@@ -15,27 +15,8 @@ function ArrayMap({
     <div className="flex flex-wrap h-full px-2">
       {mydata.map((mydata) => {
         return (
-          <div key={mydata.id} className="p-6 px-12">
-            <div className="box-content ring-4 ring-blue-600 w-60 overflow-x-auto h-52 filter drop-shadow-5xl rounded-lg bg-blue-300">
-              <ProgressBar
-              bgcolor={"black"}
-              completed={60}
-              /* const testData = [
-                { bgcolor: "#6a1b9a", completed: 60 },
-                { bgcolor: "#00695c", completed: 30 },
-                { bgcolor: "#ef6c00", completed: 53 },
-              ];
-              
-              function App() {
-                return (
-                  <div className="App">
-                    {testData.map((item, idx) => (
-                      <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
-                    ))}
-                  </div>
-                );
-              }  */
-              />
+          <div key={mydata.id} className="p-6 px-8">
+            <div className="box-content ring-4 ring-blue-600 w-52 overflow-x-auto h-48 filter drop-shadow-5xl rounded-lg bg-blue-300">
               <Event
                 key={mydata.id}
                 name={mydata.name}
@@ -57,7 +38,13 @@ function ArrayMap({
                       Register
                     </button>
                   ) : (
-                    ""
+                    //code button to unregister someone and add seat back
+                    <button
+                      id="unregisterBtn"
+                      className="bg-gray-300 border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-white hover:text-gray-900"
+                    >
+                      Unregister
+                    </button>
                   )}
                 </div>
               ) : (
@@ -88,6 +75,11 @@ function ArrayMap({
                   </button>
                 </div>
               )}
+              <ProgressBar
+              bgcolor={'green'}
+              completed={50}
+              //build out a variable for number take total seats - seats left / 100 
+              />
             </div>
           </div>
         );
