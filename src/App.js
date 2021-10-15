@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   //NEED
-  useEffect(() => {
+  /* useEffect(() => {
     const apiGetAllPeople = async () => {
       try {
         const response = await api.get("/people/table");
@@ -49,124 +49,20 @@ function App() {
       }
     };
     apiGetAllPeople();
-  }, []);
+  }, []); */
 
   //Example all below
   const apiCreateEvent = async () => {
-    setName("hello")
-    console.log(name)
     let apiNewEvent = {
       id: 104, //104 is the new id that is not used yet
-      name: `${name}`, //new name not used yet
-      date: "2021-10-30",
-      start: "10:30",
-      end: "11:30",
-      seats: 9,
-      reoccuring: "No",
-      regBtn: 1,
+      name: newName, //new name not used yet
+      date: newDate,
+      start: newStart,
+      end: newEnd,
+      seats: newSeats,
+      reoccuring: newReoccuring,
+      regBtn: newRegBtn,
     };
-    /* if (
-      (myNewEvent.name === "") |
-      (myNewEvent.date === "") |
-      (myNewEvent.start === "") |
-      (myNewEvent.end === "") |
-      (myNewEvent.seats === 0) |
-      (myNewEvent.seats === "") |
-      (myNewEvent.reoccuring === "")
-    ) {
-      return window.alert("One or more inputs were empty. Please try again");
-    }
-    //fix modal stay alive after alert
-
-    /* Only for one instance */
-    /* if (myNewEvent.reoccuring === "No") {
-      const id = Math.floor(Math.random() * 100000000) + 1;
-      myNewEvent.id = id;
-      try {
-        const response = await api.post("event/table", myNewEvent);
-        const apiAllEvents = [...allEvents, response.data];
-        setallEvents(apiAllEvents);
-        window.alert("You added the event");
-        window.location.reload();
-      } catch (err) {
-        console.log(`Error: ${err.message}`);
-      }
-
-      /* below is for weeks (12 weeks) */
-    /*} else if (myNewEvent.reoccuring === "Weekly") {
-      let uniqueId = [];
-
-      for (let i = 0; i < 12; i++) {
-        const id = Math.floor(Math.random() * 100000000) + 1;
-        uniqueId[i] = id;
-      }
-
-      let dateinput = new Date(myNewEvent.date.replace(/-/g, "/"));
-      let uniqueDate = [];
-
-      for (let i = 0; i < 12; i++) {
-        let dd = String(dateinput.getDate()).padStart(2, "0");
-        let mm = String(dateinput.getMonth()).padStart(2, "0");
-        let yyyy = dateinput.getFullYear();
-        let specialDateString;
-        if (mm === "00") {
-          mm = "1";
-        } else if (mm === "01") {
-          mm = "2";
-        } else if (mm === "02") {
-          mm = "3";
-        } else if (mm === "03") {
-          mm = "4";
-        } else if (mm === "04") {
-          mm = "5";
-        } else if (mm === "05") {
-          mm = "6";
-        } else if (mm === "06") {
-          mm = "7";
-        } else if (mm === "07") {
-          mm = "8";
-        } else if (mm === "08") {
-          mm = "9";
-        } else if (mm === "09") {
-          mm = "10";
-        } else if (mm === "10") {
-          mm = "11";
-        } else if (mm === "11") {
-          mm = "12";
-        } else {
-          console.log("something broke at: ", i, "iteration");
-        }
-        specialDateString = yyyy + "-" + mm + "-" + dd;
-        uniqueDate[i] = specialDateString;
-        let specialDate = new Date(dateinput.setDate(dateinput.getDate() + 7));
-        dateinput = specialDate;
-      }
-
-      let repeatedArr = [];
-      for (let i = 0; i < 12; i++) {
-        repeatedArr[i] = myNewEvent;
-      }
-
-      let finalrepeatedArr = JSON.parse(JSON.stringify(repeatedArr));
-      for (let i = 0; i < 12; i++) {
-        finalrepeatedArr[i].id = uniqueId[i];
-        finalrepeatedArr[i].date = uniqueDate[i];
-      }
-
-      for (let i = 0; i < 12; i++) {
-        try {
-          const response = await api.post("event/table", finalrepeatedArr[i]);
-          const apiAllEvents = [...allEvents, response.data];
-          setallEvents(apiAllEvents);
-          console.log("added event i: ", i);
-        } catch (err) {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-      window.alert("You added the event");
-      window.location.reload();
-    }
-  };*/
       try {
         const response = await api.post("event/table", apiNewEvent);
         const apiAllEvents = [...allEvents, response.data];
@@ -397,6 +293,27 @@ function App() {
 
   const [people, setPeople] = useState([]);
   const [peopleOneEvent, setPeopleOneEvent] = useState([]);
+
+  const [newName, setNewName] = useState("");
+  const changeNewName = (e) => setNewName(e.target.value);
+
+  const [newDate, setNewEventDate] = useState("");
+  const changeNewEventDate = (e) => setNewEventDate(e.target.value);
+
+  const [newStart, setNewStartTime] = useState("");
+  const changeNewStartTime = (e) => setNewStartTime(e.target.value);
+
+  const [newEnd, setNewEndTime] = useState("");
+  const changeNewEndTime = (e) => setNewEndTime(e.target.value);
+
+  const [newSeats, setNewSeats] = useState(0);
+  const changeNewSeats = (e) => setNewSeats(e.target.value);
+
+  const [newReoccuring, setNewRecurring] = useState("");
+  const changeNewRecur = (e) => setNewRecurring(e.target.value);
+
+  let newPeople = [];
+  let newRegBtn = true;
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -744,6 +661,10 @@ function App() {
   };
 
   /**************************************************************************** */
+
+  
+
+  /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
       <br />
@@ -753,6 +674,20 @@ function App() {
           onAdd={apiCreateEvent}
           dropValue={loginValue}
           newDropValue={loginChange}
+          name={newName} 
+          date={newDate} 
+          start={newStart} 
+          end={newEnd} 
+          seats={newSeats} 
+          reoccuring={newReoccuring} 
+          people={newPeople} 
+          regBtn={newRegBtn} 
+          changeName={changeNewName} 
+          changeEventDate={changeNewEventDate} 
+          changeStartTime={changeNewStartTime} 
+          changeEndTime={changeNewEndTime} 
+          changeSeats={changeNewSeats} 
+          changeRecur={changeNewRecur} 
         />
       </div>
       <div>

@@ -2,30 +2,30 @@ import React, { useState } from "react";
 /* import Data from "../Data/Data"; */
 
 function Modal({ onAdd, submit }) {
-  const [name, setName] = useState("");
+  const [newName, setName] = useState("");
   const changeName = (e) => setName(e.target.value);
 
-  const [date, setEventDate] = useState("");
+  const [newDate, setEventDate] = useState("");
   const changeEventDate = (e) => setEventDate(e.target.value);
 
-  const [start, setStartTime] = useState("");
+  const [newStart, setStartTime] = useState("");
   const changeStartTime = (e) => setStartTime(e.target.value);
 
-  const [end, setEndTime] = useState("");
+  const [newEnd, setEndTime] = useState("");
   const changeEndTime = (e) => setEndTime(e.target.value);
 
-  const [seats, setSeats] = useState(0);
+  const [newSeats, setSeats] = useState(0);
   const changeSeats = (e) => setSeats(e.target.value);
 
-  const [reoccuring, setRecurring] = useState("");
+  const [newReoccuring, setRecurring] = useState("");
   const changeRecur = (e) => setRecurring(e.target.value);
 
-  let people = [];
-  let regBtn = true;
+  let newPeople = [];
+  let newRegBtn = true;
 
   const formSubmit = (e) => {
     e.preventDefault();
-    onAdd({ name, date, start, end, seats, reoccuring, people, regBtn });
+    onAdd({ newName, newDate, newStart, newEnd, newSeats, newReoccuring, newPeople, newRegBtn });
     submit();
   };
   return (

@@ -77,7 +77,7 @@ function ArrayMap({
               )}
               <ProgressBar
               bgcolor={'green'}
-              completed={50}
+              completed={90}
               //build out a variable for number take total seats - seats left / 100 
               />
             </div>

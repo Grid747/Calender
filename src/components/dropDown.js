@@ -2,7 +2,25 @@ import ModelOpener from "./ModelOpener";
 import InstrucButton from "./InstrucBtn";
 import PackageButton from "./PcsPackageBtn";
 
-const DropDown = ({ onAdd, dropValue, newDropValue }) => {
+const DropDown = ({ 
+  onAdd, 
+  dropValue, 
+  newDropValue, 
+  name, 
+  date, 
+  start, 
+  end, 
+  seats, 
+  reoccuring, 
+  people, 
+  regBtn, 
+  changeName, 
+  changeEventDate, 
+  changeStartTime, 
+  changeEndTime, 
+  changeSeats, 
+  changeRecur 
+}) => {
   return (
     <div className="flex flex-col justify-end w-full">
       
@@ -25,7 +43,23 @@ const DropDown = ({ onAdd, dropValue, newDropValue }) => {
           }`}
         >
           {dropValue ? (
-            <ModelOpener onAdd={onAdd} />
+            <ModelOpener 
+            onAdd={onAdd} 
+            name={name} 
+            date={date} 
+            start={start} 
+            end={end} 
+            seats={seats} 
+            reoccuring={reoccuring} 
+            people={people} 
+            regBtn={regBtn} 
+            changeName={changeName} 
+            changeEventDate={changeEventDate} 
+            changeStartTime={changeStartTime} 
+            changeEndTime={changeEndTime} 
+            changeSeats={changeSeats} 
+            changeRecur={changeRecur} 
+            />
           ) : (
             <div className="bg-blue-900 h-24 w-full font-bold p-2">
               <p className="text-2xl text-white uppercase flex justify-center">

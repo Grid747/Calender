@@ -2,7 +2,23 @@ import React from "react";
 import Modal from "./Modal";
 import { useState } from "react";
 
-function ModelOpener({ onAdd }) {
+function ModelOpener({ 
+  onAdd, 
+  name, 
+  date, 
+  start, 
+  end, 
+  seats, 
+  reoccuring, 
+  people, 
+  regBtn,
+  changeName, 
+  changeEventDate, 
+  changeStartTime, 
+  changeEndTime, 
+  changeSeats, 
+  changeRecur 
+  }) {
   const [showModal, setshowModal] = useState(false);
   const [label, setLabel] = useState("Add Event");
   let onclick = () => {
@@ -39,7 +55,23 @@ function ModelOpener({ onAdd }) {
         </div>
         <div className="flex justify-center items-center"></div>
         <div className="flex justify-center fixed pt-16">
-          {showModal && <Modal onAdd={onAdd} submit={submit} />}
+          {showModal && <Modal 
+          onAdd={onAdd} 
+          submit={submit} 
+          name={name} 
+          date={date} 
+          start={start} 
+          end={end} 
+          seats={seats} 
+          reoccuring={reoccuring} 
+          people={people} 
+          regBtn={regBtn} 
+          changeName={changeName} 
+          changeEventDate={changeEventDate} 
+          changeStartTime={changeStartTime} 
+          changeEndTime={changeEndTime} 
+          changeSeats={changeSeats} 
+          changeRecur={changeRecur} />}
         </div>
       </div>
     </div>
