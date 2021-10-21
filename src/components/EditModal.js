@@ -57,7 +57,6 @@ function EditModal({
             ></input>
             <h1 className="flex justify-center text-lg">Reoccuring: </h1>
             <p className="inline-flex justify-center">{reoccuring}</p>
-
             <br />
             <h1 className="flex justify-center text-lg">Attendee's: </h1>
             {peopleData.map((foodie, index) => {
@@ -72,7 +71,6 @@ function EditModal({
                 </div>
               );
             })}
-
             <div className="p-2 flex justify-evenly">
               <button
                 onClick={closeBtn}

@@ -3,7 +3,6 @@ import axios from "axios";
 import "./App.css";
 import DropDown from "./components/dropDown";
 import ArrayMap from "./Data/ArrayMap";
-//import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
@@ -52,10 +51,14 @@ function App() {
   }, []); */
 
   //Example all below
+  //things left to do for NEW EVENT
+    //1. weekly repeat
+    //2. window alert when something is not filled in
+      //make modal stay alive after alert
   const apiCreateEvent = async () => {
     let apiNewEvent = {
-      id: newID, //104 is the new id that is not used yet
-      name: name, //new name not used yet
+      id: newID, 
+      name: name, 
       date: date,
       start: start,
       end: end,
@@ -74,7 +77,7 @@ function App() {
       }
   };
   
-  //things to do for delete event
+  //things to do for DELETE EVENT
     //1. find specific id
     //2. change window alert to confirmation
     //3. stay on admin page when confirmed
@@ -92,7 +95,7 @@ function App() {
     }
   };
 
-  //things to do for edit event
+  //things to do for EDIT EVENT
     //1. find specific event id
     //2. figure out why it is not updating start and end times
     //3. put error if something is blank
@@ -100,7 +103,7 @@ function App() {
 
   const apiUpdateEvent = async (id) => {
     let apiEditEvent = {
-      id: 2,
+      id: id,
       name: name,
       date: date,
       start: start,
@@ -150,17 +153,6 @@ function App() {
    * weeks by converting all the new dates to the strings deeply copying everything and replacing everything
    * with the new data and setting that data as the allEvents
    */
-
-
-
-  //things left to do for new event
-    //1. weekly repeat
-    //2. window alert when something is not filled in
-      //make modal stay alive after alert
-
-
-
-
 
   /*const addEvent = async (myNewEvent) => {
     if (
@@ -267,6 +259,23 @@ function App() {
   };
 
   /**************************************************************************************** */
+
+    /**
+   * This will find the id of the one clicked to delete and delete it and show the new list
+   * of allEvents
+   */
+    /*  const deleteIDEvent = async (id) => {
+      try {
+        await api.delete(`event/${id}`);
+        const updatedEvents = [...allEvents].filter(
+          (oneEvent) => oneEvent.id !== id
+        );
+        setallEvents(updatedEvents);
+        window.alert("You are now deleting this event.");
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    }; */
   /**************************************************************************************** */
   /**************************************************************************************** */
   /**************************************************************************************** */
@@ -649,9 +658,6 @@ function App() {
   };
 
   /**************************************************************************** */
-
-  
-
   /**************************************************************************** */
   return (
     <div className="flex flex-col justify-center bg-gray-100">
@@ -682,6 +688,7 @@ function App() {
       <div>
         {editModal && (
           <EditModal
+            closeBtn={changeEditModel}
             name={name}
             changeName={changeName}
             date={date}
@@ -695,8 +702,7 @@ function App() {
             reoccuring={reoccuring}
             peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
-            closeBtn={changeEditModel}
-            formSubmit={() => apiUpdateEvent(2)}
+            formSubmit={() => apiUpdateEvent(3)}
           />
         )}
       </div>
@@ -725,7 +731,7 @@ function App() {
       <div className="flex flex-wrap justify-start w-full h-full">
         <ArrayMap
           mydata={allEvents}
-          deleteEvent={() => apiDeleteEvent(114)}
+          deleteEvent={apiDeleteEvent}
           editEvent={editIDEvent}
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
