@@ -19,7 +19,8 @@ const DropDown = ({
   changeStartTime, 
   changeEndTime, 
   changeSeats, 
-  changeRecur 
+  changeRecur,
+  ID
 }) => {
   return (
     <div className="flex flex-col justify-end w-full">
@@ -59,6 +60,7 @@ const DropDown = ({
             changeEndTime={changeEndTime} 
             changeSeats={changeSeats} 
             changeRecur={changeRecur} 
+            ID={ID}
             />
           ) : (
             <div className="bg-blue-900 h-24 w-full font-bold p-2">

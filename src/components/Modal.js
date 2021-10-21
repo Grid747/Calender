@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 /* import Data from "../Data/Data"; */
 
-function Modal({ onAdd, submit, name, date, start, end, seats, reoccuring, people, regBtn, changeName, changeEventDate, changeStartTime, changeEndTime, changeSeats, changeRecur }) {
+function Modal({ onAdd, submit, name, date, start, end, seats, reoccuring, people, regBtn, changeName, changeEventDate, changeStartTime, changeEndTime, changeSeats, changeRecur, ID }) {
   const formSubmit = (e) => {
     e.preventDefault();
-    onAdd({ name, date, start, end, seats, reoccuring, people, regBtn });
+    onAdd({ name, date, start, end, seats, reoccuring, people, regBtn, ID });
     submit();
   };
   return (
@@ -26,7 +26,7 @@ function Modal({ onAdd, submit, name, date, start, end, seats, reoccuring, peopl
             />
             <h1 className="px-1 flex justify-center">Start Time</h1>
             <input
-              className="border-2 border-gray-900 rounded px-1 w-full w-fullh-10"
+              className="border-2 border-gray-900 rounded px-1 w-full h-10"
               type="time"
               onChange={changeStartTime}
             />

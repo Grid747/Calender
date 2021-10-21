@@ -54,14 +54,14 @@ function App() {
   //Example all below
   const apiCreateEvent = async () => {
     let apiNewEvent = {
-      id: 104, //104 is the new id that is not used yet
-      name: newName, //new name not used yet
-      date: newDate,
-      start: newStart,
-      end: newEnd,
-      seats: newSeats,
-      reoccuring: newReoccuring,
-      regBtn: newRegBtn,
+      id: newID, //104 is the new id that is not used yet
+      name: name, //new name not used yet
+      date: date,
+      start: start,
+      end: end,
+      seats: seats,
+      reoccuring: reoccuring,
+      regBtn: regBtn,
     };
       try {
         const response = await api.post("event/table", apiNewEvent);
@@ -73,6 +73,11 @@ function App() {
         console.log(`Error: ${err.message}`);
       }
   };
+  
+  //things to do for delete event
+    //1. find specific id
+    //2. change window alert to confirmation
+    //3. stay on admin page when confirmed
 
   const apiDeleteEvent = async (id) => {
     try {
@@ -87,15 +92,21 @@ function App() {
     }
   };
 
+  //things to do for edit event
+    //1. find specific event id
+    //2. figure out why it is not updating start and end times
+    //3. put error if something is blank
+    //4. stay on admin page after submit is clicked
+
   const apiUpdateEvent = async (id) => {
     let apiEditEvent = {
-      id: 677,
-      name: "Hello",
-      date: "2021-10-30",
-      start: "10:30",
-      end: "11:30",
-      seats: 9,
-      reoccuring: "No",
+      id: 2,
+      name: name,
+      date: date,
+      start: start,
+      end: end,
+      seats: seats,
+      reoccuring: reoccuring,
       regBtn: 1,
     };
 
@@ -139,6 +150,18 @@ function App() {
    * weeks by converting all the new dates to the strings deeply copying everything and replacing everything
    * with the new data and setting that data as the allEvents
    */
+
+
+
+  //things left to do for new event
+    //1. weekly repeat
+    //2. window alert when something is not filled in
+      //make modal stay alive after alert
+
+
+
+
+
   /*const addEvent = async (myNewEvent) => {
     if (
       (myNewEvent.name === "") |
@@ -243,25 +266,7 @@ function App() {
     }
   };
 
-  /****************************************************************************************** */
-
-  /**
-   * This will find the id of the one clicked to delete and delete it and show the new list
-   * of allEvents
-   */
-  /* const deleteIDEvent = async (id) => {
-    try {
-      await api.delete(`event/${id}`);
-      const updatedEvents = [...allEvents].filter(
-        (oneEvent) => oneEvent.id !== id
-      );
-      setallEvents(updatedEvents);
-      window.alert("You are now deleting this event.");
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  }; */
-
+  /**************************************************************************************** */
   /**************************************************************************************** */
   /**************************************************************************************** */
   /**************************************************************************************** */
@@ -290,30 +295,13 @@ function App() {
   const changeSeats = (e) => setSeats(e.target.value);
 
   const [reoccuring, setRecurring] = useState("");
+  const changeRecur = (e) => setRecurring(e.target.value);
 
   const [people, setPeople] = useState([]);
   const [peopleOneEvent, setPeopleOneEvent] = useState([]);
 
-  const [newName, setNewName] = useState("");
-  const changeNewName = (e) => setNewName(e.target.value);
-
-  const [newDate, setNewEventDate] = useState("");
-  const changeNewEventDate = (e) => setNewEventDate(e.target.value);
-
-  const [newStart, setNewStartTime] = useState("");
-  const changeNewStartTime = (e) => setNewStartTime(e.target.value);
-
-  const [newEnd, setNewEndTime] = useState("");
-  const changeNewEndTime = (e) => setNewEndTime(e.target.value);
-
-  const [newSeats, setNewSeats] = useState(0);
-  const changeNewSeats = (e) => setNewSeats(e.target.value);
-
-  const [newReoccuring, setNewRecurring] = useState("");
-  const changeNewRecur = (e) => setNewRecurring(e.target.value);
-
-  let newPeople = [];
-  let newRegBtn = true;
+  let regBtn = true;
+  let newID = Math.random() * 100000000 + 1
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -674,20 +662,21 @@ function App() {
           onAdd={apiCreateEvent}
           dropValue={loginValue}
           newDropValue={loginChange}
-          name={newName} 
-          date={newDate} 
-          start={newStart} 
-          end={newEnd} 
-          seats={newSeats} 
-          reoccuring={newReoccuring} 
-          people={newPeople} 
-          regBtn={newRegBtn} 
-          changeName={changeNewName} 
-          changeEventDate={changeNewEventDate} 
-          changeStartTime={changeNewStartTime} 
-          changeEndTime={changeNewEndTime} 
-          changeSeats={changeNewSeats} 
-          changeRecur={changeNewRecur} 
+          name={name} 
+          date={date} 
+          start={start} 
+          end={end} 
+          seats={seats} 
+          reoccuring={reoccuring} 
+          people={people} 
+          regBtn={regBtn} 
+          ID={newID}
+          changeName={changeName} 
+          changeEventDate={changeDate} 
+          changeStartTime={changeStart} 
+          changeEndTime={changeEnd} 
+          changeSeats={changeSeats} 
+          changeRecur={changeRecur} 
         />
       </div>
       <div>
@@ -707,7 +696,7 @@ function App() {
             peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
             closeBtn={changeEditModel}
-            formSubmit={() => apiUpdateEvent(104)}
+            formSubmit={() => apiUpdateEvent(2)}
           />
         )}
       </div>
@@ -736,12 +725,14 @@ function App() {
       <div className="flex flex-wrap justify-start w-full h-full">
         <ArrayMap
           mydata={allEvents}
-          deleteEvent={() => apiDeleteEvent(104)}
+          deleteEvent={() => apiDeleteEvent(114)}
           editEvent={editIDEvent}
           viewEvent={viewIDEvent}
           registerEvent={registerIDEvent}
           dropValue={loginValue}
           disable={disable}
+          //totalSeats={totalSeats}
+          //seatsLeft={seatsLeft}
         />
       </div>
     </div>
