@@ -55,6 +55,7 @@ function App() {
     //1. weekly repeat
     //2. window alert when something is not filled in
       //make modal stay alive after alert
+    //3. after submit stay on admin page
   const apiCreateEvent = async () => {
     let apiNewEvent = {
       id: newID, 
@@ -78,10 +79,7 @@ function App() {
   };
   
   //things to do for DELETE EVENT
-    //1. find specific id
-    //2. change window alert to confirmation
-    //3. stay on admin page when confirmed
-
+    //1. change window alert to confirmation QOL(quality of life)
   const apiDeleteEvent = async (id) => {
     try {
       await api.delete(`event/${id}`);
@@ -89,13 +87,14 @@ function App() {
         (oneEvent) => oneEvent.id !== id
       );
       setallEvents(updatedEvents);
-      window.alert("You are now deleting this event.");
+      window.alert(`You deleted ${id}.`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
   };
 
   //things to do for EDIT EVENT
+    //only working with id pasted down at the bottom of page when update event is called
     //1. find specific event id
     //2. figure out why it is not updating start and end times
     //3. put error if something is blank
@@ -110,9 +109,8 @@ function App() {
       end: end,
       seats: seats,
       reoccuring: reoccuring,
-      regBtn: 1,
+      regBtn: regBtn,
     };
-
     try {
       const response = await api.patch(`event/${id}`, apiEditEvent);
       setallEvents(
@@ -120,8 +118,7 @@ function App() {
           event.id === id ? { ...response.data } : event
         )
       );
-      window.alert(`you edited ${id}`);
-      window.location.reload();
+      window.alert(`you edited ${name}`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -498,7 +495,7 @@ function App() {
 
   /***************************************************************************************** */
   /***************************************************************************************** */
-  /****************************************************************************************** */
+  /***************************************************************************************** */
 
   /**
    * This set it for closing the modal
@@ -702,7 +699,7 @@ function App() {
             reoccuring={reoccuring}
             peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
-            formSubmit={() => apiUpdateEvent(3)}
+            formSubmit={() => apiUpdateEvent(25729869)}
           />
         )}
       </div>
