@@ -37,7 +37,7 @@ function App() {
   }, []);
 
   //NEED
-  /* useEffect(() => {
+ /*  useEffect(() => {
     const apiGetAllPeople = async () => {
       try {
         const response = await api.get("/people/table");
@@ -94,11 +94,9 @@ function App() {
   };
 
   //things to do for EDIT EVENT
-    //only working with id pasted down at the bottom of page when update event is called
-    //1. find specific event id
-    //2. figure out why it is not updating start and end times
-    //3. put error if something is blank
-    //4. stay on admin page after submit is clicked
+    //1. figure out why it is not updating start, end and seats
+    //2. put error if something is blank
+    //3. stay on admin page after submit is clicked
 
   const apiUpdateEvent = async (id) => {
     let apiEditEvent = {
@@ -118,7 +116,7 @@ function App() {
           event.id === id ? { ...response.data } : event
         )
       );
-      window.alert(`you edited ${name}`);
+      window.alert(`You edited ${name}`);
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -699,7 +697,7 @@ function App() {
             reoccuring={reoccuring}
             peopleData={peopleOneEvent}
             checkingChecked={checkingChecked}
-            formSubmit={() => apiUpdateEvent(25729869)}
+            formSubmit={() => apiUpdateEvent(filterID)}
           />
         )}
       </div>
