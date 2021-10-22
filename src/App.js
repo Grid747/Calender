@@ -306,6 +306,7 @@ function App() {
 
   let regBtn = true;
   let newID = Math.random() * 100000000 + 1
+  let totalSeats = 987
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -583,7 +584,7 @@ function App() {
    * always works. What doesn't work, is that it won't set the seat value to 0. it will set it
    * to anything but 0. I have comments explaining what happens
    *
-   */
+   */ 
   const registerEvent = async (myregisterEvent) => {
     myregisterEvent.id = filterID;
     const id = filterID;
@@ -732,8 +733,8 @@ function App() {
           registerEvent={registerIDEvent}
           dropValue={loginValue}
           disable={disable}
-          //totalSeats={totalSeats}
-          //seatsLeft={seatsLeft}
+          totalSeats={totalSeats}
+          seatsLeft={seats}
         />
       </div>
     </div>

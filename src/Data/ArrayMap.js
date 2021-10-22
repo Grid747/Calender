@@ -10,7 +10,16 @@ function ArrayMap({
   dropValue,
   disable,
   /* chairSeat, */
+  totalSeats,
+  seatsLeft,
 }) {
+
+  console.log(totalSeats)
+  console.log(seatsLeft)
+  const precentage = (total, left) => {
+    let value = left / total
+    return (value * 100)
+  }
   return (
     <div className="flex flex-wrap h-full px-2">
       {mydata.map((mydata) => {
@@ -77,7 +86,7 @@ function ArrayMap({
               )}
               <ProgressBar
               bgcolor={'green'}
-              completed={90}
+              completed={precentage(10, 1)}
               //build out a variable for number take total seats - seats left / 100 
               />
             </div>
