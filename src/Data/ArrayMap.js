@@ -1,5 +1,4 @@
 import Event from "../components/Event";
-import ProgressBar from "../components/progressBar";
 
 function ArrayMap({
   mydata,
@@ -10,16 +9,8 @@ function ArrayMap({
   dropValue,
   disable,
   /* chairSeat, */
-  totalSeats,
-  seatsLeft,
 }) {
 
-  console.log(totalSeats)
-  console.log(seatsLeft)
-  const precentage = (total, left) => {
-    let value = left / total
-    return (value * 100)
-  }
   return (
     <div className="flex flex-wrap h-full px-2">
       {mydata.map((mydata) => {
@@ -84,11 +75,7 @@ function ArrayMap({
                   </button>
                 </div>
               )}
-              <ProgressBar
-              bgcolor={'green'}
-              completed={precentage(10, 1)}
-              //build out a variable for number take total seats - seats left / 100 
-              />
+
             </div>
           </div>
         );

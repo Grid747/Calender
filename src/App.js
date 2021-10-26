@@ -48,7 +48,7 @@ function App() {
       }
     };
     apiGetAllPeople();
-  }, []); */
+  }, []); */ 
 
   //Example all below
   //things left to do for NEW EVENT
@@ -306,7 +306,6 @@ function App() {
 
   let regBtn = true;
   let newID = Math.random() * 100000000 + 1
-  let totalSeats = 987
 
   /* *************************************************************************************** */
   /* *************************************************************************************** */
@@ -733,8 +732,8 @@ function App() {
           registerEvent={registerIDEvent}
           dropValue={loginValue}
           disable={disable}
-          totalSeats={totalSeats}
-          seatsLeft={seats}
+          /* totalSeats={totalSeats}
+          seatsLeft={seats} */
         />
       </div>
     </div>
