@@ -78,6 +78,11 @@ function App() {
       }
   };
   
+
+
+
+
+  
   //things to do for DELETE EVENT
     //1. change window alert to confirmation QOL(quality of life)
   const apiDeleteEvent = async (id) => {
