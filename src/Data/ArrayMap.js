@@ -16,7 +16,7 @@ function ArrayMap({
       {mydata.map((mydata) => {
         return (
           <div key={mydata.id} className="p-6 px-8">
-            <div className="box-content ring-4 ring-blue-600 w-52 overflow-x-auto h-48 filter drop-shadow-5xl rounded-lg bg-blue-300">
+            <div className="box-content w-52 overflow-x-auto h-48 filter shadow-inner rounded-lg bg-gray-100">
               <Event
                 key={mydata.id}
                 name={mydata.name}
@@ -32,7 +32,7 @@ function ArrayMap({
                     <button
                       id="registerBtn"
                       disabled={disable}
-                      className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                      className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-300"
                       onClick={() => registerEvent(mydata.id)}
                     >
                       Register
@@ -52,7 +52,7 @@ function ArrayMap({
                   <button
                     id="editBtn"
                     disabled={disable}
-                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                    className="bg-white border border-gray-00 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
                     onClick={() => editEvent(mydata.id)}
                   >
                     Edit

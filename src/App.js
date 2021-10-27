@@ -82,7 +82,7 @@ function App() {
 
 
 
-  
+
   //things to do for DELETE EVENT
     //1. change window alert to confirmation QOL(quality of life)
   const apiDeleteEvent = async (id) => {
@@ -660,10 +660,10 @@ function App() {
   /**************************************************************************** */
   /**************************************************************************** */
   return (
-    <div className="flex flex-col justify-center bg-gray-100">
+    <div className="bg-gradient-to-r from-gray-300 via-blue-300 to-blue-900">
       <br />
-      <div className="flex justify-center text-4xl">Registration Site</div>
-      <div className="flex justify-end w-full shadow-lg">
+      <div className="flex justify-center text-4xl">Chronos XD</div>
+      <div className="flex justify-end w-full">
         <DropDown
           onAdd={apiCreateEvent}
           dropValue={loginValue}

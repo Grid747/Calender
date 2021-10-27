@@ -63,7 +63,7 @@ const DropDown = ({
             ID={ID}
             />
           ) : (
-            <div className="bg-blue-900 h-24 w-full font-bold p-2">
+            <div className=" h-24 w-full font-bold p-2">
               <p className="text-2xl text-white uppercase flex justify-center">
                 647th Force Support Squadron
               </p>
