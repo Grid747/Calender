@@ -25,25 +25,25 @@ function RegisterModal({ closebtn, subOn, disable }) {
       <form onSubmit={submitbtn}>
         <h1 className="flex justify-left">Rank:</h1>
         <input
-          className="flex justify-center w-80"
+          className="border border-gray-900 pl-2 flex justify-center w-80"
           type="text"
           onChange={changeRank}
         />
         <h1 className="flex justify-left pt-6">Name:</h1>
         <input
-          className="flex justify-center w-80"
+          className="border border-gray-900 pl-2 flex justify-center w-80"
           type="text"
           onChange={changeName}
         />
         <h1 className="flex justify-left pt-6">Email:</h1>
         <input
-          className="flex justify-center w-80"
+          className="border border-gray-900  pl-2 flex justify-center w-80"
           type="email"
           onChange={changeEmail}
         />
         <h1 className="flex justify-left pt-6">Phone (###-###-####):</h1>
         <input
-          className="flex justify-center w-80"
+          className="border border-gray-900 pl-2 flex justify-center w-80"
           type="tel"
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           onChange={changePhoneNumber}

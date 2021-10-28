@@ -22,46 +22,46 @@ function EditModal({
           <form>
             <h1 className="flex justify-left text-lg">Event Name:</h1>
             <input
-              className="border border-gray-900 rounded h-10 w-80 justify-center"
+              className="pl-2 border border-gray-900 rounded h-10 w-80 justify-center"
               type="text"
               onChange={changeName}
               value={name} 
             ></input>
             <h1 className="flex justify-left text-lg pt-5">Event Date: </h1>
             <input
-              className="border border-gray-900 rounded h-10 w-80 justify-center"
+              className="pl-2 border border-gray-900 rounded h-10 w-80 justify-center"
               type="date"
               onChange={changeDate}
               value={date}
             ></input>
             <h1 className="flex justify-left text-lg pt-5">Start Time:</h1>
             <input
-              className="border border-gray-900 rounded h-10 w-80 justify-center"
+              className="pl-2 border border-gray-900 rounded h-10 w-80 justify-center"
               type="time"
               onChange={changeStart}
               value={start}
             ></input>
             <h1 className="flex justify-left text-lg pt-5">End Time: </h1>
             <input
-              className="border border-gray-900 rounded h-10 w-80 justify-center"
+              className="pl-2 border border-gray-900 rounded h-10 w-80 justify-center"
               type="time"
               onChange={changeEnd}
               value={end}
             ></input>
             <h1 className="flex justify-left text-lg pt-5">Number of Seats: </h1>
             <input
-              className="border border-gray-900 rounded h-10 w-80 justify-center"
+              className="pl-2 border border-gray-900 rounded h-10 w-80 justify-center"
               type="number"
               onChange={changeSeats}
               value={seats}
             ></input>
             <h1 className="flex justify-left text-lg pt-5">Reoccuring: </h1>
-            <p className="inline-flex justify-left">{reoccuring}</p>
+            <p className="pl-2 inline-flex justify-left">{reoccuring}</p>
             <br />
             <h1 className="flex justify-left text-lg pt-5">Attendee's: </h1>
             {peopleData.map((foodie, index) => {
               return (
-                <div key={index}>
+                <div className='pl-2' key={index}>
                   <input
                     type="checkbox"
                     checked={foodie.ischecked}

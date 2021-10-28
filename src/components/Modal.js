@@ -14,31 +14,31 @@ function Modal({ onAdd, submit, name, date, start, end, seats, reoccuring, peopl
           <form onSubmit={formSubmit}>
             <h1 className="px-1 flex justify-left pt-5">Event Name:</h1>
             <input
-              className="border border-gray-900 rounded h-10 w-80 justify-center"
+              className="pl-2 border border-gray-900 rounded h-10 w-80 justify-center"
               type="text"
               onChange={changeName}
             />
             <h1 className="px-1 flex justify-left pt-5">Event Date:</h1>
             <input
-              className="border border-gray-900 rounded px-1 w-full h-10"
+              className="pl-2 border border-gray-900 rounded px-1 w-full h-10"
               type="date"
               onChange={changeEventDate}
             />
             <h1 className="px-1 flex justify-left pt-5">Start Time:</h1>
             <input
-              className="border border-gray-900 rounded px-1 w-full h-10"
+              className="pl-2 border border-gray-900 rounded px-1 w-full h-10"
               type="time"
               onChange={changeStartTime}
             />
             <h1 className="px-1 flex justify-left pt-5">End Time:</h1>
             <input
-              className="border border-gray-900 rounded px-1 w-full h-10"
+              className="pl-2 border border-gray-900 rounded px-1 w-full h-10"
               type="time"
               onChange={changeEndTime}
             />
             <h1 className="px-1 flex justify-left pt-5">Number of seats:</h1>
             <input
-              className="border border-gray-900 rounded px-1 h-10 w-80"
+              className="pl-2 border border-gray-900 rounded px-1 h-10 w-80"
               type="number"
               onChange={changeSeats}
             />
