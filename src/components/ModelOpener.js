@@ -36,7 +36,7 @@ function ModelOpener({
   };
 
   return (
-    <div className="bg-red-600 border justify-centerp-1.5 h-28 w-full z-50">
+    <div className="bg-blue-500 border justify-centerp-1.5 h-28 w-full z-50">
       <p className="text-2xl pt-2 text-black flex justify-center font-mono">
         Administrator
       </p>

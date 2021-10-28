@@ -667,7 +667,7 @@ function ChronosLogo() {
   return (
     <div className="bg-blue-100">
       <br />
-      <div><center>{ChronosLogo()}</center></div>
+      <div className='flex justify-center'><center>{ChronosLogo()}</center></div>
       <div className="flex justify-end w-full">
         <DropDown
           onAdd={apiCreateEvent}
@@ -733,7 +733,7 @@ function ChronosLogo() {
           />
         )}
       </div>
-      <div className="flex flex-wrap justify-start w-full h-full">
+      <div className="flex flex-wrap justify-center h-full w-full">
         <ArrayMap
           mydata={allEvents}
           deleteEvent={apiDeleteEvent}
