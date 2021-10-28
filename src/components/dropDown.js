@@ -40,7 +40,7 @@ const DropDown = ({
         </label>
         <div
           className={`${
-            dropValue ? "flex justify-center" : "flex justify-center pt-10"
+            dropValue ? "flex justify-center pt-8" : "flex justify-center pt-10"
           }`}
         >
           {dropValue ? (

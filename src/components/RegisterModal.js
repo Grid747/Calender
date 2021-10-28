@@ -21,43 +21,43 @@ function RegisterModal({ closebtn, subOn, disable }) {
   };
   return (
     <div className="fixed pin z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
-    <div className="flex px-4 h-64 flex-col border-2 border-gray-900 bg-blue-300 justify-center">
+    <div className="flex px-4 h-96 flex-col w-92 rounded border-2 border-gray-900 bg-gray-200 justify-center">
       <form onSubmit={submitbtn}>
-        <h1 className="flex justify-center">Rank:</h1>
+        <h1 className="flex justify-left">Rank:</h1>
         <input
-          className="flex justify-center"
+          className="flex justify-center w-80"
           type="text"
           onChange={changeRank}
         />
-        <h1 className="flex justify-center">Name:</h1>
+        <h1 className="flex justify-left pt-6">Name:</h1>
         <input
-          className="flex justify-center"
+          className="flex justify-center w-80"
           type="text"
           onChange={changeName}
         />
-        <h1 className="flex justify-center">Email:</h1>
+        <h1 className="flex justify-left pt-6">Email:</h1>
         <input
-          className="flex justify-center"
+          className="flex justify-center w-80"
           type="email"
           onChange={changeEmail}
         />
-        <h1 className="flex justify-center">Phone (###-###-####):</h1>
+        <h1 className="flex justify-left pt-6">Phone (###-###-####):</h1>
         <input
-          className="flex justify-center"
+          className="flex justify-center w-80"
           type="tel"
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           onChange={changePhoneNumber}
         />
-        <div className="p-2 flex justify-evenly">
+        <div className="pt-10 flex justify-evenly">
           <button
             type="button"
-            className="rounded-full border border-gray-900 bg-white px-2 py-1"
+            className="rounded border border-gray-900 bg-white px-2 py-1 hover:bg-red-600"
             onClick={closebtn}
             disabled={disable}
           >
             Cancel
           </button>
-          <button type="submit" className="rounded-full border border-gray-900 bg-white px-2 py-1">
+          <button type="submit" className="rounded border border-gray-900 bg-white px-2 py-1 hover:bg-green-200">
             Submit
           </button>
         </div>

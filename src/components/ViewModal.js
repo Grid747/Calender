@@ -13,7 +13,7 @@ function ViewModal({
   return (
     <div className="fixed pin z-50 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
       <div>
-    <div className="flex flex-col py-4 h-auto  border-2 w-56 items-center content-center border-gray-900 bg-blue-300 justify-center">
+    <div className="flex flex-col py-4 h-auto  border-2 w-96 items-center content-center border-gray-900 bg-gray-200 justify-center">
       <h1 className="flex justify-center font-bold">Event Name: </h1>
       <p className="flex justify-center" type="text">
         {name}
@@ -30,7 +30,7 @@ function ViewModal({
       <p className="flex justify-center" type="time">
         {end}
       </p>
-      <h1 className="flex justify-center font-bold"># of Seats: </h1>
+      <h1 className="flex justify-center font-bold">Number of Seats: </h1>
       <p className="flex justify-center" type="number">
         {seats}
       </p>
@@ -38,12 +38,12 @@ function ViewModal({
       <p className="flex justify-center" type="text">
         {reoccuring}
       </p>
-      <h1 className="flex justify-center font-bold">People: </h1>
+      <h1 className="flex justify-center font-bold pt-12">People: </h1>
       <p className="flex justify-center text-center" type="text">
         {people}
       </p>
       <div className="p-2 flex justify-evenly">
-        <button onClick={closeBtn} className="rounded-full px-3 border border-gray-900 bg-white h-10 w-20 hover:shadow-lg">
+        <button onClick={closeBtn} className="rounded px-3 border border-gray-900 bg-white h-10 w-20 hover:bg-red-600">
             Close
             </button>
       </div>

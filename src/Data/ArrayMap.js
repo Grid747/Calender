@@ -52,7 +52,7 @@ function ArrayMap({
                   <button
                     id="editBtn"
                     disabled={disable}
-                    className="bg-white border border-gray-00 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:bg-green-300"
                     onClick={() => editEvent(mydata.id)}
                   >
                     Edit
@@ -60,7 +60,7 @@ function ArrayMap({
                   <button
                     id="viewBtn"
                     disabled={disable}
-                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:bg-green-300"
                     onClick={() => viewEvent(mydata.id)}
                   >
                     View
@@ -68,7 +68,7 @@ function ArrayMap({
                   <button
                     id="editbtn"
                     disabled={disable}
-                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                    className="bg-white border border-gray-900 rounded-md px-2 hover:bg-red-600"
                     onClick={() => deleteEvent(mydata.id)}
                   >
                     Delete
