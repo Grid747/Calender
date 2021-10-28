@@ -64,7 +64,7 @@ const DropDown = ({
             />
           ) : (
             <div className="">
-              <p className="text-2xl text-black flex justify-center font-mono">
+              <p className="text-xl text-black flex justify-center font-mono">
                 647th Force Support Squadron
               </p>
               <div className="flex justify-center p-4">
