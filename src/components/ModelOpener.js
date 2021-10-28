@@ -45,8 +45,8 @@ function ModelOpener({
           <button
             className={`${
               showModal
-                ? "bg-white hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded"
-                : "bg-white hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded"
+                ? "bg-white border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded"
+                : "bg-white border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded"
             }`}
             onClick={onclick}
           >
