@@ -23,7 +23,7 @@ const DropDown = ({
   ID
 }) => {
   return (
-    <div className="flex flex-col justify-end w-full">
+    <div className="flex flex-col justify-end w-full h-28">
       
       <div className="flex flex-col justify-end">
         <h1 className="flex justify-end px-8">Login:</h1>
@@ -32,7 +32,7 @@ const DropDown = ({
             name="Login"
             value={dropValue}
             onChange={newDropValue}
-            className="mx-2 border-2 border-gray-400 border-offset hover:shadow-lg"
+            className="mx-2"
           >
             <option value={false}>Member</option>
             <option value={true}>Admin</option>
@@ -40,7 +40,7 @@ const DropDown = ({
         </label>
         <div
           className={`${
-            dropValue ? "flex justify-center pt-0" : "flex justify-center pt-1"
+            dropValue ? "flex justify-center" : "flex justify-center pt-10"
           }`}
         >
           {dropValue ? (
@@ -63,11 +63,11 @@ const DropDown = ({
             ID={ID}
             />
           ) : (
-            <div className=" h-24 w-full font-bold p-2">
-              <p className="text-2xl text-white uppercase flex justify-center">
+            <div className="">
+              <p className="text-2xl text-black flex justify-center font-mono">
                 647th Force Support Squadron
               </p>
-              <div className="flex justify-center">
+              <div className="flex justify-center p-4">
                 <InstrucButton label="Instructions" />
                 <PackageButton label="PCS Package" />
               </div>

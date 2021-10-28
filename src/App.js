@@ -6,6 +6,7 @@ import ArrayMap from "./Data/ArrayMap";
 import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
+import Chronos from "./files/Chromos.png";
 
 const api = axios.create({
   baseURL: `http://localhost:3001/`,
@@ -657,12 +658,16 @@ function App() {
     setDisable(!disable);
   };
 
+function ChronosLogo() {
+  return <img src={Chronos} alt={ChronosLogo} />
+}
+
   /**************************************************************************** */
   /**************************************************************************** */
   return (
-    <div className="bg-gradient-to-r from-gray-300 via-blue-300 to-blue-900">
+    <div className="bg-blue-100">
       <br />
-      <div className="flex justify-center text-4xl">Chronos XD</div>
+      <div><center>{ChronosLogo()}</center></div>
       <div className="flex justify-end w-full">
         <DropDown
           onAdd={apiCreateEvent}
