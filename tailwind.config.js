@@ -5,21 +5,18 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-
-        'chronos': "url('/Users/grid/Desktop/Dev/Calender/src/files/Chromos.png')"
+        //'chronos': "url('/Users/grid/Desktop/Dev/Calender/src/files/Chromos.png')"
+        chronos: "url('/src/files/Chromos.png')",
       },
 
       dropShadow: {
-
-        '5xl': '0 25px 25px rgba(0, 0, 0, 0.60)',
-
-      }
-
+        "5xl": "0 25px 25px rgba(0, 0, 0, 0.60)",
+      },
     },
   },
   variants: {
     extend: {
-      ringWidth: ['hover', 'active'],
+      ringWidth: ["hover", "active"],
     },
   },
   plugins: [],
