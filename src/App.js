@@ -372,32 +372,6 @@ function App() {
 
     let addFromDel = deletingPeopleArray.length;
 
-    /*     for (let i = 0; i < people.length; i++) {
-      for (let j = 0; j < deletingPeopleArray.length; j++) {
-        if (
-          people[i].id === deletingPeopleArray[j].id &&
-          people[i].email === deletingPeopleArray[j].email
-        ) {
-          people[i] = deletingPeopleArray[i];
-        }
-      }
-    } */
-
-    /*     console.log("people after the comparison");
-    console.log(people); */
-
-    /* let adding2Seats = people.length - updatedPeople.length;
-    console.log("adding2Seats");
-    console.log(adding2Seats); */
-
-    /* const updatedPeople = [...people].filter(
-      (keepPeople) => keepPeople.ischecked !== false
-    );
-    setPeople(updatedPeople); */
-
-    /* console.log("people that are kept overall. Sharper and one masur is gone");
-    console.log(updatedPeople); */
-
     if (
       (name === "") |
       (date === "") |
@@ -448,7 +422,9 @@ function App() {
       }
     }
 
+    console.log("id");
     console.log(id);
+    console.log("hipp0");
     console.log(hipp0);
     try {
       const response = await api.patch(`event/${id}`, hipp0);
