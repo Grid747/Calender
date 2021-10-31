@@ -348,11 +348,55 @@ function App() {
    */
   const editModalSubmit = async (e) => {
     e.preventDefault();
-    const updatedPeople = [...people].filter(
+    /* const updatedPeople = [...people].filter(
       (falsePeople) => falsePeople.ischecked === true
-    );
+    ); */
+    console.log("people");
+    console.log(people);
 
-    let adding2Seats = people.length - updatedPeople.length;
+    console.log("People one Event");
+    console.log(peopleOneEvent);
+
+    let deletingPeopleArray = [];
+    //console.log("peopleone Event length");
+    //console.log(peopleOneEvent.length);
+
+    for (let i = 0; i < peopleOneEvent.length; i++) {
+      if (peopleOneEvent[i].ischecked == false) {
+        deletingPeopleArray.push(peopleOneEvent[i]);
+      }
+    }
+
+    console.log("deletingPeopleArray");
+    console.log(deletingPeopleArray);
+
+    let addFromDel = deletingPeopleArray.length;
+
+    /*     for (let i = 0; i < people.length; i++) {
+      for (let j = 0; j < deletingPeopleArray.length; j++) {
+        if (
+          people[i].id === deletingPeopleArray[j].id &&
+          people[i].email === deletingPeopleArray[j].email
+        ) {
+          people[i] = deletingPeopleArray[i];
+        }
+      }
+    } */
+
+    /*     console.log("people after the comparison");
+    console.log(people); */
+
+    /* let adding2Seats = people.length - updatedPeople.length;
+    console.log("adding2Seats");
+    console.log(adding2Seats); */
+
+    /* const updatedPeople = [...people].filter(
+      (keepPeople) => keepPeople.ischecked !== false
+    );
+    setPeople(updatedPeople); */
+
+    /* console.log("people that are kept overall. Sharper and one masur is gone");
+    console.log(updatedPeople); */
 
     if (
       (name === "") |
@@ -360,7 +404,7 @@ function App() {
       (start === "") |
       (end === "") |
       // eslint-disable-next-line
-      (seats == 0 && adding2Seats == 0) |
+      //(seats == 0 && adding2Seats == 0) |
       (seats === "") |
       (reoccuring === "")
     ) {
@@ -374,6 +418,8 @@ function App() {
       regBtnSpecific = false;
     }
 
+    //compare people and delete array for a new array that will be the n
+
     const id = filterID;
     let hipp0 = {
       id,
@@ -381,11 +427,26 @@ function App() {
       date,
       start,
       end,
-      seats: parseInt(seats) + adding2Seats,
+      seats: parseInt(seats) + addFromDel,
       regBtn: regBtnSpecific,
       reoccuring: reoccuring,
       //people: updatedPeople,
     };
+
+    for (let i = 0; i < deletingPeopleArray.length; i++) {
+      let uuid = deletingPeopleArray[i].uuid;
+      try {
+        await api.delete(`people/${id}/${uuid}`);
+        const updatedPeople = [...people].filter(
+          (keepPeople) => keepPeople.ischecked !== false
+        );
+        let finalUpdatedPeople = JSON.parse(JSON.stringify(updatedPeople));
+        setPeople(finalUpdatedPeople);
+        window.alert("You are now deleting this event.");
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    }
 
     console.log(id);
     console.log(hipp0);
@@ -399,7 +460,7 @@ function App() {
         )
       );
       window.alert(`you edited ${id}`);
-      window.location.reload();
+      //window.location.reload();
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -416,6 +477,7 @@ function App() {
     setDisable(!disable);
 
     //window.alert("You have now edited this event.");
+    window.location.reload();
   };
 
   /*
@@ -430,20 +492,20 @@ function App() {
    *
    */
   const checkingChecked = async (index, persons) => {
-    console.log("persons is below");
-    console.log(persons);
-    console.log("index ", index);
+    //console.log("persons is below");
+    //console.log(persons);
+    //console.log("index ", index);
     console.log("peopleOneEvent");
     console.log(peopleOneEvent);
     //console.log(peopleOneEvent);
     //let id = persons[index].id;
     //let email = persons[index].email;
 
-    let ischecked = { ischecked: 0 };
+    //let ischecked = { ischecked: 0 };
 
-    let checkMarked = [...peopleOneEvent];
+    /* let checkMarked = [...peopleOneEvent];
     checkMarked[index].ischecked = !checkMarked[index].ischecked;
-    console.log("end");
+    console.log("end"); */
 
     /*     if (peopleOneEvent[index].ischecked === 1) {
       console.log("got int he if");
@@ -462,11 +524,12 @@ function App() {
         console.log(`Error: ${err.message}`); 
       }
     } */
-
-    /*     let myNewPeopleCheckMarked = [...peopleOneEvent];
+    let myNewPeopleCheckMarked = [...peopleOneEvent];
     myNewPeopleCheckMarked[index].ischecked =
-      !myNewPeopleCheckMarked[index].ischecked; */
-    //setPeople(myNewPeopleCheckMarked);
+      !myNewPeopleCheckMarked[index].ischecked;
+    setPeopleOneEvent(myNewPeopleCheckMarked);
+    console.log("people after");
+    console.log(people);
   };
 
   /**
