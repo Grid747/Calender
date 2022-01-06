@@ -51,13 +51,13 @@ function RegisterModal({ closebtn, subOn, disable }) {
         <div className="pt-10 flex justify-evenly">
           <button
             type="button"
-            className="rounded border border-gray-900 bg-white px-2 py-1 hover:bg-red-600"
+            className="bg-white border border-gray-900 rounded-md px-2 hover:bg-red-600"
             onClick={closebtn}
             disabled={disable}
           >
             Cancel
           </button>
-          <button type="submit" className="rounded border border-gray-900 bg-white px-2 py-1 hover:bg-green-200">
+          <button type="submit" className="bg-white border border-gray-900 rounded-md px-2 hover:bg-green-300">
             Submit
           </button>
         </div>

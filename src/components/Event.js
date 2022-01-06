@@ -14,7 +14,7 @@ function Event({ name, eventDate, startTime, endTime, seatNum, reoccuring }) {
         <div className="flex pb-5 justify-center">
           <label>End Time: {endTime}</label>
         </div>
-        <div className="flex px-2">
+        <div className="flex pb-5 justify-center">
           <label># of Seats: {seatNum}</label>
         </div>
         <div className="flex px-2">
