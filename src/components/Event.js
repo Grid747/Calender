@@ -21,7 +21,14 @@ function Event({ name, eventDate, startTime, endTime, seatNum, reoccuring }) {
         <div className="flex pb justify-center">
           <label>Seats left: {seatNum}</label>
         </div>
+<<<<<<< HEAD
         {/*         <div className="flex pb-5 justify-center">
+=======
+        <div className="flex pb-5 justify-center">
+          <label># of Seats: {seatNum}</label>
+        </div>
+        <div className="flex px-2">
+>>>>>>> Api-connection
           <label>Reoccuring: {reoccuring}</label>
         </div> */}
       </div>
