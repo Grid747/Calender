@@ -15,7 +15,7 @@ function ArrayMap({
       {mydata.map((myEvents) => {
         return (
           <div key={myEvents.id} className="p-2">
-            <div className="box-content border-2 border-gray-900 w-60 overflow-x-auto h-52 hover:shadow-2xl rounded-lg bg-blue-300">
+            <div className="box-content w-52 overflow-x-auto h-48 filter shadow-inner drop-shadow-xl rounded-2xl bg-white">
               <Event
                 key={myEvents.id}
                 name={myEvents.name}
@@ -31,7 +31,7 @@ function ArrayMap({
                     <button
                       id="registerBtn"
                       disabled={disable}
-                      className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                      className="bg-white border border-black rounded-md px-2 hover:bg-green-300"
                       onClick={() => registerEvent(myEvents.id)}
                     >
                       Register
@@ -45,7 +45,7 @@ function ArrayMap({
                   <button
                     id="editBtn"
                     disabled={disable}
-                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                    className="bg-white border border-gray-00 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
                     onClick={() => editEvent(myEvents.id)}
                   >
                     Edit
@@ -61,7 +61,7 @@ function ArrayMap({
                   <button
                     id="editbtn"
                     disabled={disable}
-                    className="bg-white border border-gray-900 rounded-md px-2 hover:shadow-xl hover:bg-gray-900 hover:text-white"
+                    className="bg-white border border-black rounded-md px-2 hover:bg-red-600"
                     onClick={() => deleteEvent(myEvents.id)}
                   >
                     Delete

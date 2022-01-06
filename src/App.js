@@ -7,6 +7,7 @@ import Data from "./Data/Data";
 import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
+import Chronos from "./files/Chronos.png";
 
 const api = axios.create({
   baseURL: `http://localhost:3001/`,
@@ -677,15 +678,19 @@ function App() {
     setDisable(!disable);
   };
 
+  function ChronosLogo() {
+    return <img src={Chronos} alt={ChronosLogo} />
+  }
+  
   /**************************************************************************** */
   return (
-    <div className="flex flex-col justify-center bg-gray-100">
-      <button onClick={apiCreateEvent}> Create </button>
+    <div className="bg-blue-100">
+{/*       <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
-      <button onClick={() => apiUpdateEvent(677)}> Edit </button>
+      <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
-      <div className="flex justify-center text-4xl">Registration Site</div>
-      <div className="flex justify-end w-full shadow-lg">
+      <div className='flex justify-center'><center>{ChronosLogo()}</center></div>
+      <div className="flex justify-end w-full">
         <DropDown
           onAdd={addEvent}
           dropValue={loginValue}
@@ -732,7 +737,7 @@ function App() {
           <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
         )}
       </div>
-      <div className="flex flex-wrap justify-start w-full h-full">
+      <div className="flex flex-wrap justify-center h-full w-full">
         <ArrayMap
           mydata={allEvents}
           deleteEvent={deleteIDEvent}
