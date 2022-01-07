@@ -8,6 +8,7 @@ import EditModal from "./components/EditModal";
 import ViewModal from "./components/ViewModal";
 import RegisterModal from "./components/RegisterModal";
 import Chronos from "./files/Chronos.png";
+import LoginModal from "./components/LoginModal";
 
 const api = axios.create({
   baseURL: `http://localhost:3001/`,
@@ -678,25 +679,47 @@ function App() {
     setDisable(!disable);
   };
 
+  /**
+   * Login Model for getting the login model to appear
+   *
+   */
+  const [loginModalBool, setloginModalBool] = useState(false);
+  const loginModel = (e) => {
+    e.preventDefault();
+    setloginModalBool(!loginModalBool);
+  };
+
+  const tatertotComp = (LoginObj) => {
+    console.log("this is user", LoginObj.user);
+    console.log("this is pass", LoginObj.pass);
+    if (LoginObj.user === "tater" && LoginObj.pass === "tot") {
+      console.log("you are a tatertot");
+    }
+  };
+
   function ChronosLogo() {
-    return <img src={Chronos} alt={ChronosLogo} />
+    return <img src={Chronos} alt={ChronosLogo} />;
   }
-  
+
   /**************************************************************************** */
   return (
     <div className="bg-blue-100">
-{/*       <button onClick={apiCreateEvent}> Create </button>
+      {/*       <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
       <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
-      <div className='flex justify-center'><center>{ChronosLogo()}</center></div>
+      <div className="flex justify-center">
+        <center>{ChronosLogo()}</center>
+      </div>
       <div className="flex justify-end w-full">
         <DropDown
           onAdd={addEvent}
           dropValue={loginValue}
           newDropValue={loginChange}
+          loginModel={loginModel}
         />
       </div>
+      {loginModalBool && <LoginModal subLogin={tatertotComp} />}
       <div>
         {editModal && (
           <EditModal

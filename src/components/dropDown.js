@@ -2,13 +2,19 @@ import ModelOpener from "./ModelOpener";
 import InstrucButton from "./InstrucBtn";
 import PackageButton from "./PcsPackageBtn";
 
-const DropDown = ({ onAdd, dropValue, newDropValue }) => {
+const DropDown = ({ onAdd, dropValue, newDropValue, loginModel }) => {
   return (
     <div className="flex flex-col justify-end w-full h-28">
       <div className="flex flex-col justify-end">
-        <h1 className="flex justify-end px-8">Login:</h1>
+        {/* <h1 className="flex justify-end px-8">Login:</h1> */}
         <label className="flex justify-end">
-          <select
+          <button
+            className="bg-white rounded-lg border border-black hover:bg-blue-700 text-gray-900 py-2 px-2"
+            onClick={loginModel}
+          >
+            Admin Button
+          </button>
+          {/*  <select
             name="Login"
             value={dropValue}
             onChange={newDropValue}
@@ -16,7 +22,7 @@ const DropDown = ({ onAdd, dropValue, newDropValue }) => {
           >
             <option value={false}>Member</option>
             <option value={true}>Admin</option>
-          </select>
+          </select> */}
         </label>
         <div
           className={`${
