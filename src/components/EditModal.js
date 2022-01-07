@@ -62,7 +62,7 @@ function EditModal({
             <h1 className="flex justify-left text-lg pt-5">Attendee's: </h1>
             {peopleData.map((foodie, index) => {
               return (
-                <div className='pl-2' key={index}>
+                <div className="pl-2" key={index}>
                   <input
                     type="checkbox"
                     checked={foodie.ischecked}
@@ -76,13 +76,13 @@ function EditModal({
             <div className="p-5 flex justify-evenly">
               <button
                 onClick={closeBtn}
-                className="rounded px-3 border border-gray-900 bg-white h-10 w-20 hover:bg-red-600"
+                className="rounded-lg px-3 border border-gray-900 bg-white h-10 w-20 hover:bg-red-600"
               >
                 Close
               </button>
               <button
                 onClick={formSubmit}
-                className="rounded px-3 border border-gray-900 bg-white h-10 w-20 hover:bg-green-200"
+                className="rounded-lg px-3 border border-gray-900 bg-white h-10 w-20 hover:bg-green-200"
               >
                 Submit
               </button>

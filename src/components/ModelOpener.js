@@ -21,16 +21,16 @@ function ModelOpener({ onAdd }) {
 
   return (
     <div className="bg-blue-500 border justify-centerp-1.5 h-28 w-full z-50">
-      <p className="text-2xl pt-2 text-black flex justify-center font-mono">
-      Administrator
+      <p className="text-2xl pt-4 text-black flex justify-center font-mono">
+        Administrator
       </p>
       <div className="flex justify-center items-center">
         <div className="items-center p-2">
           <button
             className={`${
               showModal
-                ? "bg-white border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded"
-                : "bg-white border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded"
+                ? "bg-white border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded-lg"
+                : "bg-white border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2 rounded-lg"
             }`}
             onClick={onclick}
           >

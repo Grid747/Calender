@@ -30,7 +30,7 @@ function Modal({ onAdd, submit }) {
     submit();
   };
   return (
-    <div className="fixed z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
+    <div className="fixed pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
       <div>
         <div className="rounded flex h-auto flex-col justify-center w-90 p-4 border-2 border-gray-900 bg-gray-200">
           <form onSubmit={formSubmit}>
@@ -91,7 +91,7 @@ function Modal({ onAdd, submit }) {
               </label>
             </div>
             <div className="px-1 pt-2 justify-center content-center flex">
-              <button className="rounded px-3 bg-white h-10 w-20 border border-gray-900 hover:bg-green-200">
+              <button className="rounded-lg px-3 bg-white h-10 w-20 border border-gray-900 hover:bg-green-200">
                 Submit
               </button>
             </div>
