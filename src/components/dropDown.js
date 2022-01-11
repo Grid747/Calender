@@ -7,12 +7,13 @@ const DropDown = ({ onAdd, dropValue, newDropValue, loginModel }) => {
     <div className="flex flex-col justify-end w-full h-28">
       <div className="flex flex-col justify-end">
         {/* <h1 className="flex justify-end px-8">Login:</h1> */}
-        <label className="flex justify-end">
+        <label className="flex justify-end w-50">
           <button
+            type="button"
             className="bg-white rounded-lg border border-black hover:bg-blue-700 text-gray-900 py-2 px-2"
             onClick={loginModel}
           >
-            Admin Button
+            Admin Login
           </button>
           {/*  <select
             name="Login"

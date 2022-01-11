@@ -692,8 +692,14 @@ function App() {
   const tatertotComp = (LoginObj) => {
     console.log("this is user", LoginObj.user);
     console.log("this is pass", LoginObj.pass);
-    if (LoginObj.user === "tater" && LoginObj.pass === "tot") {
+    if (LoginObj.user == "tater" && LoginObj.pass == "tot") {
       console.log("you are a tatertot");
+      setloginValue(!loginValue)
+      setloginModalBool(!loginModalBool)
+     //loginValue == true
+    }
+    else{
+      //windowbox ("incorrect info")
     }
   };
 
@@ -719,7 +725,7 @@ function App() {
           loginModel={loginModel}
         />
       </div>
-      {loginModalBool && <LoginModal subLogin={tatertotComp} />}
+      {loginModalBool && <LoginModal subLogin={tatertotComp} closebtn = {loginModel} />}
       <div>
         {editModal && (
           <EditModal

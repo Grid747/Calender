@@ -30,7 +30,7 @@ function LoginModal({ closebtn, subLogin }) {
           <button
             type="button"
             className="bg-white border border-gray-900 rounded-md px-3 py-2 hover:bg-red-600"
-            //onClick={closebtn}
+            onClick={closebtn}
             /* disabled={disable} */
           >
             Cancel
