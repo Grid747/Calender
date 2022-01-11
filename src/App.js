@@ -629,6 +629,7 @@ function App() {
     const seatPatch = { seats: newSeat };
     //const regBtnPatch = { regBtn: false }; //will be used when the bug below isn't there
     console.log("id: ", id);
+    console.log(myregisterEvent);
 
     try {
       console.log("before response");
