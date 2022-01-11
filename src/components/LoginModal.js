@@ -24,7 +24,7 @@ function LoginModal({ closebtn, subLogin }) {
           <h1 className="flex justify-left pt-6">Password:</h1>
           <input
             className="border border-gray-900 pl-2 flex justify-center w-80"
-            type="text"
+            type="password"
             onChange={changePass}
           />
           <button

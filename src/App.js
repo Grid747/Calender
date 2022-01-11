@@ -694,11 +694,10 @@ function App() {
     console.log("this is pass", LoginObj.pass);
     if (LoginObj.user == "tater" && LoginObj.pass == "tot") {
       console.log("you are a tatertot");
-      setloginValue(!loginValue)
-      setloginModalBool(!loginModalBool)
-     //loginValue == true
-    }
-    else{
+      setloginValue(!loginValue);
+      setloginModalBool(!loginModalBool);
+      //loginValue == true
+    } else {
       //windowbox ("incorrect info")
     }
   };
@@ -723,9 +722,12 @@ function App() {
           dropValue={loginValue}
           newDropValue={loginChange}
           loginModel={loginModel}
+          loginclose={loginChange}
         />
       </div>
-      {loginModalBool && <LoginModal subLogin={tatertotComp} closebtn = {loginModel} />}
+      {loginModalBool && (
+        <LoginModal subLogin={tatertotComp} closebtn={loginModel} />
+      )}
       <div>
         {editModal && (
           <EditModal
