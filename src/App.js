@@ -717,6 +717,7 @@ function App() {
       <div className="flex justify-center">
         <center>{ChronosLogo()}</center>
       </div>
+      <br />
       <div className="flex justify-end w-full">
         <DropDown
           onAdd={addEvent}

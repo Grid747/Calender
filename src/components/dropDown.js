@@ -17,13 +17,15 @@ const DropDown = ({
         {/* <h1 className="flex justify-end px-8">Login:</h1> */}
         {/* <label className="flex justify-end w-50"> */}
         {!dropValue ? (
-          <button
-            type="button"
-            className="bg-white rounded-lg border border-black hover:bg-blue-700 text-gray-900 py-2 px-2"
-            onClick={loginModel}
-          >
-            Admin Login
-          </button>
+          <div className="pl-2">
+            <button
+              type="button"
+              className="bg-white rounded-lg border border-black hover:bg-blue-700 text-gray-900 py-2 px-2"
+              onClick={loginModel}
+            >
+              Admin Login
+            </button>
+          </div>
         ) : (
           <button
             type="button"
@@ -54,6 +56,9 @@ const DropDown = ({
             <div className="">
               <p className="text-xl text-black flex justify-center font-mono">
                 15th CPTS
+              </p>
+              <p className="text-xl text-black flex justify-center font-mono">
+                Millitary PCS In-Processing
               </p>
               <div className="flex justify-center p-4">
                 <InstrucButton label="Instructions" />
