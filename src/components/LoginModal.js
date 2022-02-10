@@ -13,7 +13,7 @@ function LoginModal({ closebtn, subLogin }) {
   };
   return (
     <div className="fixed pin z-50 pt-10 justify-center overflow-auto bg-gray-400 bg-opacity-60 flex w-full h-full">
-      <div className="flex px-4 h-96 flex-col w-92 rounded border-2 border-gray-900 bg-gray-200 justify-center">
+      <div className="flex px-4 h-96 flex-col w-92 rounded border-2 border-gray-500 bg-gray-200 justify-center">
         <form onSubmit={submitbtnLogin}>
           <h1 className="flex justify-left">Username:</h1>
           <input
@@ -27,6 +27,7 @@ function LoginModal({ closebtn, subLogin }) {
             type="password"
             onChange={changePass}
           />
+          <div className="flex justify-evenly pt-4 pb-2">
           <button
             type="button"
             className="bg-white border border-gray-900 rounded-md px-3 py-2 hover:bg-red-600"
@@ -41,6 +42,7 @@ function LoginModal({ closebtn, subLogin }) {
           >
             Submit
           </button>
+          </div>
         </form>
       </div>
     </div>

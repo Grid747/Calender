@@ -557,7 +557,7 @@ function App() {
           peopleArr[i].email +
           " " +
           peopleArr[i].phoneNumber +
-          ";\r\n";
+          ";";
       }
       return myArr;
     }
