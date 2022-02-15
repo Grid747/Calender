@@ -17,7 +17,7 @@ function ArrayMap({
 
   //console.log("here is the beginnign fo the fake array");
   let fakeArray = mydata;
-  console.log(fakeArray);
+  //console.log(fakeArray);
   fakeArray.sort((a, b) =>
     a.date > b.date ? 1 : a.date === b.date ? (b.start > a.start ? 1 : -1) : -1
   );

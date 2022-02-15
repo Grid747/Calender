@@ -32,6 +32,28 @@ function App() {
         const response = await api.get("/event/table");
         console.log(response.data);
         setallEvents(response.data);
+        console.log("data has loaded");
+        /**
+         * Below section is for cleaning up the data before it enters the arraymap function. This will hide the the reg
+         * button if it is less than 8 hours
+         * The next function will delete the whole card if it is greater than 30 days
+         */
+
+        console.log("8 hour protection");
+        let stringDate = response.data[12].date;
+        let stringStartTime = response.data[12].start;
+        let combineDateObj = stringDate + "T" + stringStartTime;
+        //console.log("combined string ", combineDateObj);
+        let change2DateObj = new Date(combineDateObj);
+        console.log("object date: ", change2DateObj);
+        let eightbe4Date = new Date(
+          change2DateObj.setHours(change2DateObj.getHours() - 8)
+        );
+        console.log("last time to keep button", eightbe4Date);
+        let today = new Date();
+        if (eightbe4Date <= today) {
+          console.log("you made it to if");
+        }
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -44,7 +66,7 @@ function App() {
     const apiGetAllPeople = async () => {
       try {
         const response = await api.get("/people/table");
-        console.log(response.data);
+        //console.log(response.data);
         setPeople(response.data);
       } catch (err) {
         console.log(`Error: ${err.message}`);
@@ -52,6 +74,23 @@ function App() {
     };
     apiGetAllPeople();
   }, []);
+
+  /*   useEffect(() => {
+    const eightHourHide = (need2hideReg) => {
+      console.log("count down to 8 hours");
+      console.log(need2hideReg);
+
+      let hider = need2hideReg[0].date;
+      console.log(hider);
+      let evDate = new Date(hider);
+      console.log(evDate);
+      // for (let i = 0; i < need2hideReg.length; i++) {
+      //  console.log("in the for loop, you are at ", i);
+      //} 
+    };
+    eightHourHide(allEvents);
+  });
+ */
 
   //Example all below
   const apiCreateEvent = async () => {
@@ -727,9 +766,10 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="bg-blue-100">
+      {/*       {eightHourHide(allEvents)} */}
       {/*       <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
-      <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
+    <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
       <div className="flex justify-center">
         <center>{ChronosLogo()}</center>
