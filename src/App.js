@@ -31,7 +31,45 @@ function App() {
       try {
         const response = await api.get("/event/table");
         console.log(response.data);
-        setallEvents(response.data);
+        //setallEvents(response.data);
+        console.log("data has loaded");
+        /**
+         * Below section is for cleaning up the data before it enters the arraymap function. This will hide the the reg
+         * button if it is less than 8 hours
+         * The next function will delete the whole card if it is greater than 30 days
+         */
+
+        console.log("8 hour protection");
+        let stringDate = response.data[0].date;
+        let stringStartTime = response.data[0].start;
+        let id = response.data[0].id;
+
+        let combineDateObj = stringDate + "T" + stringStartTime;
+        let change2DateObj = new Date(combineDateObj);
+        //console.log("object date: ", change2DateObj);
+        let eightbe4Date = new Date(
+          change2DateObj.setHours(change2DateObj.getHours() - 8)
+        );
+        //console.log("last time to keep button", eightbe4Date);
+        let today = new Date();
+        if (eightbe4Date <= today) {
+          try {
+            console.log("in try");
+            let patch = response.data[0];
+            patch.regBtn = false;
+            console.log(response.data);
+            setallEvents(response.data);
+            const responsePatch = await api.patch(`event/${id}`, patch);
+            console.log("you did the date patch");
+            setallEvents(
+              allEvents.map((event) =>
+                event.id === id ? { ...responsePatch.data } : event
+              )
+            );
+          } catch (err) {
+            console.log(`Error: ${err.message}`);
+          }
+        }
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -44,7 +82,7 @@ function App() {
     const apiGetAllPeople = async () => {
       try {
         const response = await api.get("/people/table");
-        console.log(response.data);
+        //console.log(response.data);
         setPeople(response.data);
       } catch (err) {
         console.log(`Error: ${err.message}`);
@@ -52,6 +90,23 @@ function App() {
     };
     apiGetAllPeople();
   }, []);
+
+  /*   useEffect(() => {
+    const eightHourHide = (need2hideReg) => {
+      console.log("count down to 8 hours");
+      console.log(need2hideReg);
+
+      let hider = need2hideReg[0].date;
+      console.log(hider);
+      let evDate = new Date(hider);
+      console.log(evDate);
+      // for (let i = 0; i < need2hideReg.length; i++) {
+      //  console.log("in the for loop, you are at ", i);
+      //} 
+    };
+    eightHourHide(allEvents);
+  });
+ */
 
   //Example all below
   const apiCreateEvent = async () => {
@@ -618,6 +673,14 @@ function App() {
     myregisterEvent.id = filterID;
     const id = filterID;
 
+    const arrayOfEvent = allEvents.filter(
+      (oneEvent) => oneEvent.id === filterID
+    );
+
+    const currEventRegFor = arrayOfEvent[0];
+
+    console.log(currEventRegFor);
+
     if (
       (myregisterEvent.rank === "") |
       (myregisterEvent.name === "") |
@@ -626,9 +689,18 @@ function App() {
     ) {
       return window.alert("You are missing one or more of the inputs");
     }
+    console.log("my register events", myregisterEvent);
 
     const newSeat = allEvents[filterIndex].seats - 1;
-    const seatPatch = { seats: newSeat };
+    if (newSeat === 0) {
+      currEventRegFor.seats = "0";
+      currEventRegFor.regBtn = "0";
+    } else {
+      currEventRegFor.seats = newSeat;
+    }
+    //console.log("update for the seats before seatpatch", currEventRegFor);
+    const seatPatch = currEventRegFor;
+    //const seatPatch = "";
     //const regBtnPatch = { regBtn: false }; //will be used when the bug below isn't there
     console.log("id: ", id);
     console.log(myregisterEvent);
@@ -712,9 +784,10 @@ function App() {
   /**************************************************************************** */
   return (
     <div className="bg-blue-100">
+      {/*       {eightHourHide(allEvents)} */}
       {/*       <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
-      <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
+    <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
       <br />
       <div className="flex justify-center">
         <center>{ChronosLogo()}</center>
