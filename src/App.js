@@ -31,7 +31,7 @@ function App() {
       try {
         const response = await api.get("/event/table");
         console.log(response.data);
-        setallEvents(response.data);
+        //setallEvents(response.data);
         console.log("data has loaded");
         /**
          * Below section is for cleaning up the data before it enters the arraymap function. This will hide the the reg
@@ -40,19 +40,35 @@ function App() {
          */
 
         console.log("8 hour protection");
-        let stringDate = response.data[12].date;
-        let stringStartTime = response.data[12].start;
+        let stringDate = response.data[0].date;
+        let stringStartTime = response.data[0].start;
+        let id = response.data[0].id;
+
         let combineDateObj = stringDate + "T" + stringStartTime;
-        //console.log("combined string ", combineDateObj);
         let change2DateObj = new Date(combineDateObj);
-        console.log("object date: ", change2DateObj);
+        //console.log("object date: ", change2DateObj);
         let eightbe4Date = new Date(
           change2DateObj.setHours(change2DateObj.getHours() - 8)
         );
-        console.log("last time to keep button", eightbe4Date);
+        //console.log("last time to keep button", eightbe4Date);
         let today = new Date();
         if (eightbe4Date <= today) {
-          console.log("you made it to if");
+          try {
+            console.log("in try");
+            let patch = response.data[0];
+            patch.regBtn = false;
+            console.log(response.data);
+            setallEvents(response.data);
+            const responsePatch = await api.patch(`event/${id}`, patch);
+            console.log("you did the date patch");
+            setallEvents(
+              allEvents.map((event) =>
+                event.id === id ? { ...responsePatch.data } : event
+              )
+            );
+          } catch (err) {
+            console.log(`Error: ${err.message}`);
+          }
         }
       } catch (err) {
         console.log(`Error: ${err.message}`);
