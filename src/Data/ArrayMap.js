@@ -10,8 +10,24 @@ function ArrayMap({
   disable,
   /* chairSeat, */
 }) {
+  console.log("here is the beginnign fo the fake array");
+  let fakeArray = mydata;
+  console.log(fakeArray);
+  fakeArray.sort((a, b) =>
+    a.date > b.date ? 1 : a.date === b.date ? (b.start > a.start ? 1 : -1) : -1
+  );
+  console.log("here is the end of the fake array");
   return (
     <div className="flex flex-wrap h-full px-2">
+      {/* {mydata.sort((a, b) =>
+        a.date > b.date
+          ? 1
+          : a.date === b.date
+          ? a.start > b.size
+            ? 1
+            : -1
+          : -1
+      )} */}
       {mydata.map((myEvents) => {
         return (
           <div key={myEvents.id} className="p-2">
