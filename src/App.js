@@ -637,6 +637,7 @@ function App() {
     const newSeat = allEvents[filterIndex].seats - 1;
     if (newSeat === 0) {
       currEventRegFor.seats = "0";
+      currEventRegFor.regBtn = "0";
     } else {
       currEventRegFor.seats = newSeat;
     }
