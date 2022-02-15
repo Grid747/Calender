@@ -15,13 +15,13 @@ function ArrayMap({
    * the start time
    */
 
-  console.log("here is the beginnign fo the fake array");
+  //console.log("here is the beginnign fo the fake array");
   let fakeArray = mydata;
   console.log(fakeArray);
   fakeArray.sort((a, b) =>
     a.date > b.date ? 1 : a.date === b.date ? (b.start > a.start ? 1 : -1) : -1
   );
-  console.log("here is the end of the fake array");
+  //console.log("here is the end of the fake array");
 
   /**
    * Below it will show the array in the correct order

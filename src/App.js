@@ -616,6 +616,14 @@ function App() {
     myregisterEvent.id = filterID;
     const id = filterID;
 
+    const arrayOfEvent = allEvents.filter(
+      (oneEvent) => oneEvent.id === filterID
+    );
+
+    const currEventRegFor = arrayOfEvent[0];
+
+    console.log(currEventRegFor);
+
     if (
       (myregisterEvent.rank === "") |
       (myregisterEvent.name === "") |
@@ -624,9 +632,13 @@ function App() {
     ) {
       return window.alert("You are missing one or more of the inputs");
     }
+    console.log("my register events", myregisterEvent);
 
     const newSeat = allEvents[filterIndex].seats - 1;
-    const seatPatch = { seats: newSeat };
+    currEventRegFor.seats = newSeat;
+    //console.log("update for the seats before seatpatch", currEventRegFor);
+    const seatPatch = currEventRegFor;
+    //const seatPatch = "";
     //const regBtnPatch = { regBtn: false }; //will be used when the bug below isn't there
     console.log("id: ", id);
     console.log(myregisterEvent);
