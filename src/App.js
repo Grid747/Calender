@@ -549,7 +549,7 @@ function App() {
       let myArr = [];
       for (let i = 0; i < peopleArr.length; i++) {
         console.log(peopleArr[i]);
-        myArr +=
+        myArr += 
           peopleArr[i].name +
           " " +
           peopleArr[i].rank +
@@ -559,7 +559,9 @@ function App() {
           peopleArr[i].phoneNumber +
           ";";
       }
-      return myArr;
+      var splitArr = myArr.split(';');
+      var newArr = splitArr.join(<br/>);
+      return newArr;
     }
 
     const myViewObject = {
