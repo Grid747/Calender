@@ -10,6 +10,11 @@ function ArrayMap({
   disable,
   /* chairSeat, */
 }) {
+  /**
+   * This is osrting the array. First it checks the date. It will check the dates then it if they are equal it will check
+   * the start time
+   */
+
   console.log("here is the beginnign fo the fake array");
   let fakeArray = mydata;
   console.log(fakeArray);
@@ -17,17 +22,12 @@ function ArrayMap({
     a.date > b.date ? 1 : a.date === b.date ? (b.start > a.start ? 1 : -1) : -1
   );
   console.log("here is the end of the fake array");
+
+  /**
+   * Below it will show the array in the correct order
+   */
   return (
     <div className="flex flex-wrap h-full px-2">
-      {/* {mydata.sort((a, b) =>
-        a.date > b.date
-          ? 1
-          : a.date === b.date
-          ? a.start > b.size
-            ? 1
-            : -1
-          : -1
-      )} */}
       {mydata.map((myEvents) => {
         return (
           <div key={myEvents.id} className="p-2">
