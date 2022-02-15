@@ -635,7 +635,11 @@ function App() {
     console.log("my register events", myregisterEvent);
 
     const newSeat = allEvents[filterIndex].seats - 1;
-    currEventRegFor.seats = newSeat;
+    if (newSeat === 0) {
+      currEventRegFor.seats = "0";
+    } else {
+      currEventRegFor.seats = newSeat;
+    }
     //console.log("update for the seats before seatpatch", currEventRegFor);
     const seatPatch = currEventRegFor;
     //const seatPatch = "";
