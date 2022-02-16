@@ -31,7 +31,7 @@ function App() {
       try {
         const response = await api.get("/event/table");
         console.log(response.data);
-        //setallEvents(response.data);
+        setallEvents(response.data);
         console.log("data has loaded");
         /**
          * Below section is for cleaning up the data before it enters the arraymap function. This will hide the the reg
@@ -39,7 +39,7 @@ function App() {
          * The next function will delete the whole card if it is greater than 30 days
          */
 
-        console.log("8 hour protection");
+        /* console.log("8 hour protection");
         let stringDate = response.data[0].date;
         let stringStartTime = response.data[0].start;
         let id = response.data[0].id;
@@ -69,7 +69,7 @@ function App() {
           } catch (err) {
             console.log(`Error: ${err.message}`);
           }
-        }
+        } */
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -614,9 +614,9 @@ function App() {
           peopleArr[i].phoneNumber +
           ";";
       }
-      var splitArr = myArr.split(';');
-      var newArr = splitArr.join(<br/>);
-      return newArr;
+      //var splitArr = myArr.split(';');
+      //var newArr = splitArr.join(<br/>);
+      return myArr;
     }
 
     const myViewObject = {
@@ -777,23 +777,20 @@ function App() {
     }
   };
 
-  function ChronosLogo() {
+  /* function ChronosLogo() {
     return <img src={Chronos} alt={ChronosLogo} />;
-  }
+  } */
 
   /**************************************************************************** */
   return (
-    <div className="bg-blue-100">
+    <div>
       {/*       {eightHourHide(allEvents)} */}
       {/*       <button onClick={apiCreateEvent}> Create </button>
       <button onClick={() => apiDeleteEvent(100)}> Delete </button>
     <button onClick={() => apiUpdateEvent(677)}> Edit </button> */}
-      <br />
-      <div className="flex justify-center">
-        <center>{ChronosLogo()}</center>
-      </div>
-      <br />
-      <div className="flex justify-end w-full">
+      {/* <br />
+       <div className="flex justify-center">{ChronosLogo()}</div> 
+      <br /> */}
         <DropDown
           onAdd={addEvent}
           dropValue={loginValue}
@@ -801,11 +798,9 @@ function App() {
           loginModel={loginModel}
           loginclose={loginChange}
         />
-      </div>
       {loginModalBool && (
         <LoginModal subLogin={tatertotComp} closebtn={loginModel} />
       )}
-      <div>
         {editModal && (
           <EditModal
             name={name}
@@ -825,8 +820,6 @@ function App() {
             formSubmit={editModalSubmit}
           />
         )}
-      </div>
-      <div>
         {viewModal && (
           <ViewModal
             name={viewObject.name}
@@ -839,13 +832,10 @@ function App() {
             closeBtn={changeViewModel}
           />
         )}
-      </div>
-      <div>
         {registerModal && (
           <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
         )}
-      </div>
-      <div className="flex flex-wrap justify-center h-full w-full">
+      <div className="flex flex-wrap justify-center">
         <ArrayMap
           mydata={allEvents}
           deleteEvent={deleteIDEvent}
