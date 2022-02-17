@@ -11,13 +11,13 @@ function ArrayMap({
   /* chairSeat, */
 }) {
   /**
-   * This is osrting the array. First it checks the date. It will check the dates then it if they are equal it will check
+   * This is sorting the array. First it checks the date. It will check the dates then it if they are equal it will check
    * the start time
    */
 
   //console.log("here is the beginnign fo the fake array");
   let fakeArray = mydata;
-  //console.log(fakeArray);
+  console.log("sorting fake array", fakeArray);
   fakeArray.sort((a, b) =>
     a.date > b.date ? 1 : a.date === b.date ? (b.start > a.start ? 1 : -1) : -1
   );

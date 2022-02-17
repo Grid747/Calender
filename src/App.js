@@ -31,45 +31,61 @@ function App() {
       try {
         const response = await api.get("/event/table");
         console.log(response.data);
-        setallEvents(response.data);
+        //setallEvents(response.data);
         console.log("data has loaded");
-        /**
+        /* *
          * Below section is for cleaning up the data before it enters the arraymap function. This will hide the the reg
          * button if it is less than 8 hours
          * The next function will delete the whole card if it is greater than 30 days
          */
+        for (let i = 0; i < response.data.length; i++) {
+          console.log("in the for loop, you are at ", i);
 
-        /* console.log("8 hour protection");
-        let stringDate = response.data[0].date;
-        let stringStartTime = response.data[0].start;
-        let id = response.data[0].id;
+          console.log("8 hour protection");
+          let stringDate = response.data[i].date;
+          let stringStartTime = response.data[i].start;
 
-        let combineDateObj = stringDate + "T" + stringStartTime;
-        let change2DateObj = new Date(combineDateObj);
-        //console.log("object date: ", change2DateObj);
-        let eightbe4Date = new Date(
-          change2DateObj.setHours(change2DateObj.getHours() - 8)
-        );
-        //console.log("last time to keep button", eightbe4Date);
-        let today = new Date();
-        if (eightbe4Date <= today) {
-          try {
-            console.log("in try");
-            let patch = response.data[0];
-            patch.regBtn = false;
-            console.log(response.data);
-            setallEvents(response.data);
-            const responsePatch = await api.patch(`event/${id}`, patch);
-            console.log("you did the date patch");
-            setallEvents(
-              allEvents.map((event) =>
-                event.id === id ? { ...responsePatch.data } : event
-              )
-            );
-          } catch (err) {
-            console.log(`Error: ${err.message}`);
+          let combineDateObj = stringDate + "T" + stringStartTime;
+          let change2DateObj = new Date(combineDateObj);
+          //console.log("object date: ", change2DateObj);
+          let eightbe4Date = new Date(
+            change2DateObj.setHours(change2DateObj.getHours() - 8)
+          );
+          let oneMonthAfterDate = new Date(
+            change2DateObj.setMonth(change2DateObj.getMonth() + 1)
+          );
+          console.log("console.log one month after date", oneMonthAfterDate);
+          console.log("last time to keep button", eightbe4Date);
+          let today = new Date();
+          if (eightbe4Date <= today) {
+            try {
+              console.log("in try");
+              let patch = response.data[i];
+              patch.regBtn = false;
+              //console.log(response.data);
+              setallEvents(response.data);
+              /* const responseSeats = await api.patch(`event/${id}`, seatPatch);
+              console.log("You made it past the response eh");*/
+              if (oneMonthAfterDate >= today) {
+                console.log("you are 1 month after");
+                let delEvent = response.data[0];
+                let delEvId = delEvent.id;
+                console.log(delEvId);
+                console.log("all events: ", allEvents);
+                const updatedEvents = [...response.data].filter(
+                  (oneEvent) => oneEvent.id !== delEvId
+                );
+                //console.log(updatedEvents);
+                setallEvents(updatedEvents);
+              }
+              //console.log("you did the date patch");
+              //console.log(allEvents);
+              //console.log("made it past set all events");
+            } catch (err) {
+              console.log(`Error: ${err.message}`);
+            }
           }
-        } */
+        }
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -604,7 +620,7 @@ function App() {
       let myArr = [];
       for (let i = 0; i < peopleArr.length; i++) {
         console.log(peopleArr[i]);
-        myArr += 
+        myArr +=
           peopleArr[i].name +
           " " +
           peopleArr[i].rank +
@@ -791,50 +807,50 @@ function App() {
       {/* <br />
        <div className="flex justify-center">{ChronosLogo()}</div> 
       <br /> */}
-        <DropDown
-          onAdd={addEvent}
-          dropValue={loginValue}
-          newDropValue={loginChange}
-          loginModel={loginModel}
-          loginclose={loginChange}
-        />
+      <DropDown
+        onAdd={addEvent}
+        dropValue={loginValue}
+        newDropValue={loginChange}
+        loginModel={loginModel}
+        loginclose={loginChange}
+      />
       {loginModalBool && (
         <LoginModal subLogin={tatertotComp} closebtn={loginModel} />
       )}
-        {editModal && (
-          <EditModal
-            name={name}
-            changeName={changeName}
-            date={date}
-            changeDate={changeDate}
-            start={start}
-            changeStart={changeStart}
-            end={end}
-            changeEnd={changeEnd}
-            seats={seats}
-            changeSeats={changeSeats}
-            reoccuring={reoccuring}
-            peopleData={peopleOneEvent}
-            checkingChecked={checkingChecked}
-            closeBtn={changeEditModel}
-            formSubmit={editModalSubmit}
-          />
-        )}
-        {viewModal && (
-          <ViewModal
-            name={viewObject.name}
-            date={viewObject.date}
-            start={viewObject.start}
-            end={viewObject.end}
-            seats={viewObject.seats}
-            reoccuring={viewObject.reocurring}
-            people={viewObject.people}
-            closeBtn={changeViewModel}
-          />
-        )}
-        {registerModal && (
-          <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
-        )}
+      {editModal && (
+        <EditModal
+          name={name}
+          changeName={changeName}
+          date={date}
+          changeDate={changeDate}
+          start={start}
+          changeStart={changeStart}
+          end={end}
+          changeEnd={changeEnd}
+          seats={seats}
+          changeSeats={changeSeats}
+          reoccuring={reoccuring}
+          peopleData={peopleOneEvent}
+          checkingChecked={checkingChecked}
+          closeBtn={changeEditModel}
+          formSubmit={editModalSubmit}
+        />
+      )}
+      {viewModal && (
+        <ViewModal
+          name={viewObject.name}
+          date={viewObject.date}
+          start={viewObject.start}
+          end={viewObject.end}
+          seats={viewObject.seats}
+          reoccuring={viewObject.reocurring}
+          people={viewObject.people}
+          closeBtn={changeViewModel}
+        />
+      )}
+      {registerModal && (
+        <RegisterModal closebtn={changeRegisterModel} subOn={registerEvent} />
+      )}
       <div className="flex flex-wrap justify-center">
         <ArrayMap
           mydata={allEvents}
