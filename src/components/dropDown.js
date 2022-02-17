@@ -21,7 +21,7 @@ const DropDown = ({
         {/* <h1 className="flex justify-end px-8">Login:</h1> */}
         {/* <label className="flex justify-end w-50"> */}
         {!dropValue ? (
-          <div className="flex justify-end h-10 pl-10">
+          <div className="flex justify-end">
             <button
               type="button"
               className="bg-white rounded-lg border border-black hover:bg-yellow-200 text-gray-900 py-2 px-2"
@@ -31,13 +31,15 @@ const DropDown = ({
             </button>
             </div>
         ) : (
+          <div className="flex justify-end">
           <button
             type="button"
             className="bg-white rounded-lg border border-black hover:bg-red-700 text-gray-900 py-2 px-2"
             onClick={loginclose}
           >
-            Close
+            Logout
           </button>
+          </div>
         )}
         <div className="flex justify-center">{ChronosLogo()}</div>
         {/*  <select
@@ -50,22 +52,22 @@ const DropDown = ({
             <option value={true}>Admin</option>
           </select> */}
         {/* </label> */}
-        <div className="flex justify-center">
+        <div className="flex justify-center py-4">
           {dropValue ? (
             <ModelOpener onAdd={onAdd} />
           ) : (
-            <div className="">
+            <div>
               <p className="text-xl text-black flex justify-center font-mono">
                 15th CPTS
               </p>
-              <p className="text-xl text-black flex justify-center font-mono">
+              <div className="text-xl text-black flex justify-center font-mono">
                 Millitary PCS In-Processing
-              </p>
-              <div className="flex justify-center p-4">
+              </div>
+              <div className="flex justify-center px-4">
                 <InstrucButton label="Instructions" />
                 <PackageButton label="PCS Package" />
               </div>
-            </div>
+              </div>
           )}
         </div>
     </div>

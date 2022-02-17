@@ -20,12 +20,11 @@ function ModelOpener({ onAdd }) {
   };
 
   return (
-    <div className="bg-blue-500 border justify-centerp-1.5 h-28 w-full z-50">
-      <p className="text-2xl pt-4 text-black flex justify-center font-mono">
+    <div className="bg-blue-500 justify-center p-2 w-full">
+      <p className="text-2xl text-black flex justify-center font-mono">
         Administrator
       </p>
-      <div className="flex justify-center items-center">
-        <div className="items-center p-2">
+      <div className="flex justify-center p-2">
           <button
             className={`${
               showModal
@@ -36,11 +35,7 @@ function ModelOpener({ onAdd }) {
           >
             {label}
           </button>
-        </div>
-        <div className="flex justify-center items-center"></div>
-        <div className="flex justify-center fixed pt-16">
           {showModal && <Modal onAdd={onAdd} submit={submit} />}
-        </div>
       </div>
     </div>
   );
