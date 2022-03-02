@@ -63,7 +63,7 @@ const DropDown = ({
               <div className="text-xl text-black flex justify-center font-mono">
                 Millitary PCS In-Processing
               </div>
-              <div className="flex justify-center px-4">
+              <div className="flex justify-center">
                 <InstrucButton label="Instructions" />
                 <PackageButton label="PCS Package" />
               </div>

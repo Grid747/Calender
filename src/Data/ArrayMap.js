@@ -27,7 +27,7 @@ function ArrayMap({
    * Below it will show the array in the correct order
    */
   return (
-    <div className="flex flex-wrap h-full px-2">
+    <div className="flex flex-wrap h-full">
       {mydata.map((myEvents) => {
         return (
           <div key={myEvents.id} className="p-2">
